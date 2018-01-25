@@ -5,28 +5,27 @@ This documentation describes the snabble API endpoints related to the management
 All this endpoints are available within the `api` subdomain. See [General API access](api_common.md) for general
 information in api access.
 
-## Endpoints
-### Endpoints for single product operations
+### Single product operations
 
 * [Get product](#get-product): `GET /{project}/products/sku/{sku}`
 * [Create product](#create-product): `POST /{project}/products`
 * [Update product](#update-product): `PUT /{project}/products/sku/{sku}`
 * [Delete product](#delete-product): `DELETE /{project}/products/sku/{sku}`
 
-### Endpoints for multiple products
+### Multiple products
 
 * [Batch import](#batch-import): `POST /{project}/products/_batch`
-* [Request Products](#Request Products) `GET /{project}/products`
+* [Request Products](#request-products): `GET /{project}/products`
 
 ## Data Model
 
-Content Types
 ### Product Object
+A single product is encoded as follows.
 
 Example:
 ```
 {
-   "sku" : "1120325205"
+   "sku" : 1120325205
    "name" : "Premium-Holzöl",
    "description": "farblos, 750ml"
    "subtitle" : "Aplina",
@@ -46,9 +45,28 @@ Example:
    "basePrice": "19,99 EUR / 1 Liter"
 }
 ```
-   
-## Details
-### Batch import
+
+Product attributes:
+
+| Parameter         | Type        | Default      | Description                                                                          |
+|-------------------|-------------|--------------|--------------------------------------------------------------------------------------|
+| sku               | int         |              | the uniq id for identification of a the product                                      |
+| name              | string      |              | the main display name of a the product                                               |
+| discountedPrice   | int         | null         | the current price, if the product is discounted                                      |
+
+### Content Types
+
+**Conent-Type** : application/json
+
+The payload is a json document, of the specified type.
+
+**Conent-Type** : application/x-ndjson
+
+The payload is a stream of JSON objects. One object per line.
+See [ndjson-spec](https://github.com/ndjson/ndjson-spec) for mor details.
+
+
+## Batch import
 
 Import a list of products in one http request.
 
@@ -60,11 +78,14 @@ Import a list of products in one http request.
 
 ### Request
 **Conent-Type** : application/x-ndjson
+
 **Data** : Json stream of [product objects](product-object).
 
-## Success Response
+### Success Response
 
 **Code** : `200 OK`
+
 **Conent-Type** : application/x-ndjson
+
 **Data** : Json stream of [result messages](result-message).
 

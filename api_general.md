@@ -8,16 +8,16 @@ This documentation describes the general access topics for the snabble REST API.
 The snabble platform has three public environments. One for production usage and
 two environments for different kinds of testing. The environments do not share any data.
 
-### Production environment: snabble.io
+### Production environment `snabble.io`
 
 This environment is for the serious production usage.
 
-### Staging environment: snabble-staging.io
+### Staging environment `snabble-staging.io`
 
 This environment is for integration testing from the retailer side or from app development agencies.
 It can be used as a sandbox for integration tests.
 
-### Staging environment: snabble-testing.io
+### Staging environment `snabble-testing.io`
 
 This environment is used internally by the snabble team for software testing. But can also be used together
 with retailers for testing of features in a very early stage.
@@ -27,12 +27,12 @@ with retailers for testing of features in a very early stage.
 All environments share the same API structure and provide the following endpoints as subdomains. For simplicity we use the
 production environment in all examples.
 
+| Subdomain                      | Usage                                       |
 |--------------------------------|---------------------------------------------|
 | api.snabble.io                 | The general REST api                        |
 | sftp.snabble.io                | The sftp exchange host                      |
 | retailer.snabble.io            | The retailer portal                         |
 | docs.snabble.io                | The documentation                           |
-|--------------------------------|---------------------------------------------|
 
 
 ## Access and Security
