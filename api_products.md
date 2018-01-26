@@ -80,7 +80,7 @@ Weighing attributes:
 
 Weighing Example:
 
-* **Product:** A bag with apples
+* **Product:** A bag with apples "Cripps Pink"
 * **Base Price:** 3.90 / kg
 * **Package Weight:** 720g
 * **EAN-13:** 2323230007204 (Actual code on the bag after weighing)
@@ -88,7 +88,7 @@ Weighing Example:
 ```
 {
     "weighedItemIds": ["2323230000000", "2727270000000"],
-    "pluSet": ["23"],
+    "pluSet": ["4128"],
     "weighByCustomer": true,
     "referenceUnit": "kg",
     "encodingUnit": "g"
