@@ -2,7 +2,7 @@
 # Products Management API
 
 This documentation describes the snabble API endpoints related to the management and simple access of products.
-All this endpoints are available within the `api` subdomain. See [General API access](api_common.md) for general
+All this endpoints are available within the `api` subdomain. See [General API access](api_general.md) for general
 information in api access.
 
 ### Single product operations
@@ -116,6 +116,8 @@ The payload is a json document, of the specified type.
 The payload is a stream of JSON objects. One object per line.
 See [ndjson-spec](https://github.com/ndjson/ndjson-spec) for mor details.
 
+-----------
+
 ## Get product
 `GET /{project}/products/sku/{sku}`
 
@@ -128,6 +130,8 @@ Return one product by sku.
 **Conent-Type** : application/json
 
 **Data** : [product object](#product-object).
+
+-----------
 
 ## Create product
 `POST /{project}/products`
@@ -145,6 +149,8 @@ Create or update a product. If the product already exists, it will be updated.
 
 no content
 
+-----------
+
 ## Update product
 `PUT /{project}/products/sku/{sku}`
 
@@ -161,6 +167,8 @@ the sku in the url parameter and the JSON payload have to match.
 ### Success Response `200 OK`
 
 no content
+
+-----------
 
 ## DELETE product
 `DELETE /{project}/products/sku/{sku}`
@@ -193,6 +201,8 @@ Import a list of products in one http request.
 **Conent-Type** : application/x-ndjson
 
 **Data** : Json stream of [result messages](#result-message).
+
+-----------
 
 ## Request products
 `GET /{project}/products`
