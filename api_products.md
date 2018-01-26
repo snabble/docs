@@ -25,14 +25,13 @@ A single product is encoded as follows.
 Example:
 ```
 {
-   "sku" : 1120325205
+   "sku" : 1120325205,
    "name" : "Premium-Holzöl",
-   "description": "farblos, 750ml"
+   "description": "farblos, 750ml",
    "subtitle" : "Aplina",
    "boost": 1,
    "taxCategory" : "normal",
    "depositProduct": null,
-   "weighing": null,
    "outOfStock" : false,
    "deleted" : false,
    "imageUrl" : "https://www.example.com/some/image.jpg",
@@ -42,7 +41,8 @@ Example:
    ],
    "price" : 1699,
    "discountedPrice" : 1499,
-   "basePrice": "19,99 EUR / 1 Liter"
+   "basePrice": "19,99 EUR / 1 Liter",
+   "weighing": null
 }
 ```
 
@@ -50,9 +50,60 @@ Product attributes:
 
 | Parameter         | Type        | Default      | Description                                                                          |
 |-------------------|-------------|--------------|--------------------------------------------------------------------------------------|
-| sku               | int         |              | the uniq id for identification of a the product                                      |
-| name              | string      |              | the main display name of a the product                                               |
-| discountedPrice   | int         | null         | the current price, if the product is discounted                                      |
+| sku               | int         |              | The uniq id for identification of a the product                                      |
+| name              | string      |              | The main display name of a the product                                               |
+| description       | string      | null         | A short description for the product                                                  |
+| subtitle          | string      | null         | An additional title line for individual use (e.g. brand information)                 |
+| boost             | int         | 0            | Order value for importance in views (higher is more)                                 |
+| taxCategory       | string      | null         |                                                                                      |
+| depositProduct    | int         | null         | The sku of a corresponding product, which contains the belonging eposit article      |
+| outOfStock        | bool        | false        | Flag to indicate, if the product is currently available in markets                   |
+| deleted           | bool        | false        | Flag to indicate, that a product does not exist any longer                           |
+| imageUrl          | string      | null         | The full url on an product image                                                     |
+| productType       | string      | "default"    | Type of the product: "default" "weighable", "deposit"                                |
+| eans              | []string    | []           | List of scannable codes / barcodes which pint to the this product                    |
+| price             | int         | 0            | The current standard price                                                           |
+| discountedPrice   | int         | null         | The current price, if the product is discounted.                                     |
+| basePrice         | string      | ""           | Base price (e.g. price per liter) as label.                                          |
+| weighing          | object      | null         | Information to calculate the SKUs it the project is weighable                        |
+
+Weighing attributes:
+
+| Parameter         | Type        | Default      | Description                                                                           |
+|-------------------|-------------|--------------|---------------------------------------------------------------------------------------|
+| weighedItemIds    | []string    | []           | Templates for the eans with encoded price or weight information                       |
+| pluSet            | []string    | []           | PLU, the short code to identiy a weighable product                                    |
+| weighByCustomer   | bool        | false        | Flag, if the product is prepackaged, ot the customer has to do weighting by himself   |
+| referenceUnit     | string      | ""           | The unit in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
+| encodingUnit      | string      | ""           | Unit, which is used as encoding within the ean (e.g. "g" when the ean contains gramms)|
+
+
+Weighing Example:
+
+* **Product:** A bag with apples
+* **Apple-Price:** 3.90 / kg
+* **Package Weight:** 720g
+* **EAN 13:** 2323230007204 (Actual code on the bag after weighing)
+
+```
+{
+    "weighedItemIds": ["2323230000000", "2727270000000"],
+    "pluSet": ["23"],
+    "weighByCustomer": true,
+    "referenceUnit": "kg",
+    "encodingUnit": "g"
+}
+```
+
+### Result Message
+
+Result messages are simple status object which are returned for batch operations.
+
+| Parameter | Type        | Description                                                                           |
+|-----------|-------------|---------------------------------------------------------------------------------------|
+| sku       | int         | The product, referenced by the result message                                         |
+| status    | string      | The processing status "ok", "error"                                                   |
+| message   | string      | A human readeable message about the processing status                                 |
 
 ### Content Types
 
@@ -64,7 +115,6 @@ The payload is a json document, of the specified type.
 
 The payload is a stream of JSON objects. One object per line.
 See [ndjson-spec](https://github.com/ndjson/ndjson-spec) for mor details.
-
 
 ## Batch import
 
