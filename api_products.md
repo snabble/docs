@@ -116,6 +116,65 @@ The payload is a json document, of the specified type.
 The payload is a stream of JSON objects. One object per line.
 See [ndjson-spec](https://github.com/ndjson/ndjson-spec) for mor details.
 
+## Get product
+`GET /{project}/products/sku/{sku}`
+
+Return one product by sku.
+
+**Required permissions** : productsRead
+
+### Success Response `200 OK`
+
+**Conent-Type** : application/json
+
+**Data** : [product object](#product-object).
+
+## Create product
+`POST /{project}/products`
+
+Create or update a product. If the product already exists, it will be updated.
+
+**Required permissions** : productsWrite
+
+### Request
+**Conent-Type** : application/json
+
+**Data** : [product object](#product-object).
+
+### Success Response `201 Created`
+
+no content
+
+## Update product
+`PUT /{project}/products/sku/{sku}`
+
+Create or update a product.
+the sku in the url parameter and the JSON payload have to match.
+
+**Required permissions** : productsWrite
+
+### Request
+**Conent-Type** : application/json
+
+**Data** : [product object](#product-object).
+
+### Success Response `200 OK`
+
+no content
+
+## DELETE product
+`DELETE /{project}/products/sku/{sku}`
+
+Delete a product.
+
+**Required permissions** : productsWrite
+
+### Success Response `204 No Content`
+
+no content
+
+-----------
+
 ## Batch import
 
 `POST /{project}/products/_batch`
@@ -135,7 +194,7 @@ Import a list of products in one http request.
 
 **Data** : Json stream of [result messages](#result-message).
 
-## Request Products
+## Request products
 `GET /{project}/products`
 
 Return all products of a project as json stream.
@@ -147,3 +206,4 @@ Return all products of a project as json stream.
 **Conent-Type** : application/x-ndjson
 
 **Data** : Json stream of [product objects](#product-object).
+
