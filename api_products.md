@@ -118,24 +118,32 @@ See [ndjson-spec](https://github.com/ndjson/ndjson-spec) for mor details.
 
 ## Batch import
 
+`POST /{project}/products/_batch`
+
 Import a list of products in one http request.
-
-**URL** : `/{project}/products/_batch`
-
-**Method** : `POST`
 
 **Required permissions** : productsWrite
 
 ### Request
 **Conent-Type** : application/x-ndjson
 
-**Data** : Json stream of [product objects](product-object).
+**Data** : Json stream of [product objects](#product-object).
 
-### Success Response
-
-**Code** : `200 OK`
+### Success Response `200 OK`
 
 **Conent-Type** : application/x-ndjson
 
-**Data** : Json stream of [result messages](result-message).
+**Data** : Json stream of [result messages](#result-message).
 
+## Request Products
+`GET /{project}/products`
+
+Return all products of a project as json stream.
+
+**Required permissions** : productsRead
+
+### Success Response `200 OK`
+
+**Conent-Type** : application/x-ndjson
+
+**Data** : Json stream of [product objects](#product-object).
