@@ -7,15 +7,15 @@ information about api access.
 
 ### Info operation
 
-* [Create checkout info](#create-checkout-info): `POST /{project}/checkout/info`
+* [Create Checkout Info](#create-checkout-info): `POST /{project}/checkout/info`
 
 ### Process operations
 
-* [List checkout processes](#list-checkout-processes): `GET /{project}/checkout/process`
-* [Create checkout process](#create-checkout-process): `POST /{project}/checkout/process`
-* [Get checkout process](#get-checkout-process): `GET /{project}/checkout/process/{id}`
-* [Abort checkout process](#abort-checkout-process): `PATCH /{project}/checkout/process/{id}`
-* [Create checkout process appoval](#create-checkout-process-approval): `POST /{project}/checkout/process/{id}/approvals`
+* [List Checkout Processes](#list-checkout-processes): `GET /{project}/checkout/process`
+* [Create Checkout Process](#create-checkout-process): `POST /{project}/checkout/process`
+* [Get Checkout Process](#get-checkout-process): `GET /{project}/checkout/process/{id}`
+* [Abort Checkout Process](#abort-checkout-process): `PATCH /{project}/checkout/process/{id}`
+* [Create Checkout Process Appoval](#create-checkout-process-approval): `POST /{project}/checkout/process/{id}/approvals`
 
 ### Payment operations
 
@@ -23,6 +23,14 @@ information about api access.
 * [Get payment](#get-payment): `GET /{project}/checkout/payment/{id}`
 * [Set payment state](#set-payment-state): `PATCH /{project}/checkout/payment/{id}/state`
 
+### Data Model
+
+* [Cart](#cart)
+* [Signed Checkout Info](#signed-checkout-info)
+* [Create Checkout Process Request](#create-checkout-process-request)
+* [Checkout Process](#checkout-process)
+* [Checkout Process List](#checkout-process-list)
+* [Checkout Approval](#checkout-approval)
 
 ### Content Types
 
@@ -50,7 +58,7 @@ Example:
 ```
 
 ### Signed Checkout Info
-A signed checkout info document with mandatory price calculation and available payment methods.
+A signed Checkout Info document with mandatory price calculation and available payment methods.
 
 Example:
 
@@ -101,7 +109,7 @@ Example:
       "project" : "demo",
       "session" : "d06474fa-1584-11e8-b642-0ed5f89f718b"
    },
-   "signature" : "Dynit3mnsBnM8eA9/zpkewRiibLcIFxOXSza8frxEKPvjsJo1PJGC7NeCKpGlHKG4SYPSEFeeF7cUKJeUKj9hntHzlIeDBrNPVQJOvH93CGsTuujAr6USCRYBaEnax0zNlCgEb0MhgJskXmoi7tHBNHl5C6vWZFviFGIFyVxPnt39vu3AE5SN9Qf9z16WqgcdGQUVMjy83geMq/AnhIsixr8SNcwWtIJu/+w1cfweR3KwCePMJnTzb9DHZY6X+ZSq6NRojtupyYiGG60shCiEXQpJ9s4RVWBXGQc3Sda6UZ5+IiwNPftTPNYmLNF6bSHpZ/2dz3QLpXwEoH6e1ThZtcixYpHu4AmKiIr3/GdsNvjCr2BdACfApDMYLRHuu5fWi/7sviz36Aw43i/JmFhZcjxqUz807tjdaVskiA7PGhYx54DXzE6kiQAYIJVgrwfvQIJY+ajDz4bVIon61g0KLKX58KtOrHUUL9U8BNc/PwcjrPxjjU2/nBnC/ujy8XSl3JWvxGni+StNuCSkPd9SKMsIDA4+03zm3JVqzM+JJApPl7vFryIxRQH3oEWDavI10O4x0nLT139+fpijWPml1yLGtPVylw0WeX7JlPJCSivAXAJkQWPFWSeYBqEvBu6jiEJmQob8Dd126dQYEybZBdWQ8SIY2f+zo/A5OQea0I"
+   "signature" : "Dynit3mnsBnM8eA9.."
 }
 ```
 
@@ -166,12 +174,12 @@ Example:
 
 -----------
 
-## Create checkout info
+## Create Checkout Info
 `POST /{project}/checkout/info`
 
-Create a singed checkout info document with mandatory price calculation and available payment methods.
-This document can be used to show the real price to the user and it can be used to start a checkout process
-as input of [Create checkout process](#create-checkout-process).
+Create a singed Checkout Info document with mandatory price calculation and available payment methods.
+This document can be used to show the real price to the user and it can be used to start a Checkout Process
+as input of [Create Checkout Process](#create-checkout-process).
 
 **Required permissions** : productsRead
 
@@ -189,12 +197,12 @@ as input of [Create checkout process](#create-checkout-process).
 
 -----------
 
-## Create checkout process
+## Create Checkout Process
 `POST /{project}/checkout/process`
 
-Initiate a checkout process.
+Initiate a Checkout Process.
 
-**Required permissions** : productsRead and a singed checkout info
+**Required permissions** : productsRead and a singed Checkout Info
 
 ### Request
 **Content-Type** : application/json
@@ -203,7 +211,7 @@ Initiate a checkout process.
 
 ### Success Response `201 Created`
 
-**Location** : [Get checkout process](#get-checkout-process)
+**Location** : [Get Checkout Process](#get-checkout-process)
 
 **Content-Type** : application/json
 
@@ -211,12 +219,12 @@ Initiate a checkout process.
 
 -----------
 
-## Get checkout process:
+## Get Checkout Process:
 `GET /{project}/checkout/process/{id}`
 
-Get the state of a checkout process.
+Get the state of a Checkout Process.
 
-**Required permissions** : productsRead and the id of a checkout process
+**Required permissions** : productsRead and the id of a Checkout Process
 
 ### Success Response `200 OK`
 
@@ -226,10 +234,10 @@ Get the state of a checkout process.
 
 -----------
 
-## List checkout processes
+## List Checkout Processes
 `GET /{project}/checkout/process?shop=shopID`
 
-List all available checkout processes for a shop.
+List all available Checkout Processes for a shop.
 
 **Parameter** : shop (string) - the shop id
 
@@ -243,12 +251,12 @@ List all available checkout processes for a shop.
 
 -----------
 
-## Abort checkout process
+## Abort Checkout Process
 `PATCH /{project}/checkout/process/{id}`
 
-Abort a checkout process.
+Abort a Checkout Process.
 
-**Required permissions** : productsRead and the id of a checkout process
+**Required permissions** : productsRead and the id of a Checkout Process
 
 ### Success Response `200 OK`
 
@@ -258,10 +266,10 @@ Abort a checkout process.
 
 -----------
 
-## Create checkout process appoval
+## Create Checkout Process Approval
 `POST /{project}/checkout/process/{id}/approvals`
 
-Create an approval for a checkout process.
+Create an approval for a Checkout Process.
 
 ### Request
 **Content-Type** : application/json
@@ -279,7 +287,7 @@ Create an approval for a checkout process.
 ## Create payment
 `POST /{project}/checkout/payment`
 
-Create a payment for a checkout process.
+Create a payment for a Checkout Process.
 
 ### Request
 
