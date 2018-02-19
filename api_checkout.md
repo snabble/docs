@@ -14,8 +14,8 @@ information about api access.
 * [List Checkout Processes](#list-checkout-processes): `GET /{project}/checkout/process`
 * [Create Checkout Process](#create-checkout-process): `POST /{project}/checkout/process`
 * [Get Checkout Process](#get-checkout-process): `GET /{project}/checkout/process/{id}`
-* [Abort Checkout Process](#abort-checkout-process): `PATCH /{project}/checkout/process/{id}`
-* [Create Checkout Process Appoval](#create-checkout-process-approval): `POST /{project}/checkout/process/{id}/approvals`
+* [Modify Checkout Process](#modify-checkout-process): `PATCH /{project}/checkout/process/{id}`
+* [Create Checkout Process Appoval](#create-checkout-process-approval): `POST /{project}/checkout/process/{id}/approval`
 
 ### Payment operations
 
@@ -31,6 +31,7 @@ information about api access.
 * [Checkout Process](#checkout-process)
 * [Checkout Process List](#checkout-process-list)
 * [Checkout Approval](#checkout-approval)
+* [Abort Request](#abort-request)
 
 ### Content Types
 
@@ -171,6 +172,12 @@ Example:
 {"type": "supervisor"}
 ```
 
+### Abort Request
+Example:
+```
+{"aborted": true}
+```
+
 
 -----------
 
@@ -251,12 +258,19 @@ List all available Checkout Processes for a shop.
 
 -----------
 
-## Abort Checkout Process
+## Modify Checkout Process
 `PATCH /{project}/checkout/process/{id}`
 
-Abort a Checkout Process.
+Modify a Checkout Process.
 
 **Required permissions** : productsRead and the id of a Checkout Process
+
+### Abort Request
+Mark a checkout process as aborted.
+
+**Content-Type** : application/json
+
+**Data** : [Abort Request](#abort-request).
 
 ### Success Response `200 OK`
 
@@ -267,7 +281,7 @@ Abort a Checkout Process.
 -----------
 
 ## Create Checkout Process Approval
-`POST /{project}/checkout/process/{id}/approvals`
+`POST /{project}/checkout/process/{id}/approval`
 
 Create an approval for a Checkout Process.
 
