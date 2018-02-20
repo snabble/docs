@@ -65,7 +65,10 @@ Example:
 
 ```
 {
-   "checkoutInfo" : {
+    "checkoutInfo" : {
+      "links": {
+         "checkoutProcess": {"href": "/demo/checkout/process"}
+      },
       "price" : {
          "tax" : {
             "19" : 7673
@@ -128,6 +131,10 @@ Example:
 Example:
 ```
 {
+   "links": {
+      "self": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b"},
+      "approval": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b/approval"}
+   },
    "supervisorApproval" : null,
    "paymentApproval" : null,
    "aborted" : false,
@@ -143,6 +150,10 @@ Example:
 {
    "processes" : [
         {
+           "links": {
+              "self": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b"},
+              "approval": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b/approval"}
+           },
            "supervisorApproval" : null,
            "paymentApproval" : null,
            "aborted" : false,
@@ -151,6 +162,10 @@ Example:
            "modified" : false
         },
         {
+           "links": {
+              "self": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-xxd5f89f718b"},
+              "approval": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-xxd5f89f718b/approval"}
+           },
            "supervisorApproval" : null,
            "paymentApproval" : null,
            "aborted" : false,
@@ -177,7 +192,6 @@ Example:
 ```
 {"aborted": true}
 ```
-
 
 -----------
 
