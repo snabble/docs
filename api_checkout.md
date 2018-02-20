@@ -66,10 +66,12 @@ Example:
 
 ```
 {
+    "links": {
+      "checkoutProcess": {
+        "href": "/demo/checkout/process"
+      }
+    },
     "checkoutInfo" : {
-      "links": {
-         "checkoutProcess": {"href": "/demo/checkout/process"}
-      },
       "price" : {
          "tax" : {
             "19" : 7673
