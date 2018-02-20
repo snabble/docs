@@ -1,7 +1,7 @@
 
-# Products Management API
+# Checkout Management API
 
-This documentation describes the snabble API endpoints related to the management and simple access of products.
+This documentation describes the snabble API endpoints related to the management and simple access of checkouts.
 These endpoints are available on the `api` subdomain. See [General API access](api_general.md) for general
 information about api access.
 
@@ -43,16 +43,17 @@ The payload is a JSON document of the specified type.
 
 ### Cart
 
-A shoping cart request within a request from a client.
+A shopping cart within a request from a client.
 
 Example:
+
 ```
 {
-  "session": "d06474fa-1584-11e8-b642-0ed5f89f718b",
-  "shopID": "shop-01",
-  "items": [
-    {"sku": "1", "amount": 2},
-    {"sku": "2", "amount": 1},
+  "session": "d06474fa-1584-11e8-b642-0ed5f89f718b",  
+  "shopID": "shop-01",  
+  "items": [    
+    {"sku": "1", "amount": 2},  
+    {"sku": "2", "amount": 1},  
     {"sku": "3", "amount": 42}
   ]
 }
@@ -201,7 +202,7 @@ Example:
 ## Create Checkout Info
 `POST /{project}/checkout/info`
 
-Create a singed Checkout Info document with mandatory price calculation and available payment methods.
+Create a signed Checkout Info document with mandatory price calculation and available payment methods.
 This document can be used to show the real price to the user and it can be used to start a Checkout Process
 as input of [Create Checkout Process](#create-checkout-process).
 
@@ -243,7 +244,7 @@ Initiate a Checkout Process.
 
 -----------
 
-## Get Checkout Process:
+## Get Checkout Process
 `GET /{project}/checkout/process/{id}`
 
 Get the state of a Checkout Process.
