@@ -134,8 +134,8 @@ Process attributes:
 
 | Parameter           | Type         | Default      | Description                                                                          |
 |---------------------|--------------|--------------|--------------------------------------------------------------------------------------|
-| supervisorApproval  | enum         | null         | Approval by the checkout supervisor ("granted", "rejected", nil)                     |
-| paymentApproval     | enum         | null         | Approval by the payment process ("granted", "rejected", nil)                         |
+| supervisorApproval  | bool/nil     | nil          | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)      |
+| paymentApproval     | bool/nil     | nil          | Approval by the payment process (nil=pending, true=granted, false=rejected)          |
 | aborted             | bool         | false        | Flag, if the process was aborted by the user                                         |
 | checkoutInfo        | checkoutInfo |              | The full [Checkout Info](#checkout-info) object                                      |
 | paymentMethod       | string       |              | A valid payment method                                                               |
