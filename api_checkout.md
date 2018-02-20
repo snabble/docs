@@ -26,7 +26,7 @@ information about api access.
 ### Data Model
 
 * [Cart](#cart)
-* [Signed Checkout Info](#signed-checkout-info)
+* [Checkout Info](#checkout-info)
 * [Create Checkout Process Request](#create-checkout-process-request)
 * [Checkout Process](#checkout-process)
 * [Checkout Process List](#checkout-process-list)
@@ -59,8 +59,8 @@ Example:
 }
 ```
 
-### Signed Checkout Info
-A signed Checkout Info document with mandatory price calculation and available payment methods.
+### Checkout Info
+A signed document with mandatory price calculation and available payment methods.
 
 Example:
 
@@ -129,6 +129,18 @@ Example:
 ```
 
 ### Checkout Process
+
+Process attributes:
+
+| Parameter           | Type         | Default      | Description                                                                          |
+|---------------------|--------------|--------------|--------------------------------------------------------------------------------------|
+| supervisorApproval  | enum         | null         | Approval by the checkout supervisor ("granted", "rejected", nil)                     |
+| paymentApproval     | enum         | null         | Approval by the payment process ("granted", "rejected", nil)                         |
+| aborted             | bool         | false        | Flag, if the process was aborted by the user                                         |
+| checkoutInfo        | checkoutInfo |              | The full [Checkout Info](#checkout-info) object                                      |
+| paymentMethod       | string       |              | A valid payment method                                                               |
+| modified            | bool         | false        | Flag, if the process was modified by the checkout supervisor                         |
+
 Example:
 ```
 {
@@ -202,7 +214,7 @@ Example:
 ## Create Checkout Info
 `POST /{project}/checkout/info`
 
-Create a signed Checkout Info document with mandatory price calculation and available payment methods.
+Creates a Checkout Info document with mandatory price calculation and available payment methods.
 This document can be used to show the real price to the user and it can be used to start a Checkout Process
 as input of [Create Checkout Process](#create-checkout-process).
 
@@ -217,7 +229,7 @@ as input of [Create Checkout Process](#create-checkout-process).
 
 **Content-Type** : application/json
 
-**Data** : [Signed Checkout Info](#signed-checkout-info).
+**Data** : [Checkout Info](#checkout-info).
 
 
 -----------
@@ -227,7 +239,7 @@ as input of [Create Checkout Process](#create-checkout-process).
 
 Initiate a Checkout Process.
 
-**Required permissions** : productsRead and a singed Checkout Info
+**Required permissions** : productsRead and a Checkout Info
 
 ### Request
 **Content-Type** : application/json
