@@ -133,7 +133,8 @@ Example:
 {
    "links": {
       "self": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b"},
-      "approval": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b/approval"}
+      "approval": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b/approval"},
+      "payment": {"href": "/demo/checkout/payment"}
    },
    "supervisorApproval" : null,
    "paymentApproval" : null,
@@ -152,7 +153,8 @@ Example:
         {
            "links": {
               "self": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b"},
-              "approval": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b/approval"}
+              "approval": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-0ed5f89f718b/approval"},
+              "payment": {"href": "/demo/checkout/payment"}
            },
            "supervisorApproval" : null,
            "paymentApproval" : null,
@@ -164,7 +166,8 @@ Example:
         {
            "links": {
               "self": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-xxd5f89f718b"},
-              "approval": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-xxd5f89f718b/approval"}
+              "approval": {"href": "/demo/checkout/process/f42a5718-1621-11e8-b642-xxd5f89f718b/approval"},
+              "payment": {"href": "/demo/checkout/payment"}
            },
            "supervisorApproval" : null,
            "paymentApproval" : null,
