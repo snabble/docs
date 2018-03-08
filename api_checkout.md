@@ -1,4 +1,3 @@
-
 # Checkout Management API
 
 This documentation describes the snabble API endpoints related to the management and simple access of checkouts.
@@ -16,12 +15,6 @@ information about api access.
 * [Get Checkout Process](#get-checkout-process): `GET /{project}/checkout/process/{id}`
 * [Modify Checkout Process](#modify-checkout-process): `PATCH /{project}/checkout/process/{id}`
 * [Create Checkout Process Appoval](#create-checkout-process-approval): `POST /{project}/checkout/process/{id}/approval`
-
-### Payment operations
-
-* [Create payment](#create-payment): `POST /{project}/checkout/payment`
-* [Get payment](#get-payment): `GET /{project}/checkout/payment/{id}`
-* [Set payment state](#set-payment-state): `PATCH /{project}/checkout/payment/{id}/state`
 
 ### Data Model
 
@@ -49,11 +42,11 @@ Example:
 
 ```
 {
-  "session": "d06474fa-1584-11e8-b642-0ed5f89f718b",  
-  "shopID": "shop-01",  
-  "items": [    
-    {"sku": "1", "amount": 2},  
-    {"sku": "2", "amount": 1},  
+  "session": "d06474fa-1584-11e8-b642-0ed5f89f718b",
+  "shopID": "shop-01",
+  "items": [
+    {"sku": "1", "amount": 2},
+    {"sku": "2", "amount": 1},
     {"sku": "3", "amount": 42}
   ]
 }
@@ -134,14 +127,18 @@ Example:
 
 Process attributes:
 
-| Parameter           | Type         | Default      | Description                                                                          |
-|---------------------|--------------|--------------|--------------------------------------------------------------------------------------|
-| supervisorApproval  | bool/nil     | nil          | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)      |
-| paymentApproval     | bool/nil     | nil          | Approval by the payment process (nil=pending, true=granted, false=rejected)          |
-| aborted             | bool         | false        | Flag, if the process was aborted by the user                                         |
-| checkoutInfo        | checkoutInfo |              | The full [Checkout Info](#checkout-info) object                                      |
-| paymentMethod       | string       |              | A valid payment method                                                               |
-| modified            | bool         | false        | Flag, if the process was modified by the checkout supervisor                         |
+| Parameter           | Type         | Default      | Description                                                                                        |
+|---------------------|--------------|--------------|----------------------------------------------------------------------------------------------------|
+| supervisorApproval  | bool/nil     | nil          | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)                    |
+| paymentApproval     | bool/nil     | nil          | Approval by the payment process (nil=pending, true=granted, false=rejected)                        |
+| aborted             | bool         | false        | Flag, if the process was aborted by the user                                                       |
+| checkoutInfo        | checkoutInfo |              | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
+| pricing             | princing     |              | The pricing information of the checkout                                                            |
+| paymentMethod       | string       |              | A valid payment method                                                                             |
+| paymentState        | string       | pending      | Status of the associated payment process                                                           |
+| paymentInformation  | object       | nil          | Payment dependent additional informations, i.e. a code to present to the user                      |
+| modified            | bool         | false        | Flag, if the process was modified by the checkout supervisor                                       |
+| createdAt           | date         |              | Creation date of the process                                                                       |
 
 Example:
 ```
@@ -263,7 +260,7 @@ Initiate a Checkout Process.
 
 Get the state of a Checkout Process.
 
-**Required permissions** : productsRead and the id of a Checkout Process
+**Required permissions** : checkoutRead for the checkout process
 
 ### Success Response `200 OK`
 
@@ -295,16 +292,52 @@ List all available Checkout Processes for a shop.
 
 Modify a Checkout Process.
 
+### Aborting the Checkout Process
+
 **Required permissions** : productsRead and the id of a Checkout Process
 
-### Abort Request
+#### Abort Request
 Mark a checkout process as aborted.
 
 **Content-Type** : application/json
 
 **Data** : [Abort Request](#abort-request).
 
-### Success Response `200 OK`
+#### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : [Checkout Process](#checkout-process)
+
+### Set Payment State of the Checkout Process
+
+**Required permissions** : setPaymentState and the id of a Checkout Process
+
+#### Set Payment State Request
+Mark a checkout process as successful, failed or in process.
+
+**Content-Type** : application/json
+
+**Data** : [Set Payment State Request](#set-payment-state-request).
+
+#### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : [Checkout Process](#checkout-process)
+
+### Update the Pricing of the Checkout Process
+
+**Required permissions** : updateaPricingCheckoutProcess and the id of a Checkout Process
+
+#### Abort Request
+Mark a checkout process as successful, failed or in process.
+
+**Content-Type** : application/json
+
+**Data** : [Update Pricing Request](#update-pricing-request).
+
+#### Success Response `200 OK`
 
 **Content-Type** : application/json
 
@@ -346,4 +379,3 @@ Create a payment for a Checkout Process.
 
 ## Set payment state
 `PATCH /{project}/checkout/payment/{id}/state`
-
