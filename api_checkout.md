@@ -328,10 +328,17 @@ Mark a checkout process as successful, failed or in process.
 
 ### Update the Pricing of the Checkout Process
 
-**Required permissions** : updateaPricingCheckoutProcess and the id of a Checkout Process
+**Required permissions** : updatePricingCheckoutProcess and the id of a Checkout Process
 
-#### Abort Request
-Mark a checkout process as successful, failed or in process.
+#### Update Pricing Request
+Update the pricing of the CheckoutProcess.
+
+The provided pricing might be incomplete. This means whole line items
+or parts of them (like `taxRate`) might be missing. Also the
+`netPrice` and the `tax` properties are optional. This leads to the
+generation of incomplete orders. In this case downstream processes
+like the generation of receipts might not be possible or can't
+generate the expected results.
 
 **Content-Type** : application/json
 
@@ -360,22 +367,3 @@ Create an approval for a Checkout Process.
 **Content-Type** : application/json
 
 **Data** : [Checkout Approval](#checkout-approval).
-
------------
-
-## Create payment
-`POST /{project}/checkout/payment`
-
-Create a payment for a Checkout Process.
-
-### Request
-
-**Content-Type** : application/json
-
-**Data** : [Checkout Process](#checkout-process)
-
-## Get payment
-`GET /{project}/checkout/payment/{id}`
-
-## Set payment state
-`PATCH /{project}/checkout/payment/{id}/state`
