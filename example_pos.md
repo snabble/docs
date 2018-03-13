@@ -1,5 +1,7 @@
 # Checkout with a POS
 
+![Interaction diagram](./img/checkout_pos_interaction.png)
+
 ## Create a CheckoutInfo
 
 To create a CheckoutInfo the Customer App sends a Cart and receives a
