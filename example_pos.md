@@ -2,10 +2,10 @@
 
 ![Interaction diagram](./img/checkout_pos_interaction.png)
 
-## Create a CheckoutInfo
+## Create a Checkout Info
 
-To create a CheckoutInfo the Customer App sends a Cart and receives a
-signed CheckoutInfo object. This object contains all information that
+To create a Checkout Info the Customer App sends a Cart and receives a
+signed Checkout Info object. This object contains all information that
 should be presented and confirmed by the user.
 
 ```
@@ -65,10 +65,10 @@ Vary: Accept-Encoding
 }
 ```
 
-## Create a new CheckoutProcess
+## Create a new Checkout Process
 
 The customer app initializes a checkout process by sending the signed
-CheckoutInfo and the selected payment method.
+Checkout Info and the selected payment method.
 
 ```
 > echo '{
@@ -128,7 +128,7 @@ Vary: Accept-Encoding
 }
 ```
 
-The service responds with the new CheckoutProcess. The document
+The service responds with the new Checkout Process. The document
 contains additional information `paymentInformations`, that is used to
 fulfill the workflow associated with the selected payment method. In
 this case the content of the QR-Code presented to the POS. The format
@@ -139,15 +139,15 @@ the ID of the project.
 
 ## Send new Pricing Information and mark the Payment as successful
 
-The payment system should update the `paymentState` of the
-CheckoutProcess and optionally provide a new Pricing Informations.
+The payment system should update the `paymentState` of the Checkout
+Process and optionally provide a new Pricing Informations.
 
 The possible states are `pending`, `successful` and `failed`. After
 the `paymentState` of the process was set to a terminal state
 (`successful` or `failed`) it is not possible to update the pricing.
 
 The pricing can be incomplete. In this case order that gets generated
-from such a CheckoutProcess is also incomplete.
+from such a Checkout Process is also incomplete.
 
 ```
 > echo '{

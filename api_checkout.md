@@ -25,6 +25,8 @@ information about api access.
 * [Checkout Process List](#checkout-process-list)
 * [Checkout Approval](#checkout-approval)
 * [Abort Request](#abort-request)
+* [Update Pricing Request](#update-pricing-request)
+* [Set Payment State Request](#set-payment-state-request)
 
 ### Content Types
 
@@ -133,7 +135,7 @@ Process attributes:
 | paymentApproval     | bool/nil     | nil          | Approval by the payment process (nil=pending, true=granted, false=rejected)                        |
 | aborted             | bool         | false        | Flag, if the process was aborted by the user                                                       |
 | checkoutInfo        | checkoutInfo |              | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
-| pricing             | princing     |              | The pricing information of the checkout                                                            |
+| pricing             | princing     |              | The [Pricing information](#pricing) of the checkout                                                |
 | paymentMethod       | string       |              | A valid payment method                                                                             |
 | paymentState        | string       | pending      | Status of the associated payment process                                                           |
 | paymentInformation  | object       | nil          | Payment dependent additional informations, i.e. a code to present to the user                      |
@@ -153,6 +155,7 @@ Example:
    "aborted" : false,
    "checkoutInfo" : { .. checkoutInfo .. },
    "paymentMethod" : "cash",
+   "pricing": { .. pricing .. },
    "modified" : false
 }
 ```
@@ -173,6 +176,8 @@ Example:
            "aborted" : false,
            "checkoutInfo" : { .. checkoutInfo .. },
            "paymentMethod" : "cash",
+           "paymentState": "pending",
+           "pricing": { .. pricing .. },
            "modified" : false
         },
         {
@@ -186,9 +191,45 @@ Example:
            "aborted" : false,
            "checkoutInfo" : { .. checkoutInfo .. },
            "paymentMethod" : "cash",
+           "paymentState": "pending",
+           "pricing": { .. pricing .. },
            "modified" : false
         }
     ]
+}
+```
+
+### Pricing
+
+Price informations.
+
+```
+{
+   "price" : {
+      "tax" : {
+         "19" : 7673
+      },
+      "netPrice" : 40382,
+      "price" : 48055
+   },
+   "lineItems" : [
+      {
+         "totalPrice" : 798,
+         "amount" : 2,
+         "name" : "Kugelschreiber tarent rot",
+         "price" : 399,
+         "taxRate" : 19,
+         "sku" : "1"
+      },
+      {
+         "price" : 1099,
+         "name" : "tarent logo-Cap grau",
+         "totalPrice" : 1099,
+         "amount" : 1,
+         "taxRate" : 19,
+         "sku" : "2"
+      }
+   ]
 }
 ```
 
@@ -206,6 +247,46 @@ Example:
 Example:
 ```
 {"aborted": true}
+```
+
+### Update Pricing Request
+
+Updates the pricing of the checkout process.
+
+Example:
+```
+{
+   "pricing" : {
+      "lineItems" : [
+         {
+            "sku" : "1",
+            "amount" : 1,
+            "taxRate" : 19,
+            "price" : 399,
+            "totalPrice" : 399,
+            "name" : "Kugelschreiber tarent rot"
+         }
+      ],
+      "price" : {
+         "price" : 399
+      }
+   }
+}
+```
+
+### Set Payment State Request
+
+Valid values are:
+
+* `pending`
+* `successful`
+* `failed`
+
+Example:
+```
+{
+   "paymentState" : "successful"
+}
 ```
 
 -----------
@@ -338,7 +419,7 @@ or parts of them (like `taxRate`) might be missing. Also the
 `netPrice` and the `tax` properties are optional. This leads to the
 generation of incomplete orders. In this case downstream processes
 like the generation of receipts might not be possible or can't
-generate the expected results.
+generate the correct results.
 
 **Content-Type** : application/json
 
