@@ -1,4 +1,3 @@
-
 # Checkout Management API
 
 This documentation describes the snabble API endpoints related to the management and simple access of checkouts.
@@ -17,12 +16,6 @@ information about api access.
 * [Modify Checkout Process](#modify-checkout-process): `PATCH /{project}/checkout/process/{id}`
 * [Create Checkout Process Appoval](#create-checkout-process-approval): `POST /{project}/checkout/process/{id}/approval`
 
-### Payment operations
-
-* [Create payment](#create-payment): `POST /{project}/checkout/payment`
-* [Get payment](#get-payment): `GET /{project}/checkout/payment/{id}`
-* [Set payment state](#set-payment-state): `PATCH /{project}/checkout/payment/{id}/state`
-
 ### Data Model
 
 * [Cart](#cart)
@@ -32,6 +25,8 @@ information about api access.
 * [Checkout Process List](#checkout-process-list)
 * [Checkout Approval](#checkout-approval)
 * [Abort Request](#abort-request)
+* [Update Pricing Request](#update-pricing-request)
+* [Set Payment State Request](#set-payment-state-request)
 
 ### Content Types
 
@@ -49,11 +44,11 @@ Example:
 
 ```
 {
-  "session": "d06474fa-1584-11e8-b642-0ed5f89f718b",  
-  "shopID": "shop-01",  
-  "items": [    
-    {"sku": "1", "amount": 2},  
-    {"sku": "2", "amount": 1},  
+  "session": "d06474fa-1584-11e8-b642-0ed5f89f718b",
+  "shopID": "shop-01",
+  "items": [
+    {"sku": "1", "amount": 2},
+    {"sku": "2", "amount": 1},
     {"sku": "3", "amount": 42}
   ]
 }
@@ -134,14 +129,18 @@ Example:
 
 Process attributes:
 
-| Parameter           | Type         | Default      | Description                                                                          |
-|---------------------|--------------|--------------|--------------------------------------------------------------------------------------|
-| supervisorApproval  | bool/nil     | nil          | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)      |
-| paymentApproval     | bool/nil     | nil          | Approval by the payment process (nil=pending, true=granted, false=rejected)          |
-| aborted             | bool         | false        | Flag, if the process was aborted by the user                                         |
-| checkoutInfo        | checkoutInfo |              | The full [Checkout Info](#checkout-info) object                                      |
-| paymentMethod       | string       |              | A valid payment method                                                               |
-| modified            | bool         | false        | Flag, if the process was modified by the checkout supervisor                         |
+| Parameter           | Type         | Default      | Description                                                                                        |
+|---------------------|--------------|--------------|----------------------------------------------------------------------------------------------------|
+| supervisorApproval  | bool/nil     | nil          | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)                    |
+| paymentApproval     | bool/nil     | nil          | Approval by the payment process (nil=pending, true=granted, false=rejected)                        |
+| aborted             | bool         | false        | Flag, if the process was aborted by the user                                                       |
+| checkoutInfo        | checkoutInfo |              | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
+| pricing             | princing     |              | The [Pricing information](#pricing) of the checkout                                                |
+| paymentMethod       | string       |              | A valid payment method                                                                             |
+| paymentState        | string       | pending      | Status of the associated payment process                                                           |
+| paymentInformation  | object       | nil          | Payment dependent additional informations, i.e. a code to present to the user                      |
+| modified            | bool         | false        | Flag, if the process was modified by the checkout supervisor                                       |
+| createdAt           | date         |              | Creation date of the process                                                                       |
 
 Example:
 ```
@@ -156,6 +155,7 @@ Example:
    "aborted" : false,
    "checkoutInfo" : { .. checkoutInfo .. },
    "paymentMethod" : "cash",
+   "pricing": { .. pricing .. },
    "modified" : false
 }
 ```
@@ -176,6 +176,8 @@ Example:
            "aborted" : false,
            "checkoutInfo" : { .. checkoutInfo .. },
            "paymentMethod" : "cash",
+           "paymentState": "pending",
+           "pricing": { .. pricing .. },
            "modified" : false
         },
         {
@@ -189,9 +191,45 @@ Example:
            "aborted" : false,
            "checkoutInfo" : { .. checkoutInfo .. },
            "paymentMethod" : "cash",
+           "paymentState": "pending",
+           "pricing": { .. pricing .. },
            "modified" : false
         }
     ]
+}
+```
+
+### Pricing
+
+Price informations.
+
+```
+{
+   "price" : {
+      "tax" : {
+         "19" : 7673
+      },
+      "netPrice" : 40382,
+      "price" : 48055
+   },
+   "lineItems" : [
+      {
+         "totalPrice" : 798,
+         "amount" : 2,
+         "name" : "Kugelschreiber tarent rot",
+         "price" : 399,
+         "taxRate" : 19,
+         "sku" : "1"
+      },
+      {
+         "price" : 1099,
+         "name" : "tarent logo-Cap grau",
+         "totalPrice" : 1099,
+         "amount" : 1,
+         "taxRate" : 19,
+         "sku" : "2"
+      }
+   ]
 }
 ```
 
@@ -209,6 +247,46 @@ Example:
 Example:
 ```
 {"aborted": true}
+```
+
+### Update Pricing Request
+
+Updates the pricing of the checkout process.
+
+Example:
+```
+{
+   "pricing" : {
+      "lineItems" : [
+         {
+            "sku" : "1",
+            "amount" : 1,
+            "taxRate" : 19,
+            "price" : 399,
+            "totalPrice" : 399,
+            "name" : "Kugelschreiber tarent rot"
+         }
+      ],
+      "price" : {
+         "price" : 399
+      }
+   }
+}
+```
+
+### Set Payment State Request
+
+Valid values are:
+
+* `pending`
+* `successful`
+* `failed`
+
+Example:
+```
+{
+   "paymentState" : "successful"
+}
 ```
 
 -----------
@@ -263,7 +341,7 @@ Initiate a Checkout Process.
 
 Get the state of a Checkout Process.
 
-**Required permissions** : productsRead and the id of a Checkout Process
+**Required permissions** : checkoutRead for the checkout process
 
 ### Success Response `200 OK`
 
@@ -295,16 +373,59 @@ List all available Checkout Processes for a shop.
 
 Modify a Checkout Process.
 
+### Aborting the Checkout Process
+
 **Required permissions** : productsRead and the id of a Checkout Process
 
-### Abort Request
+#### Abort Request
 Mark a checkout process as aborted.
 
 **Content-Type** : application/json
 
 **Data** : [Abort Request](#abort-request).
 
-### Success Response `200 OK`
+#### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : [Checkout Process](#checkout-process)
+
+### Set Payment State of the Checkout Process
+
+**Required permissions** : setPaymentState and the id of a Checkout Process
+
+#### Set Payment State Request
+Mark a checkout process as successful, failed or in process.
+
+**Content-Type** : application/json
+
+**Data** : [Set Payment State Request](#set-payment-state-request).
+
+#### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : [Checkout Process](#checkout-process)
+
+### Update the Pricing of the Checkout Process
+
+**Required permissions** : updatePricingCheckoutProcess and the id of a Checkout Process
+
+#### Update Pricing Request
+Update the pricing of the CheckoutProcess.
+
+The provided pricing might be incomplete. This means whole line items
+or parts of them (like `taxRate`) might be missing. Also the
+`netPrice` and the `tax` properties are optional. This leads to the
+generation of incomplete orders. In this case downstream processes
+like the generation of receipts might not be possible or can't
+generate the correct results.
+
+**Content-Type** : application/json
+
+**Data** : [Update Pricing Request](#update-pricing-request).
+
+#### Success Response `200 OK`
 
 **Content-Type** : application/json
 
@@ -327,23 +448,3 @@ Create an approval for a Checkout Process.
 **Content-Type** : application/json
 
 **Data** : [Checkout Approval](#checkout-approval).
-
------------
-
-## Create payment
-`POST /{project}/checkout/payment`
-
-Create a payment for a Checkout Process.
-
-### Request
-
-**Content-Type** : application/json
-
-**Data** : [Checkout Process](#checkout-process)
-
-## Get payment
-`GET /{project}/checkout/payment/{id}`
-
-## Set payment state
-`PATCH /{project}/checkout/payment/{id}/state`
-
