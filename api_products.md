@@ -12,7 +12,7 @@ information about api access.
 * [Update product](#update-product): `PUT /{project}/products/sku/{sku}`
 * [Delete product](#delete-product): `DELETE /{project}/products/sku/{sku}`
 * [Find product by PLU](#find-product-by-plu): `GET /{project}/products/plu/{plu}`
-
+* [Find product by scannable code](#find-product-by-scannable-code): `GET /{project}/products/code/{code}`
 
 ### Multiple products
 
@@ -189,6 +189,21 @@ no content
 `GET /{project}/products/plu/{plu}`
 
 Returns one product by PLU
+
+**Required permissions** : productsRead
+
+### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : [product object](#product-object).
+
+-----------
+
+## Find product by scannable code 
+`GET /{project}/products/code/{code}`
+
+Returns one product by scannable code
 
 **Required permissions** : productsRead
 
