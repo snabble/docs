@@ -11,6 +11,8 @@ information about api access.
 * [Create product](#create-product): `POST /{project}/products`
 * [Update product](#update-product): `PUT /{project}/products/sku/{sku}`
 * [Delete product](#delete-product): `DELETE /{project}/products/sku/{sku}`
+* [Find product by PLU](#find-product-by-plu): `GET /{project}/products/plu/{plu}`
+
 
 ### Multiple products
 
@@ -180,6 +182,21 @@ Delete a product.
 ### Success Response `204 No Content`
 
 no content
+
+-----------
+
+## Find product by PLU 
+`GET /{project}/products/plu/{plu}`
+
+Returns one product by PLU
+
+**Required permissions** : productsRead
+
+### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : [product object](#product-object).
 
 -----------
 
