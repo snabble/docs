@@ -50,7 +50,10 @@ Example:
     {"sku": "1", "amount": 2},
     {"sku": "2", "amount": 1},
     {"sku": "3", "amount": 42}
-  ]
+  ],
+  "customer": {
+    "loyaltyCard": "..."
+  }
 }
 ```
 
@@ -109,7 +112,10 @@ Example:
          }
       ],
       "project" : "demo",
-      "session" : "d06474fa-1584-11e8-b642-0ed5f89f718b"
+      "session" : "d06474fa-1584-11e8-b642-0ed5f89f718b",
+      "customer": {
+        "loyaltyCard": "..."
+      }
    },
    "signature" : "Dynit3mnsBnM8eA9.."
 }
