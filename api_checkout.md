@@ -144,7 +144,7 @@ Process attributes:
 | pricing             | princing     |              | The [Pricing information](#pricing) of the checkout                                                |
 | paymentMethod       | string       |              | A valid payment method                                                                             |
 | paymentState        | string       | pending      | Status of the associated payment process                                                           |
-| paymentInformation  | object       | nil          | Payment dependent additional informations, i.e. a code to present to the user                      |
+| paymentInformation  | object       | nil          | Payment dependent additional information, i.e. a code to present to the user                       |
 | modified            | bool         | false        | Flag, if the process was modified by the checkout supervisor                                       |
 | createdAt           | date         |              | Creation date of the process                                                                       |
 
