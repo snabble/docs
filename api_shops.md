@@ -19,6 +19,7 @@ information about api access.
 
 | Path                        | Type     | Description                                                        |
 |-----------------------------|----------|--------------------------------------------------------------------|
+| `id`                        | `string` | The id of the Shop                                                 |
 | `project`                   | `string` | The id of the Project                                              |
 | `externalId`                | `string` | An identifier provided by external sources                         |
 | `name`                      | `string` | The name of the shop                                               |
@@ -33,6 +34,7 @@ information about api access.
 | `lon`                       | `number` | Longitude                                                          |
 | `openingHoursSpecification` |          | Description of the opening hours of the store. Each item contains the `dayOfWeek` (`MONDAY`, `TUESDAY`, `WEDNESDAY`...), the time when it `opens` and the time when it `closes`. It is possible to add multiple items per day. |
 | `services[]`                | `Array`  | List of services provided by the shop                              |
+| `external`                  | `Object` | Custom object containing additional data                           |
 
 Example:
 
@@ -66,11 +68,21 @@ Example:
   "country" : "country",
   "links" : {
     "self" : {
-      "href" : "http://localhost:8080/api/1/shops/city-street-1-epvxvKgNP8"
+      "href" : "http://localhost:8080/demo/shops/1"
     }
   }
 }
 ```
+
+### Customizing a Shop
+
+Since there is no model that fits all use-cases, it is possible to
+associate a custom object with each shop through the `external`
+field. This field can be used to associate additional links or other
+kind of informations with the shop.
+
+Keep in mind, that the SDK initially downloads the list of shops
+containing the whole `external` object.
 
 ## Get all shops
 `GET /{project}/shops`
@@ -86,7 +98,7 @@ Get the list of shops of the project.
 **Data** : List of [Shops](#shop)
 
 ## Get shop
-`GET /{project}/shops/{slug}`
+`GET /{project}/shops/{id}`
 
 Get the shop.
 
@@ -117,7 +129,7 @@ Create a shop.
 
 
 ## Update shop
-`PUT /{project}/shops/{slug}`
+`PUT /{project}/shops/{id}`
 
 Update the shop.
 
@@ -135,7 +147,7 @@ Update the shop.
 
 
 ## Delete shop
-`DELETE /{project}/shops/{slug}`
+`DELETE /{project}/shops/{id}`
 
 Delete the shop.
 
