@@ -22,6 +22,7 @@ information about api access.
 * [Checkout Info](#checkout-info)
 * [Create Checkout Process Request](#create-checkout-process-request)
 * [Checkout Process](#checkout-process)
+* [Payment State](#payment-state)
 * [Checkout Process List](#checkout-process-list)
 * [Checkout Approval](#checkout-approval)
 * [Abort Request](#abort-request)
@@ -143,7 +144,7 @@ Process attributes:
 | checkoutInfo        | checkoutInfo |              | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
 | pricing             | princing     |              | The [Pricing information](#pricing) of the checkout                                                |
 | paymentMethod       | string       |              | A valid payment method                                                                             |
-| paymentState        | string       | pending      | Status of the associated payment process                                                           |
+| paymentState        | string       | pending      | The [Status of the associated payment process](#payment-state)                                     |
 | paymentInformation  | object       | nil          | Payment dependent additional information, i.e. a code to present to the user                       |
 | modified            | bool         | false        | Flag, if the process was modified by the checkout supervisor                                       |
 | createdAt           | date         |              | Creation date of the process                                                                       |
@@ -165,6 +166,16 @@ Example:
    "modified" : false
 }
 ```
+
+### Payment State
+
+Represents the state of the payment process associated with the Checkout Process.
+
+Possible values are:
+
+* `pending` (initial state)
+* `successful` (terminal state)
+* `failed` (terminal state)
 
 ### Checkout Process List
 Example:
