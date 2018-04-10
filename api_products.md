@@ -1,4 +1,3 @@
-
 # Products Management API
 
 This documentation describes the snabble API endpoints related to the management and simple access of products.
@@ -27,7 +26,7 @@ A single product is encoded as follows.
 Example:
 ```
 {
-   "sku" : 1120325205,
+   "sku" : "1120325205",
    "name" : "Premium-Holzöl",
    "description": "farblos, 750ml",
    "subtitle" : "Aplina",
@@ -52,13 +51,13 @@ Product attributes:
 
 | Parameter         | Type        | Default      | Description                                                                          |
 |-------------------|-------------|--------------|--------------------------------------------------------------------------------------|
-| sku               | int         |              | The unique id for identification of a the product                                    |
+| sku               | string      |              | The unique id for identification of a the product                                    |
 | name              | string      |              | The display name of the product                                                      |
 | description       | string      | null         | A short description for the product                                                  |
 | subtitle          | string      | null         | An additional title line for individual use (e.g. brand information)                 |
 | boost             | int         | 0            | Order value for importance in views (higher is more)                                 |
 | taxCategory       | string      | null         |                                                                                      |
-| depositProduct    | int         | null         | The SKU of a corresponding product containing the associated deposit article         |
+| depositProduct    | string      | null         | The SKU of a corresponding product containing the associated deposit article         |
 | outOfStock        | bool        | false        | Flag to indicate if the product is currently available in markets                    |
 | deleted           | bool        | false        | Flag to indicate that a product does not exist any longer                            |
 | imageUrl          | string      | null         | The full URL for a product image                                                     |
@@ -103,7 +102,7 @@ Result messages are simple status objects which are returned for batch operation
 
 | Parameter | Type        | Description                                                                           |
 |-----------|-------------|---------------------------------------------------------------------------------------|
-| sku       | int         | The product, referenced by the result message                                         |
+| sku       | string      | The product, referenced by the result message                                         |
 | status    | string      | The processing status "ok", "error"                                                   |
 | message   | string      | A human readeable message about the processing status                                 |
 
@@ -156,7 +155,7 @@ no content
 ## Update product
 `PUT /{project}/products/sku/{sku}`
 
-Create or update a product.  
+Create or update a product.
 The sku in the url parameter and the JSON payload have to match.
 
 **Required permissions** : productsWrite
@@ -185,7 +184,7 @@ no content
 
 -----------
 
-## Find product by PLU 
+## Find product by PLU
 `GET /{project}/products/plu/{plu}`
 
 Returns one product by PLU
@@ -200,7 +199,7 @@ Returns one product by PLU
 
 -----------
 
-## Find product by scannable code 
+## Find product by scannable code
 `GET /{project}/products/code/{code}`
 
 Returns one product by scannable code
@@ -244,7 +243,7 @@ Return all products of a project as JSON stream.
 **Required permissions** : productsRead
 
 ### Request
-**Parameters** :  
+**Parameters** :
 
 All parameters are optional.
 
