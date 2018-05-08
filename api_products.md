@@ -43,7 +43,6 @@ Example:
    "price" : 1699,
    "discountedPrice" : 1499,
    "basePrice": "19,99 EUR / 1 Liter",
-   "weighing": null
 }
 ```
 
@@ -66,18 +65,40 @@ Product attributes:
 | price             | int         | 0            | The current standard price                                                           |
 | discountedPrice   | int         | null         | The current price if the product is discounted.                                      |
 | basePrice         | string      | ""           | Base price (e.g. price per liter) as label.                                          |
-| weighing          | object      | null         | Information to calculate the SKUs it the project is weighable                        |
+| weighing          | object      | null         | Additional information for weighable products                                        |
+
+#### Weighable Products
+
+The price of weighable product depents on information encoded into a
+scannable code. There are three cases:
+
+- The code contains a weight information
+
+- The code contains the units in a prepackaged
+
+- The code contains the actual price
+
+This information is extracted using the `weighedItemIds`, which
+represent templates for scannable codes recognized by the clients.
 
 Weighing attributes:
 
 | Parameter         | Type        | Default      | Description                                                                           |
 |-------------------|-------------|--------------|---------------------------------------------------------------------------------------|
-| weighedItemIds    | []string    | []           | Templates for the EANs which encode price or weight information                       |
+| weighedItemIds    | []string    | []           | Templates for the scannable codes which encode price or weight information            |
 | pluSet            | []string    | []           | PLU, the short code to identify a weighable product                                   |
 | weighByCustomer   | bool        | false        | Flag, if the product is prepackaged, ot the customer has to do weighting by himself   |
 | referenceUnit     | string      | ""           | The unit in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
 | encodingUnit      | string      | ""           | Unit which is used as encoding within the EAN (e.g. "g" when the EAN contains gramms) |
 
+The supported units are:
+
+| Abbreviation | Description                                                                                                    |
+|--------------|----------------------------------------------------------------------------------------------------------------|
+| kg           | Kilogram                                                                                                       |
+| g            | Gram                                                                                                           |
+| piece        | The encoded number should be interpreted as number of contained units, i.e. number of bread rolls in a package |
+| price        | The encoded number should be interpreted as total price, i.e. price of a package of differen sausages          |
 
 Weighing Example:
 
