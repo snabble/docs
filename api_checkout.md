@@ -41,6 +41,18 @@ The payload is a JSON document of the specified type.
 
 A shopping cart within a request from a client.
 
+| Parameter           | Type         | Default | Description                                                          |
+|---------------------|--------------|---------|----------------------------------------------------------------------|
+| sku                 | string       |         | SKU of the product                                                   |
+| amount              | int          |         | Number of products                                                   |
+| weight              | int          | 0       | Weight of product in case of of a weighable (a not packaged) product |
+| units               | int          | 0       | Number of units in a package in case of bundle or piece product      |
+| price               | int          | 0       | Price of the product in case of an encoded price                     |
+| scannedCode         | string       |         | Scanned code                                                         |
+
+The properties `weight`, `units` and `price` are only considered if
+the referenced products is of the correct type.
+
 Example:
 
 ```
@@ -48,9 +60,11 @@ Example:
   "session": "d06474fa-1584-11e8-b642-0ed5f89f718b",
   "shopID": "shop-01",
   "items": [
-    {"sku": "1", "amount": 2},
-    {"sku": "2", "amount": 1},
-    {"sku": "3", "amount": 42}
+    {"sku": "1", "amount": 2, "scannedCode": "0000000000001" },
+    {"sku": "2", "amount": 1, "weight": 102, "scannedCode": "0000000000002"},
+    {"sku": "3", "amount": 42, "scannedCode": "0000000000003"}
+    {"sku": "4", "amount": 1, "units": 6, "scannedCode": "000000000004"},
+    {"sku": "5", "amount": 1, "price": 129, "scannedCode": "0000000000005"},
   ],
   "customer": {
     "loyaltyCard": "..."
@@ -59,7 +73,22 @@ Example:
 ```
 
 ### Checkout Info
+
 A signed document with mandatory price calculation and available payment methods.
+
+#### Line Item
+
+
+| Parameter           | Type         | Default | Description                                                          |
+|---------------------|--------------|---------|----------------------------------------------------------------------|
+| sku                 | string       |         | SKU of the product                                                   |
+| amount              | int          |         | Number of products / packages                                        |
+| weight              | int          | 0       | Weight of product in case of of a weighable (a not packaged) product |
+| units               | int          | 0       | Number of units in a package in case of bundle or piece product      |
+| price               | int          |         | Price of the product in case of an encoded price                     |
+| name                | string       |         | Name of the product                                                  |
+| taxRate             | string       |         | Tax rate as string encoded decimal                                   |
+| scannedCode         | string       |         | Scanned code                                                         |
 
 Example:
 
@@ -92,16 +121,18 @@ Example:
             "amount" : 2,
             "name" : "Kugelschreiber tarent rot",
             "price" : 399,
-            "taxRate" : 19,
-            "sku" : "1"
+            "taxRate" : "19",
+            "sku" : "1",
+            "scannedCode": "0000000000001"
          },
          {
             "price" : 1099,
             "name" : "tarent logo-Cap grau",
             "totalPrice" : 1099,
             "amount" : 1,
-            "taxRate" : 19,
-            "sku" : "2"
+            "taxRate" : "19",
+            "sku" : "2",
+            "scannedCode": "0000000000002"
          },
          {
             "amount" : 42,
@@ -109,7 +140,8 @@ Example:
             "name" : "tarent logo-Cap rot",
             "price" : 1099,
             "sku" : "3",
-            "taxRate" : 19
+            "taxRate" : "19",
+            "scannedCode": "0000000000003"
          }
       ],
       "project" : "demo",
@@ -236,7 +268,8 @@ Price informations.
          "name" : "Kugelschreiber tarent rot",
          "price" : 399,
          "taxRate" : 19,
-         "sku" : "1"
+         "sku" : "1",
+         "scannedCode": "0000000000001"
       },
       {
          "price" : 1099,
@@ -244,7 +277,8 @@ Price informations.
          "totalPrice" : 1099,
          "amount" : 1,
          "taxRate" : 19,
-         "sku" : "2"
+         "sku" : "2",
+         "scannedCode": "0000000000002"
       }
    ]
 }
