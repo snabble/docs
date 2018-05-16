@@ -18,6 +18,10 @@ information about api access.
 * [Batch import](#batch-import): `POST /{project}/products/_batch`
 * [Request Products](#request-products): `GET /{project}/products`
 
+### Other operations
+
+* [Get import statistics](#get-import-statistics): `GET /{project}/products/statistics`
+
 ## Data Model
 
 ### Product Object
@@ -126,6 +130,18 @@ Result messages are simple status objects which are returned for batch operation
 | sku       | string      | The product, referenced by the result message                                         |
 | status    | string      | The processing status "ok", "error"                                                   |
 | message   | string      | A human readeable message about the processing status                                 |
+
+### Statistics Object
+
+Statistics Objects are a simple representation of the product import statistics.
+
+| Parameter | Type        | Description                                                                           |
+|-----------|-------------|---------------------------------------------------------------------------------------|
+| count     | int      | The total product count                                                                  |
+| created   | int      | The amount of newly created products                                                     |
+| updated   | int      | The amount of updated products                                                           |
+| deleted   | int      | The amount of deleted products                                                           |
+
 
 ### Content Types
 
@@ -279,3 +295,26 @@ All parameters are optional.
 **Content-Type** : application/x-ndjson
 
 **Data** : JSON stream of [product objects](#product-object).
+
+-----------
+
+## Get import statistics
+`GET /{project}/products/statistics`
+
+Return simple statistics about the product imports in a time period ranging from a selected date until now.
+
+**Required permissions** : productsRead
+
+### Request
+**Parameters** :
+
+| Name  | Description |
+| ------------- | ------------- |
+| since |The starting date of the time period. This parameter is required.|
+
+
+### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : JSON of [statistics object](#statistics-object).
