@@ -20,7 +20,7 @@ information about api access.
 
 ### Other operations
 
-* [Get import statistics](#get-import-statistics): `GET /{project}/products/statistics`
+* [Get product statistics](#get-statistics): `GET /{project}/produ^cts/statistics`
 
 ## Data Model
 
@@ -41,6 +41,10 @@ Example:
    "deleted" : false,
    "imageUrl" : "https://www.example.com/some/image.jpg",
    "productType" : "default",
+   "controlIndication": 0.4,
+   "forceControl": false,
+   "saleRestriction": "min_age_18",
+   "saleStop": true,
    "eans" : [
       "0654203316514"
    ],
@@ -65,6 +69,10 @@ Product attributes:
 | deleted           | bool        | false        | Flag to indicate that a product does not exist any longer                            |
 | imageUrl          | string      | null         | The full URL for a product image                                                     |
 | productType       | string      | "default"    | Type of the product: "default", "weighable", "deposit"                               |
+| controlIndication | number      | 0            | Indication: -1 no control needed, 1 high control indication                          |
+| forceControl      | bool        | false        | Flag to indicate if a control is necessary                                           |
+| saleRestriction   | string      | ""           | Restriction rule e.g. min age                                                        |
+| saleStop          | bool        | false        | Flag to indicate if there is a sale stop for this product                            |
 | eans              | []string    | []           | List of scannable codes / barcodes which point to this product                       |
 | price             | int         | 0            | The current standard price                                                           |
 | discountedPrice   | int         | null         | The current price if the product is discounted.                                      |
@@ -133,7 +141,7 @@ Result messages are simple status objects which are returned for batch operation
 
 ### Statistics Object
 
-Statistics Objects are a simple representation of the product import statistics.
+Statistics Objects are a simple representation of the product statistics.
 
 | Parameter | Type        | Description                                                                           |
 |-----------|-------------|---------------------------------------------------------------------------------------|
@@ -141,6 +149,7 @@ Statistics Objects are a simple representation of the product import statistics.
 | created   | int      | The amount of newly created products                                                     |
 | updated   | int      | The amount of updated products                                                           |
 | deleted   | int      | The amount of deleted products                                                           |
+| inStock   | int      | The amount of products that are in stock                                                 |
 
 
 ### Content Types
@@ -298,10 +307,10 @@ All parameters are optional.
 
 -----------
 
-## Get import statistics
+## Get statistics
 `GET /{project}/products/statistics`
 
-Return simple statistics about the product imports in a time period ranging from a selected date until now.
+Return simple statistics about the products in a time period ranging from a selected date until now.
 
 **Required permissions** : productsRead
 
