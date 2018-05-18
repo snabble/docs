@@ -89,6 +89,7 @@ A signed document with mandatory price calculation and available payment methods
 | name                | string       |         | Name of the product                                                  |
 | taxRate             | string       |         | Tax rate as string encoded decimal                                   |
 | scannedCode         | string       |         | Scanned code                                                         |
+| saleRestriction     | string       |         | Restriction for product e.g. min age                                 |
 
 Example:
 
@@ -123,7 +124,8 @@ Example:
             "price" : 399,
             "taxRate" : "19",
             "sku" : "1",
-            "scannedCode": "0000000000001"
+            "scannedCode": "0000000000001",
+            "saleRestriction": "min_age_18"
          },
          {
             "price" : 1099,
@@ -132,7 +134,8 @@ Example:
             "amount" : 1,
             "taxRate" : "19",
             "sku" : "2",
-            "scannedCode": "0000000000002"
+            "scannedCode": "0000000000002",
+            "saleRestriction": ""
          },
          {
             "amount" : 42,
