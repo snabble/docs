@@ -71,13 +71,18 @@ Product attributes:
 | productType       | string      | "default"    | Type of the product: "default", "weighable", "deposit"                               |
 | controlIndication | number      | 0            | Indication: -1 no control needed, 1 high control indication                          |
 | forceControl      | bool        | false        | Flag to indicate if a control is necessary                                           |
-| saleRestriction   | string      | ""           | Restriction rule e.g. min age                                                        |
+| saleRestriction   | string      | ""           | [Restriction rules](#sale-restrictions)                                                       |
 | saleStop          | bool        | false        | Flag to indicate if there is a sale stop for this product                            |
 | eans              | []string    | []           | List of scannable codes / barcodes which point to this product                       |
 | price             | int         | 0            | The current standard price                                                           |
 | discountedPrice   | int         | null         | The current price if the product is discounted.                                      |
 | basePrice         | string      | ""           | Base price (e.g. price per liter) as label.                                          |
 | weighing          | object      | null         | Additional information for weighable products                                        |
+
+#### Sale restrictions
+
+By now the only restriction rule is `min_age_`. There are six different min ages at the moment (`min_age_6, min_age_12, min_age_14, min_age_16, min_age_18, min_age_21`).
+
 
 #### Weighable Products
 
