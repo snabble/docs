@@ -9,6 +9,7 @@ information about api access.
 
 * [Get all shops](#get-get-shops): `GET /{project}/shops}`
 * [Get shop](#get-get-shop): `GET /{project}/shops/{slug}`
+* [Get shop by `externalId`](#get-shop-by-externalid): `GET /{project}/shops/search?externalId={slug}`
 * [Create shop](#create-shop): `POST /{project}/shops`
 * [Update shop](#update-shop): `PUT /{project}/shops/{slug}`
 * [Delete shop](#delete-shop): `DELETE /{project}/shops/{slug}`
@@ -101,6 +102,17 @@ Get the list of shops of the project.
 `GET /{project}/shops/{id}`
 
 Get the shop.
+
+### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : [Shop](#shop)
+
+## Get shop by `externalId`
+`GET /{project}/shops/search/?externalId={externalId}`
+
+Search the shop by its `externalId`.
 
 ### Success Response `200 OK`
 
