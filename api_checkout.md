@@ -79,7 +79,6 @@ A signed document with mandatory price calculation and available payment methods
 
 #### Line Item
 
-
 | Parameter           | Type         | Default | Description                                                          |
 |---------------------|--------------|---------|----------------------------------------------------------------------|
 | sku                 | string       |         | SKU of the product                                                   |

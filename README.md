@@ -8,3 +8,7 @@ snabble documentation
 [Products Management API](api_products.md)
 
 [Checkout API](api_checkout.md)
+
+[Orders API](api_orders.md)
+
+[API Changelog](API_CHANGELOG.md)
