@@ -419,7 +419,7 @@ Mark a checkout process as aborted.
 
 **Required permissions** : productsRead and the id of a Checkout Process
 
-#### Abort Request
+#### Close Request
 Mark a checkout process as closed.
 
 **Content-Type** : application/json
