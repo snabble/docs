@@ -267,7 +267,7 @@ Returns one product by scannable code
 
 -----------
 
-## Find product by weigh item id code
+## Find product by weigh item id
 `GET /{project}/products/weighItemId/{code}`
 
 Returns one product by weigh item id
