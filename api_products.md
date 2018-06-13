@@ -12,6 +12,8 @@ information about api access.
 * [Delete product](#delete-product): `DELETE /{project}/products/sku/{sku}`
 * [Find product by PLU](#find-product-by-plu): `GET /{project}/products/plu/{plu}`
 * [Find product by scannable code](#find-product-by-scannable-code): `GET /{project}/products/code/{code}`
+* [Find product by weigh item id](#find-product-by-weigh-item-id): `GET /{project}/products/weighItemId/{code}`
+
 
 ### Multiple products
 
@@ -254,6 +256,21 @@ Returns one product by PLU
 `GET /{project}/products/code/{code}`
 
 Returns one product by scannable code
+
+**Required permissions** : productsRead
+
+### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : [product object](#product-object).
+
+-----------
+
+## Find product by weigh item id code
+`GET /{project}/products/weighItemId/{code}`
+
+Returns one product by weigh item id
 
 **Required permissions** : productsRead
 
