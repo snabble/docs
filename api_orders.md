@@ -1,4 +1,4 @@
-# Shops API
+# Orders API
 
 This documentation describes the snabble API endpoints related to the
  access of orders. These endpoints are available on the `api`
