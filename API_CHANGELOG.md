@@ -15,7 +15,7 @@ This file will be updated weekly, if there are notable changes.
 *Deprecation:*
 
 * Deprecated `decimalDigits` and `currency` in
-  [Product](api_products.md#product-object)  
+  [Product](api_products.md#product-object)
   These will not be available anymore starting 22.06.2018
 
 ### Orders
