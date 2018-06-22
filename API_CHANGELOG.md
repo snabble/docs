@@ -5,12 +5,28 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2018-06-25
+
+### Checkout
+
+* ADDED `transfered` Payment State
+* ADDED `createdAt` date to [Checkout Info](api_checkout.md#checkout-info)
+* FIXED adding Line Items for deposits referenced by other Line Items
+
+### Products
+
+* REMOVED Deprecated `decimalDigits` and `currency` in
+  [Product](api_products.md#product-object)
+
+* FIXED several bugs in the appdb creation, which could
+  lead to missing products.
+
 ## 2018-06-11
 
 *Highlights:*
 
 * New [Orders API](api_orders.md)
-* Added support for arbitrary sku strings
+* ADDED support for arbitrary sku strings
 
 *Deprecation:*
 
