@@ -58,28 +58,28 @@ Example:
 
 Product attributes:
 
-| Parameter         | Type        | Default      | Description                                                                          |
-|-------------------|-------------|--------------|--------------------------------------------------------------------------------------|
-| sku               | string      |              | The unique id for identification of a the product                                    |
-| name              | string      |              | The display name of the product                                                      |
-| description       | string      | null         | A short description for the product                                                  |
-| subtitle          | string      | null         | An additional title line for individual use (e.g. brand information)                 |
-| boost             | int         | 0            | Order value for importance in views (higher is more)                                 |
-| taxCategory       | string      | null         |                                                                                      |
-| depositProduct    | string      | null         | The SKU of a corresponding product containing the associated deposit article         |
-| outOfStock        | bool        | false        | Flag to indicate if the product is currently available in markets                    |
-| deleted           | bool        | false        | Flag to indicate that a product does not exist any longer                            |
-| imageUrl          | string      | null         | The full URL for a product image                                                     |
-| productType       | string      | "default"    | Type of the product: "default", "weighable", "deposit"                               |
-| controlIndication | number      | 0            | Indication: -1 no control needed, 1 high control indication                          |
-| forceControl      | bool        | false        | Flag to indicate if a control is necessary                                           |
-| saleRestriction   | string      | ""           | [Restriction rules](#sale-restrictions)                                                       |
-| saleStop          | bool        | false        | Flag to indicate if there is a sale stop for this product                            |
-| eans              | []string    | []           | List of scannable codes / barcodes which point to this product                       |
-| price             | int         | 0            | The current standard price                                                           |
-| discountedPrice   | int         | null         | The current price if the product is discounted.                                      |
-| basePrice         | string      | ""           | Base price (e.g. price per liter) as label.                                          |
-| weighing          | object      | null         | Additional information for weighable products                                        |
+| Parameter         | Type     | Default   | Description                                                                  |
+|-------------------|----------|-----------|------------------------------------------------------------------------------|
+| sku               | string   |           | The unique id for identification of a the product                            |
+| name              | string   |           | The display name of the product                                              |
+| description       | string   | null      | A short description for the product                                          |
+| subtitle          | string   | null      | An additional title line for individual use (e.g. brand information)         |
+| boost             | int      | 0         | Order value for importance in views (higher is more)                         |
+| taxCategory       | string   | null      |                                                                              |
+| depositProduct    | string   | null      | The SKU of a corresponding product containing the associated deposit article |
+| outOfStock        | bool     | false     | Flag to indicate if the product is currently available in markets            |
+| deleted           | bool     | false     | Flag to indicate that a product does not exist any longer                    |
+| imageUrl          | string   | null      | The full URL for a product image                                             |
+| productType       | string   | "default" | Type of the product: "default", "weighable", "deposit"                       |
+| controlIndication | number   | 0         | Indication: -1 no control needed, 1 high control indication                  |
+| forceControl      | bool     | false     | Flag to indicate if a control is necessary                                   |
+| saleRestriction   | string   | ""        | [Restriction rules](#sale-restrictions)                                      |
+| saleStop          | bool     | false     | Flag to indicate if there is a sale stop for this product                    |
+| eans              | []string | []        | List of scannable codes / barcodes which point to this product               |
+| price             | int      | 0         | The current standard price                                                   |
+| discountedPrice   | int      | null      | The current price if the product is discounted.                              |
+| basePrice         | string   | ""        | Base price (e.g. price per liter) as label.                                  |
+| weighing          | object   | null      | Additional information for weighable products                                |
 
 #### Sale restrictions
 

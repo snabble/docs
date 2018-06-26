@@ -42,14 +42,14 @@ The payload is a JSON document of the specified type.
 
 A shopping cart within a request from a client.
 
-| Parameter           | Type         | Default | Description                                                          |
-|---------------------|--------------|---------|----------------------------------------------------------------------|
-| sku                 | string       |         | SKU of the product                                                   |
-| amount              | int          |         | Number of products                                                   |
-| weight              | int          | 0       | Weight of product in case of of a weighable (a not packaged) product |
-| units               | int          | 0       | Number of units in a package in case of bundle or piece product      |
-| price               | int          | 0       | Price of the product in case of an encoded price                     |
-| scannedCode         | string       |         | Scanned code                                                         |
+| Parameter     | Type     | Default | Description                                                          |
+|---------------|----------|---------|----------------------------------------------------------------------|
+| `sku`         | `string` |         | SKU of the product                                                   |
+| `amount`      | `int`    |         | Number of products                                                   |
+| `weight`      | `int`    | 0       | Weight of product in case of of a weighable (a not packaged) product |
+| `units`       | `int`    | 0       | Number of units in a package in case of bundle or piece product      |
+| `price`       | `int`    | 0       | Price of the product in case of an encoded price                     |
+| `scannedCode` | `string` |         | Scanned code                                                         |
 
 The properties `weight`, `units` and `price` are only considered if
 the referenced products is of the correct type.
@@ -77,19 +77,55 @@ Example:
 
 A signed document with mandatory price calculation and available payment methods.
 
+### Signed Checkout Info
+
+| Parameter      | Type           | Default | Description                            |
+|----------------|----------------|---------|----------------------------------------|
+| `checkoutInfo` | `CheckoutInfo` |         | Actual Checkout Info                   |
+| `signature`    | `string`       |         | Signature of the `checkoutInfo` object |
+
+### Checkout Info
+
+| Parameter          | Type              | Default | Description                                                    |
+|--------------------|-------------------|---------|----------------------------------------------------------------|
+| `session`          | `string`          |         | Identifier of the session                                      |
+| `shopID`           | `string`          |         | Identifier of the shop                                         |
+| `shop`             | `ShopInformation` |         | Shop details                                                   |
+| `customer`         | `Customer`        |         | Customer details                                               |
+| `createdAt`        | `date`            |         | Creation date of the checkout info (RFC3339 Datetime formated) |
+| `availableMethods` | `string[]`        |         | List of payment methods available for this checkout            |
+| `lineItems`        | `LineItem[]`      |         | List of the line items                                         |
+| `price`            | `Price`           |         | Price of the checkout                                          |
+
+### Shop Information
+
+The Shop Information captures the details of the essential for the checkout.
+
+| Parameter    | Type     | Default | Description                                |
+|--------------|----------|---------|--------------------------------------------|
+| `externalId` | `string` |         | An identifier provided by external sources |
+| `name`       | `string` |         | The name of the shop                       |
+| `email`      | `string` |         | Email address                              |
+| `phone`      | `string` |         | Phone number                               |
+| `street`     | `string` |         | Street and number                          |
+| `zip`        | `string` |         | Postal code                                |
+| `city`       | `string` |         | City                                       |
+| `state`      | `string` |         | State                                      |
+| `country`    | `string` |         | Country                                    |
+
 #### Line Item
 
-| Parameter           | Type         | Default | Description                                                          |
-|---------------------|--------------|---------|----------------------------------------------------------------------|
-| sku                 | string       |         | SKU of the product                                                   |
-| amount              | int          |         | Number of products / packages                                        |
-| weight              | int          | 0       | Weight of product in case of of a weighable (a not packaged) product |
-| units               | int          | 0       | Number of units in a package in case of bundle or piece product      |
-| price               | int          |         | Price of the product in case of an encoded price                     |
-| name                | string       |         | Name of the product                                                  |
-| taxRate             | string       |         | Tax rate as string encoded decimal                                   |
-| scannedCode         | string       |         | Scanned code                                                         |
-| saleRestriction     | string       |         | Restriction for product e.g. min age                                 |
+| Parameter         | Type     | Default | Description                                                          |
+|-------------------|----------|---------|----------------------------------------------------------------------|
+| `sku`             | `string` |         | SKU of the product                                                   |
+| `amount`          | `int`    |         | Number of products / packages                                        |
+| `weight`          | `int`    | 0       | Weight of product in case of of a weighable (a not packaged) product |
+| `units`           | `int`    | 0       | Number of units in a package in case of bundle or piece product      |
+| `price`           | `int`    |         | Price of the product in case of an encoded price                     |
+| `name`            | `string` |         | Name of the product                                                  |
+| `taxRate`         | `string` |         | Tax rate as string encoded decimal                                   |
+| `scannedCode`     | `string` |         | Scanned code                                                         |
+| `saleRestriction` | `string` |         | Restriction for product e.g. min age                                 |
 
 Example:
 
@@ -149,6 +185,7 @@ Example:
       ],
       "project" : "demo",
       "session" : "d06474fa-1584-11e8-b642-0ed5f89f718b",
+      "createdAt": "2018-06-19T09:59:29.245Z",
       "customer": {
         "loyaltyCard": "..."
       }
@@ -171,19 +208,19 @@ Example:
 
 Process attributes:
 
-| Parameter           | Type         | Default      | Description                                                                                        |
-|---------------------|--------------|--------------|----------------------------------------------------------------------------------------------------|
-| supervisorApproval  | bool/nil     | nil          | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)                    |
-| paymentApproval     | bool/nil     | nil          | Approval by the payment process (nil=pending, true=granted, false=rejected)                        |
-| aborted             | bool         | false        | Flag, if the process was aborted by the user                                                       |
-| closed              | bool         | false        | Flag, if the process was closed by the user. This flag is optional.                                                      |
-| checkoutInfo        | checkoutInfo |              | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
-| pricing             | princing     |              | The [Pricing information](#pricing) of the checkout                                                |
-| paymentMethod       | string       |              | A valid payment method                                                                             |
-| paymentState        | string       | pending      | The [Status of the associated payment process](#payment-state)                                     |
-| paymentInformation  | object       | nil          | Payment dependent additional information, i.e. a code to present to the user                       |
-| modified            | bool         | false        | Flag, if the process was modified by the checkout supervisor                                       |
-| createdAt           | date         |              | Creation date of the process                                                                       |
+| Parameter          | Type         | Default | Description                                                                                        |
+|--------------------|--------------|---------|----------------------------------------------------------------------------------------------------|
+| supervisorApproval | bool/nil     | nil     | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)                    |
+| paymentApproval    | bool/nil     | nil     | Approval by the payment process (nil=pending, true=granted, false=rejected)                        |
+| aborted            | bool         | false   | Flag, if the process was aborted by the user                                                       |
+| closed             | bool         | false   | Flag, if the process was closed by the user. This flag is optional.                                |
+| checkoutInfo       | checkoutInfo |         | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
+| pricing            | princing     |         | The [Pricing information](#pricing) of the checkout                                                |
+| paymentMethod      | string       |         | A valid payment method                                                                             |
+| paymentState       | string       | pending | The [Status of the associated payment process](#payment-state)                                     |
+| paymentInformation | object       | nil     | Payment dependent additional information, i.e. a code to present to the user                       |
+| modified           | bool         | false   | Flag, if the process was modified by the checkout supervisor                                       |
+| createdAt          | date         |         | Creation date of the process (RFC3339 Datetime formated )                                          |
 
 Example:
 ```
@@ -209,7 +246,11 @@ Represents the state of the payment process associated with the Checkout Process
 
 Possible values are:
 
-* `pending` (initial state)
+* `pending` (initial state): The payment is pending
+* `processing`: A payment system is currently processing the process
+* `transfered` (terminal state): The process was transfered to a
+  payment system. But the outcome of the processing will not be
+  communicated to the process.
 * `successful` (terminal state)
 * `failed` (terminal state)
 
