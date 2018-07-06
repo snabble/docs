@@ -9,7 +9,7 @@ This file will be updated weekly, if there are notable changes.
 
 ### Checkout
 
-* ADDED `transfered` Payment State
+* ADDED `transferred` Payment State
 * ADDED `createdAt` date to [Checkout Info](api_checkout.md#checkout-info)
 * FIXED adding Line Items for deposits referenced by other Line Items
 
