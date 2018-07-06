@@ -67,6 +67,7 @@ Product attributes:
 | boost             | int      | 0         | Order value for importance in views (higher is more)                         |
 | taxCategory       | string   | null      |                                                                              |
 | depositProduct    | string   | null      | The SKU of a corresponding product containing the associated deposit article |
+| bundledProduct    | string   | null      | The SKU of the product contained in the bundle represented by this product   |
 | outOfStock        | bool     | false     | Flag to indicate if the product is currently available in markets            |
 | deleted           | bool     | false     | Flag to indicate that a product does not exist any longer                    |
 | imageUrl          | string   | null      | The full URL for a product image                                             |
