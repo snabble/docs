@@ -248,7 +248,7 @@ Possible values are:
 
 * `pending` (initial state): The payment is pending
 * `processing`: A payment system is currently processing the process
-* `transfered` (terminal state): The process was transfered to a
+* `transferred` (terminal state): The process was transferred to a
   payment system. But the outcome of the processing will not be
   communicated to the process.
 * `successful` (terminal state)
