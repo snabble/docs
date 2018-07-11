@@ -5,6 +5,12 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2018-07-06
+
+### Product
+
+* ADDED `bundledProduct` to model product bundles
+
 ## 2018-06-25
 
 ### Checkout
