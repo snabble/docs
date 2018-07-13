@@ -81,6 +81,7 @@ Product attributes:
 | discountedPrice   | int      | null      | The current price if the product is discounted.                              |
 | basePrice         | string   | ""        | Base price (e.g. price per liter) as label.                                  |
 | weighing          | object   | null      | Additional information for weighable products                                |
+| matchingCode      | string   |           | In case of searching products by scannable code, it contains the code which was used to find the product | 
 
 #### Sale restrictions
 
@@ -256,7 +257,7 @@ Returns one product by PLU
 ## Find product by scannable code
 `GET /{project}/products/code/{code}`
 
-Returns one product by scannable code
+Returns one product by scannable code, including the matching code
 
 **Required permissions** : productsRead
 

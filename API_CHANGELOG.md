@@ -5,6 +5,11 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2018-07-13
+
+* ADDED `customersInShop` indicator to supervisor
+* ADDED localization to supervisor
+
 ## 2018-07-06
 
 ### Product
