@@ -81,11 +81,16 @@ Product attributes:
 | discountedPrice   | int      | null      | The current price if the product is discounted.                              |
 | basePrice         | string   | ""        | Base price (e.g. price per liter) as label.                                  |
 | weighing          | object   | null      | Additional information for weighable products                                |
-| matchingCode      | string   |           | In case of searching products by scannable code, it contains the code which was used to find the product | 
+| matchingCode      | string   |           | In case of searching products by scannable code, it contains the code which was used to find the product |
 
 #### Sale restrictions
 
-By now the only restriction rule is `min_age_`. There are six different min ages at the moment (`min_age_6, min_age_12, min_age_14, min_age_16, min_age_18, min_age_21`).
+The supported sage restrictions are:
+
+| Name        | Description                                                                                          |
+|-------------|------------------------------------------------------------------------------------------------------|
+| `min_age_*` | Minimum age. Possible values `min_age_6, min_age_12, min_age_14, min_age_16, min_age_18, min_age_21` |
+| `fsk`       | Product was rated by the german "Freiwillige Selbstkontrolle der Filmwirtschaft" (FSK)               |
 
 
 #### Weighable Products
