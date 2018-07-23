@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2018-97-23
+
+* ADDED `fsk` sale restriction
+
 ## 2018-07-20
 
 * ADDED barcodes to product detail view (retailer portal)
