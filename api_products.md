@@ -336,6 +336,44 @@ All parameters are optional.
 
 -----------
 
+## Find products by SKUs
+`GET /{project}/products/search/bySkus`
+
+Returns all products for requested SKUs
+
+**Required permissions** : productsRead
+
+### Request
+**Parameters** :
+
+| Name  | Description |
+| ------------- | ------------- |
+| skus[] | Passes the skus to look for all matching products. Every found product will be returned. |
+
+### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : JSON stream of [product object](#product-object).
+
+
+-----------
+
+## Find product by bundled sku
+`GET /{project}/products/bundlesForSku/{sku}`
+
+Returns all bundles for requested SKU
+
+**Required permissions** : productsRead
+
+### Success Response `200 OK`
+
+**Content-Type** : application/json
+
+**Data** : products: { Array[[product object](#product-object)] }.
+
+-----------
+
 ## Get statistics
 `GET /{project}/products/statistics`
 
