@@ -18,7 +18,9 @@ information about api access.
 ### Multiple products
 
 * [Batch import](#batch-import): `POST /{project}/products/_batch`
-* [Request Products](#request-products): `GET /{project}/products`
+* [Request products](#request-products): `GET /{project}/products`
+* [Find products by SKUs](#find-products-by-skus) `GET /{project}/products/search/bySkus`
+* [Find products by bundled SKU](#find-products-by-bundled-sku): `GET /{project}/products/bundlesForSku/{bundledSku}`
 
 ### Other operations
 
@@ -359,7 +361,7 @@ Returns all products for requested SKUs
 
 -----------
 
-## Find product by bundled sku
+## Find products by bundled sku
 `GET /{project}/products/bundlesForSku/{sku}`
 
 Returns all bundles for requested SKU
@@ -370,7 +372,7 @@ Returns all bundles for requested SKU
 
 **Content-Type** : application/json
 
-**Data** : products: { Array[[product object](#product-object)] }.
+**Data** : { products: [ {[product object](#product-object)}, ... ] }
 
 -----------
 
