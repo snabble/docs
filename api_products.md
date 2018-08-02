@@ -24,7 +24,7 @@ information about api access.
 
 ### Other operations
 
-* [Get product statistics](#get-statistics): `GET /{project}/produ^cts/statistics`
+* [Get product statistics](#get-statistics): `GET /{project}/products/statistics`
 
 ## Data Model
 
@@ -62,9 +62,9 @@ Product attributes:
 
 | Parameter         | Type     | Default   | Description                                                                  |
 |-------------------|----------|-----------|------------------------------------------------------------------------------|
-| sku               | string   |           | The unique id for identification of a the product                            |
+| sku               | string   |           | The unique id for identification of the product                            |
 | name              | string   |           | The display name of the product                                              |
-| description       | string   | null      | A short description for the product                                          |
+| description       | string   | null      | A short description of the product                                          |
 | subtitle          | string   | null      | An additional title line for individual use (e.g. brand information)         |
 | boost             | int      | 0         | Order value for importance in views (higher is more)                         |
 | taxCategory       | string   | null      |                                                                              |
@@ -100,11 +100,11 @@ The supported sage restrictions are:
 The price of weighable product depents on information encoded into a
 scannable code. There are three cases:
 
-- The code contains a weight information
+- The code contains the weight in grams
 
-- The code contains the units in a prepackaged
+- The code contains the units in a prepackaged container or bag
 
-- The code contains the actual price
+- The code contains the price
 
 This information is extracted using the `weighedItemIds`, which
 represent templates for scannable codes recognized by the clients.
@@ -117,7 +117,7 @@ Weighing attributes:
 | pluSet            | []string    | []           | PLU, the short code to identify a weighable product                                   |
 | weighByCustomer   | bool        | false        | Flag, if the product is prepackaged, ot the customer has to do weighting by himself   |
 | referenceUnit     | string      | ""           | The unit in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
-| encodingUnit      | string      | ""           | Unit which is used as encoding within the EAN (e.g. "g" when the EAN contains gramms) |
+| encodingUnit      | string      | ""           | Unit which is used as encoding within the EAN (e.g. "g" when the EAN contains grams) |
 
 The supported units are:
 
@@ -126,7 +126,7 @@ The supported units are:
 | kg           | Kilogram                                                                                                       |
 | g            | Gram                                                                                                           |
 | piece        | The encoded number should be interpreted as number of contained units, i.e. number of bread rolls in a package |
-| price        | The encoded number should be interpreted as total price, i.e. price of a package of differen sausages          |
+| price        | The encoded number should be interpreted as total price, i.e. price of a package of different sausages          |
 
 Weighing Example:
 
@@ -151,21 +151,21 @@ Result messages are simple status objects which are returned for batch operation
 
 | Parameter | Type        | Description                                                                           |
 |-----------|-------------|---------------------------------------------------------------------------------------|
-| sku       | string      | The product, referenced by the result message                                         |
-| status    | string      | The processing status "ok", "error"                                                   |
-| message   | string      | A human readeable message about the processing status                                 |
+| sku       | string      | The product referenced by the result message                                          |
+| status    | string      | The processing status: "ok" or "error"                                                |
+| message   | string      | A human-readable message describing the processing status                             |
 
 ### Statistics Object
 
-Statistics Objects are a simple representation of the product statistics.
+Statistics objects are a simple representation of the product statistics.
 
-| Parameter | Type        | Description                                                                           |
-|-----------|-------------|---------------------------------------------------------------------------------------|
-| count     | int      | The total product count                                                                  |
-| created   | int      | The amount of newly created products                                                     |
-| updated   | int      | The amount of updated products                                                           |
-| deleted   | int      | The amount of deleted products                                                           |
-| inStock   | int      | The amount of products that are in stock                                                 |
+| Parameter | Type     | Description                                                                           |
+|-----------|----------|---------------------------------------------------------------------------------------|
+| count     | int      | The total product count                                                               |
+| created   | int      | The amount of newly created products                                                  |
+| updated   | int      | The amount of updated products                                                        |
+| deleted   | int      | The amount of deleted products                                                        |
+| inStock   | int      | The amount of products that are in stock                                              |
 
 
 ### Content Types
@@ -295,7 +295,7 @@ Returns one product by weigh item id
 
 `POST /{project}/products/_batch`
 
-Import a list of products in one http request.
+Import a list of products in one HTTP request.
 
 **Required permissions** : productsWrite
 
@@ -341,8 +341,8 @@ All parameters are optional.
 ## Find products by SKUs
 `GET /{project}/products/search/bySkus`
 
-Returns the set of products for the requested SKUs.  
-If none of the SKUs has been found or if none is given it returns an emtpy list.
+Returns the unique set of products for the requested SKUs.  
+If none of the SKUs could be found or if none are given this returns an emtpy array.
 
 **Required permissions** : productsRead
 
@@ -351,7 +351,7 @@ If none of the SKUs has been found or if none is given it returns an emtpy list.
 
 | Name  | Description |
 | ------------- | ------------- |
-| skus | List of the skus of the products that will be returned. |
+| skus | List of the skus of the products that should be returned. |
 
 **Example**:  
 `GET /example-project/products/search/bySkus?skus=42&skus=43&sku=77`
@@ -392,7 +392,7 @@ Return simple statistics about the products in a time period ranging from a sele
 
 | Name  | Description |
 | ------------- | ------------- |
-| since |The starting date of the time period. This parameter is required.|
+| since | The starting date of the time period. This parameter is required.|
 
 
 ### Success Response `200 OK`
