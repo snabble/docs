@@ -350,7 +350,10 @@ Returns all products for requested SKUs
 
 | Name  | Description |
 | ------------- | ------------- |
-| skus[] | Passes the skus to look for all matching products. Every found product will be returned. |
+| skus | List of the skus of the products that will be returned. |
+
+**Example**:  
+`GET /example-project/products/search/bySkus?skus=42&skus=43&sku=77`
 
 ### Success Response `200 OK`
 
