@@ -341,7 +341,8 @@ All parameters are optional.
 ## Find products by SKUs
 `GET /{project}/products/search/bySkus`
 
-Returns all products for requested SKUs
+Returns the set of products for the requested SKUs.  
+If none of the SKUs has been found or if none is given it returns an emtpy list.
 
 **Required permissions** : productsRead
 
@@ -359,7 +360,7 @@ Returns all products for requested SKUs
 
 **Content-Type** : application/json
 
-**Data** : JSON stream of [product object](#product-object).
+**Data** : { products: [ {[product object](#product-object)}, ... ] }
 
 
 -----------
