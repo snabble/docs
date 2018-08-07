@@ -327,7 +327,7 @@ All parameters are optional.
 | Name  | Description |
 | ------------- | ------------- |
 | limit | Sets a limit of products returned. Must be a positive number. |
-| q | Passes a query string. Will do a full text search in the product name and description and will perform a prefix search with the product SKU. All products found by either search will be returned. |
+| q | Passes a query string. Will do a full text search in the product name and description and will perform a prefix search with the product SKU, EAN and weighed item id. All products found by either search will be returned. |
 
 
 ### Success Response `200 OK`
