@@ -141,6 +141,12 @@ Example:
          "tax" : {
             "19" : 7673
          },
+         "taxNet" : {
+            "19" : 40382
+         },
+         "taxPre" : {
+           "19" : 48055
+         },
          "netPrice" : 40382,
          "price" : 48055
       },
@@ -302,6 +308,12 @@ Price informations.
    "price" : {
       "tax" : {
          "19" : 7673
+      },
+      "taxNet" : {
+        "19" : 40382
+      },
+      "taxPre" : {
+        "19" : 48055
       },
       "netPrice" : 40382,
       "price" : 48055

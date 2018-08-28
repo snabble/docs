@@ -38,6 +38,9 @@ This documentation describes the snabble API endpoints related to the
 | `price.price`        | `int`            | The total brutto price of the order                                                           |
 | `price.netPrice`     | `int`            | The total netto price of the order                                                            |
 | `price.tax`          | `map[string]int` | Mapping of tax rates on the portion of the price                                              |
+| `price.taxNet`       | `map[string]int` | Mapping of tax rates sums all net prices of products with this rate up                        |
+| `price.taxPre`       | `map[string]int` | Mapping of tax rates sums all pre tax prices of products with this rate up                    |
+
 
 Example:
 
@@ -76,6 +79,12 @@ Example:
     "netPrice": 200,
     "tax": {
       "7": 14
+    },
+    "taxNet": {
+      "7": 200
+    },
+    "taxPre": {
+      "7": 214
     }
   },
   "checkoutProcess": {
