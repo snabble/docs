@@ -89,6 +89,7 @@ A signed document with mandatory price calculation and available payment methods
 | Parameter          | Type              | Default | Description                                                    |
 |--------------------|-------------------|---------|----------------------------------------------------------------|
 | `session`          | `string`          |         | Identifier of the session                                      |
+| `clientID`         | `string`          |         | The app id                                                                                    |
 | `shopID`           | `string`          |         | Identifier of the shop                                         |
 | `shop`             | `ShopInformation` |         | Shop details                                                   |
 | `customer`         | `Customer`        |         | Customer details                                               |
@@ -185,6 +186,7 @@ Example:
       ],
       "project" : "demo",
       "session" : "d06474fa-1584-11e8-b642-0ed5f89f718b",
+      "clientID": "app-id-12345",
       "createdAt": "2018-06-19T09:59:29.245Z",
       "customer": {
         "loyaltyCard": "..."
