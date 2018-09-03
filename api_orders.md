@@ -19,6 +19,7 @@ This documentation describes the snabble API endpoints related to the
 |----------------------|------------------|-----------------------------------------------------------------------------------------------|
 | `id`                 | `string`         | The id of the Order                                                                           |
 | `project`            | `string`         | The id of the Project                                                                         |
+| `clientID`           | `string`         | The app id                                                                                    |
 | `date`               | `date`           | The date on which the order was contracted                                                    |
 | `createdAt`          | `date`           | The date on which the order was processed                                                     |
 | `shopID`             | `string`         | ID of the in which the order was contracted                                                   |
@@ -45,6 +46,7 @@ Example:
 {
   "id": "99e13f9f-0412-4686-907a-331003b2a703",
   "project": "test-project-faa116",
+  "clientID": "app-id-12345",
   "date": "2018-06-05T12:25:06.821Z",
   "createdAt": "2018-06-05T12:25:07.519Z",
   "shopID": "128",
