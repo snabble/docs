@@ -52,6 +52,12 @@ Example:
    "eans" : [
       "0654203316514"
    ],
+   "codes": [
+       {
+           "code": "0654203316514",
+           "transmissionCode": "1234203316514"
+       }
+   ]
    "price" : 1699,
    "discountedPrice" : 1499,
    "basePrice": "19,99 EUR / 1 Liter",
@@ -79,15 +85,24 @@ Product attributes:
 | saleRestriction   | string   | ""        | [Restriction rules](#sale-restrictions)                                      |
 | saleStop          | bool     | false     | Flag to indicate if there is a sale stop for this product                    |
 | eans              | []string | []        | List of scannable codes / barcodes which point to this product               |
+| codes             | []object | []        |[Array of code objects](#code-object)                     |
 | price             | int      | 0         | The current standard price                                                   |
 | discountedPrice   | int      | null      | The current price if the product is discounted.                              |
 | basePrice         | string   | ""        | Base price (e.g. price per liter) as label.                                  |
 | weighing          | object   | null      | Additional information for weighable products                                |
 | matchingCode      | string   |           | In case of searching products by scannable code, it contains the code which was used to find the product |
 
+
+### Code Object
+
+| Name                 | Type    | Default    | Description                                                                                      |
+|----------------------|---------|------------|--------------------------------------------------------------------------------------------------|
+| `code`               | string  | ""         | Scannable code / barcode                                                                         |
+| `transmissionCode`   | string  | null       | In case the POS cannot handle the scannable code / barcode, it contains a POS friendly code      |
+
 #### Sale restrictions
 
-The supported sage restrictions are:
+The supported sale restrictions are:
 
 | Name        | Description                                                                                          |
 |-------------|------------------------------------------------------------------------------------------------------|
