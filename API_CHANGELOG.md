@@ -5,6 +5,11 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2018-09-04
+
+* ADDED [code object](api_products.md#code-object) to products
+* ADDED clientID to orders in retailer portal
+
 ## 2018-07-23
 
 * ADDED `fsk` sale restriction
