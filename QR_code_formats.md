@@ -17,7 +17,7 @@ With default formating:
 4008400401621
 4008400401621
 ```
-![QR code encoded codes with newlines](images/qr-code-encoded-codes_newline.png)
+![QR code encoded codes with newlines](img/qr-code-encoded-codes_newline.png)
 
 For each project on the snabble platform, a different
 set of delimiters and other paramters for the QR-Code can be configured.
@@ -35,7 +35,7 @@ The above example with prefix and delimiter: "XE" and suffix: "XZ" will result i
 XE0000040084015XE4008400401621XE4008400401621XZ
 ```
 
-![QR code encoded codes with XEXEXZ](images/qr-code-encoded-codes_XEXEXZ.png)
+![QR code encoded codes with XEXEXZ](img/qr-code-encoded-codes_XEXEXZ.png)
 
 
 ## QrCodePOS
