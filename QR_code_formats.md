@@ -7,19 +7,9 @@ For the transmission, the following QR-Codes formats are supported out of the bo
 
 # Encoded Codes
 With the encoded Codes QR-Code, all EANs are written into one QR-Code. By default, the EANs are separated by
-a newline, so the code contains the EANS line by line. For each project on the snabble platform, a different
-set of delimiters and other paramters for the QR-Code can be configured.
+a newline, so the code contains the EANS line by line.
 
-Formating Parameters:
-
-| Name      | Default         | Description                                          |
-|-----------------------------|------------------------------------------------------|
-| prefix    | ""              | The string at the beginning of the QR-Code.          |
-| separator | "\n"            | The separator string between two EANS.               |
-| suffix    | ""              | A string at the end of the QR code.                  |
-| maxCodes  | 100             | Maximun number of EANs to fit into a single QR-Code. |
-
-Example: One '''Duplo (40084015)''' and two glasses of '''Nutella (4008400401621)'''.
+Example: One *Duplo (40084015)* and two glasses of *Nutella (4008400401621)*.
 
 With default formating:
 ```
@@ -29,7 +19,18 @@ With default formating:
 ```
 ![QR code encoded codes with newlines](images/qr-code-encoded-codes_newline.png)
 
-With prefix and delimiter: "XE" and suffix: "XZ"
+For each project on the snabble platform, a different
+set of delimiters and other paramters for the QR-Code can be configured.
+Formating Parameters:
+
+| Name      | Default         | Description                                          |
+|-----------|-----------------|------------------------------------------------------|
+| prefix    | ""              | The string at the beginning of the QR-Code.          |
+| separator | "\n"            | The separator string between two EANS.               |
+| suffix    | ""              | A string at the end of the QR code.                  |
+| maxCodes  | 100             | Maximun number of EANs to fit into a single QR-Code. |
+
+The above example with prefix and delimiter: "XE" and suffix: "XZ" will result in the following code:
 ```
 XE0000040084015XE4008400401621XE4008400401621XZ
 ```
