@@ -5,7 +5,7 @@ Snabble supports online payments as well as a transmission of a shopping cart to
 For the transmission, the following QR-Codes formats are supported out of the box.
 
 
-# Encoded Codes
+## Encoded Codes
 With the encoded Codes QR-Code, all EANs are written into one QR-Code. By default, the EANs are separated by
 a newline, so the code contains the EANS line by line.
 
@@ -38,7 +38,7 @@ XE0000040084015XE4008400401621XE4008400401621XZ
 ![QR code encoded codes with XEXEXZ](images/qr-code-encoded-codes_XEXEXZ.png)
 
 
-# QrCodePOS
+## QrCodePOS
 
 With this format, the QR-Code just contains the ID of the checkout process.
 The cash register is than able to fetch the shopping cart from the snabble POS service, using this id.

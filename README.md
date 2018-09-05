@@ -21,4 +21,6 @@ Other Documentation
 
 [QR Code Formats](QR_code_formats.md)
 
+[File Import Formats](file_import_formats.md)
+
 
