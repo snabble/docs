@@ -116,17 +116,18 @@ The Shop Information captures the details of the essential for the checkout.
 
 #### Line Item
 
-| Parameter         | Type     | Default | Description                                                          |
-|-------------------|----------|---------|----------------------------------------------------------------------|
-| `sku`             | `string` |         | SKU of the product                                                   |
-| `amount`          | `int`    |         | Number of products / packages                                        |
-| `weight`          | `int`    | 0       | Weight of product in case of of a weighable (a not packaged) product |
-| `units`           | `int`    | 0       | Number of units in a package in case of bundle or piece product      |
-| `price`           | `int`    |         | Price of the product in case of an encoded price                     |
-| `name`            | `string` |         | Name of the product                                                  |
-| `taxRate`         | `string` |         | Tax rate as string encoded decimal                                   |
-| `scannedCode`     | `string` |         | Scanned code                                                         |
-| `saleRestriction` | `string` |         | Restriction for product e.g. min age                                 |
+| Parameter         | Type     | Default | Description                                                                                                |
+|-------------------|----------|---------|------------------------------------------------------------------------------------------------------------|
+| `sku`             | `string` |         | SKU of the product                                                                                         |
+| `amount`          | `int`    |         | Number of products / packages                                                                              |
+| `weight`          | `int`    | 0       | Weight of product in case of of a weighable (a not packaged) product                                       |
+| `units`           | `int`    | 0       | Number of units in a package in case of bundle or piece product                                            |
+| `price`           | `int`    |         | Price of the product in case of an encoded price                                                           |
+| `priceOrigin`     | `string` |         | Origin of the price (`master` price from the products list, `client` the price was provided by the client) |
+| `name`            | `string` |         | Name of the product                                                                                        |
+| `taxRate`         | `string` |         | Tax rate as string encoded decimal                                                                         |
+| `scannedCode`     | `string` |         | Scanned code                                                                                               |
+| `saleRestriction` | `string` |         | Restriction for product e.g. min age                                                                       |
 
 Example:
 
