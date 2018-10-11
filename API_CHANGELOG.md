@@ -9,6 +9,9 @@ This file will be updated weekly, if there are notable changes.
 
 * DEPRECATED `boost` field in [products](api_products.md#product-object). It will be removed after
   December 1st, 2018.
+* FIXED documentation of the default values in
+  [products](api_products.md#product-object). The now documented
+  values conform to the behavior of the API.
 
 ## 2018-09-18
 

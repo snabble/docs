@@ -72,7 +72,7 @@ Product attributes:
 | name              | string   |           | The display name of the product                                                                          |
 | description       | string   | null      | A short description of the product                                                                       |
 | subtitle          | string   | null      | An additional title line for individual use (e.g. brand information)                                     |
-| boost             | int      | 0         | *Deprecated* Order value for importance in views (higher is more)                                        |
+| boost             | int      | null      | *Deprecated* Order value for importance in views (higher is more)                                        |
 | taxCategory       | string   | null      |                                                                                                          |
 | depositProduct    | string   | null      | The SKU of a corresponding product containing the associated deposit article                             |
 | bundledProduct    | string   | null      | The SKU of the product contained in the bundle represented by this product                               |
@@ -82,11 +82,11 @@ Product attributes:
 | productType       | string   | "default" | Type of the product: "default", "weighable", "deposit"                                                   |
 | controlIndication | number   | 0         | Indication: -1 no control needed, 1 high control indication                                              |
 | forceControl      | bool     | false     | Flag to indicate if a control is necessary                                                               |
-| saleRestriction   | string   | ""        | [Restriction rules](#sale-restrictions)                                                                  |
+| saleRestriction   | string   | null      | [Restriction rules](#sale-restrictions)                                                                  |
 | saleStop          | bool     | false     | Flag to indicate if there is a sale stop for this product                                                |
 | eans              | []string | []        | List of scannable codes / barcodes which point to this product                                           |
 | codes             | []object | []        | [Array of code objects](#code-object)                                                                    |
-| price             | int      | 0         | The current standard price                                                                               |
+| price             | int      | null      | The current standard price                                                                               |
 | discountedPrice   | int      | null      | The current price if the product is discounted.                                                          |
 | basePrice         | string   | ""        | Base price (e.g. price per liter) as label.                                                              |
 | weighing          | object   | null      | Additional information for weighable products                                                            |
@@ -126,13 +126,13 @@ represent templates for scannable codes recognized by the clients.
 
 Weighing attributes:
 
-| Parameter         | Type        | Default      | Description                                                                           |
-|-------------------|-------------|--------------|---------------------------------------------------------------------------------------|
-| weighedItemIds    | []string    | []           | Templates for the scannable codes which encode price or weight information            |
-| pluSet            | []string    | []           | PLU, the short code to identify a weighable product                                   |
-| weighByCustomer   | bool        | false        | Flag, if the product is prepackaged, ot the customer has to do weighting by himself   |
-| referenceUnit     | string      | ""           | The unit in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
-| encodingUnit      | string      | ""           | Unit which is used as encoding within the EAN (e.g. "g" when the EAN contains grams) |
+| Parameter       | Type     | Default | Description                                                                           |
+|-----------------|----------|---------|---------------------------------------------------------------------------------------|
+| weighedItemIds  | []string | null    | Templates for the scannable codes which encode price or weight information            |
+| pluSet          | []string | null    | PLU, the short code to identify a weighable product                                   |
+| weighByCustomer | bool     | false   | Flag, if the product is prepackaged, ot the customer has to do weighting by himself   |
+| referenceUnit   | string   | null    | The unit in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
+| encodingUnit    | string   | null    | Unit which is used as encoding within the EAN (e.g. "g" when the EAN contains grams)  |
 
 The supported units are:
 
