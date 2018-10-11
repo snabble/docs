@@ -1,8 +1,8 @@
 
 # File Import Formats
 
-The native way to get products into the snabble platform is by using the REST/Json API.
-It works out of the box and is the most powerfull and flexible way. But of course, snabble also supports
+The native way to get products into the snabble platform is by using the REST/JSON API.
+It works out of the box and is the most powerful and flexible way. But of course, snabble also supports
 the transfer by sFTP, using custom and project specific import formats, which are close to the following:
 
 ## CSV Format
@@ -15,7 +15,7 @@ By default, the encoding should be UTF-8, and the default value separater is ","
 
 ### products.csv
 
-The `products.cvs` contains one line per product. For the meaning of the fields refer the API documentation in [Products Management API](api_products.md)
+The `products.csv` contains one line per product. For the meaning of the fields refer the API documentation in [Products Management API](api_products.md)
 The exact behaviour of the importer and set of fields in the CSV interface have to be determined in the onboarding project.
 
 Example:
