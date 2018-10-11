@@ -7,8 +7,8 @@ information about api access.
 
 ### Endpoints
 
-* [Get all shops](#get-get-shops): `GET /{project}/shops}`
-* [Get shop](#get-get-shop): `GET /{project}/shops/{slug}`
+* [Get all shops](#get-all-shops): `GET /{project}/shops}`
+* [Get shop](#get-shop): `GET /{project}/shops/{slug}`
 * [Get shop by `externalId`](#get-shop-by-externalid): `GET /{project}/shops/search?externalId={slug}`
 * [Create shop](#create-shop): `POST /{project}/shops`
 * [Update shop](#update-shop): `PUT /{project}/shops/{slug}`
