@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2018-10-12
+
+* ADDED new [Pricing API](api_pricing.md)
+
 ## 2018-10-11
 
 * DEPRECATED `boost` field in [products](api_products.md#product-object). It will be removed after
