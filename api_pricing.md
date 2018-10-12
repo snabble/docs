@@ -7,11 +7,11 @@ access](api_general.md) for general information about api access.
 
 ## Operations
 * [Get pricing category](#get-pricingcategory): `GET /{project}/pricing/categories/id/{id}`
-* [Create pricing category](#create-pricingcategory): `POST /{project}/pricing/categories/id/{id}`
+* [Create pricing category](#create-pricingcategory): `POST /{project}/pricing/categories`
 * [Update pricing category](#update-pricingcategory): `PUT /{project}/pricing/categories/id/{id}`
 * [Get pricing](#get-pricing): `GET /{project}/pricing/products/sku/{sku}`
 * [Update pricing](#update-pricing): `PUT /{project}/pricing/products/sku/{sku}`
-* [Batch update pricing](#batch-update-pricing): `POST /{project}/pricing/products/sku/{sku}`
+* [Batch update pricing](#batch-update-pricing): `POST /{project}/pricing/_batch`
 
 ## Data Model
 
