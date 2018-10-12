@@ -10,6 +10,8 @@ HTTP API
 
 [Products Management API](api_products.md)
 
+[Pricing Management API](api_pricing.md)
+
 [Checkout API](api_checkout.md)
 
 [Orders API](api_orders.md)
@@ -22,5 +24,3 @@ Other Documentation
 [QR Code Formats](QR_code_formats.md)
 
 [File Import Formats](file_import_formats.md)
-
-
