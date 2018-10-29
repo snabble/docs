@@ -6,9 +6,19 @@ available on the `api` subdomain. See [General API
 access](api_general.md) for general information about api access.
 
 ## Operations
+
+### Single pricing category operations
+
 * [Get pricing category](#get-pricingcategory): `GET /{project}/pricing/categories/id/{id}`
 * [Create pricing category](#create-pricingcategory): `POST /{project}/pricing/categories`
 * [Update pricing category](#update-pricingcategory): `PUT /{project}/pricing/categories/id/{id}`
+
+### Multiple pricing categories operations
+
+* [Request pricing categories](#request-pricingcategory): `GET /{project}/pricing/categories`
+
+### Single pricing operations
+
 * [Get pricing](#get-pricing): `GET /{project}/pricing/products/sku/{sku}`
 * [Update pricing](#update-pricing): `PUT /{project}/pricing/products/sku/{sku}`
 * [Batch update pricing](#batch-update-pricing): `POST /{project}/pricing/_batch`
@@ -72,6 +82,43 @@ Example:
 | Parameter | Type   | Default | Description             |
 |-----------|--------|---------|-------------------------|
 | id        | string |         | Unique id of the `Shop` |
+
+### `PricingCategoryList` object
+
+List of [`PricingCategory`](#pricingcategory-object).
+
+Example:
+
+```
+{
+  "links": {
+    "self": {
+      "href": "/project/pricing/categories"
+    }
+  },
+  "categories": [
+    {
+      "id": "normal",
+      "project": "project",
+      "name": "normal prices",
+      "shops": [
+        {"id": "shop-id-1"},
+        {"id": "shop-id-2"}
+      ],
+      "links": {
+        "self": {
+          "href": "/project/pricing/categories/id/normal"
+        }
+      }
+    }
+  ]
+}
+```
+
+| Parameter  | Type  | Default | Description                |
+|------------|-------|---------|----------------------------|
+| categories | array |         | array of `PricingCategory` |
+
 
 ### `Pricing` object
 
@@ -218,6 +265,22 @@ Update a pricing category.
 **Content-Type** : application/json
 
 **Data** : [PricingCategory](#pricingcategory-object)
+
+-----------
+
+### Request `PricingCategory`
+
+`GET /{project}/pricing/categories`
+
+Returns the list of pricing categories for the project.
+
+**Required permissions**: pricingCategoriesRead
+
+#### Success Response 200 OK
+
+**Content-Type** : application/json
+
+**Data:** [PricingCategoryList](#pricingcategorylist-object)
 
 -----------
 
