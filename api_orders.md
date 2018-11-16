@@ -36,6 +36,7 @@ This documentation describes the snabble API endpoints related to the
 | `paymentInformation` | `string`         | Payment dependent additional information                                                      |
 | `paymentStatus`      | `string`         | The final Status of the associated payment process                                            |
 | `lineItems`          | `LineItem[]`     | Line items of the order. For details see [Checkout API: Line Item](api_checkout.md#line-item) |
+| `currency`           | `string`         | Currency of the project                                                                       |
 | `price.price`        | `int`            | The total brutto price of the order                                                           |
 | `price.netPrice`     | `int`            | The total netto price of the order                                                            |
 | `price.tax`          | `map[string]int` | Mapping of tax rates on the portion of the price                                              |
@@ -89,6 +90,7 @@ Example:
       "7": 214
     }
   },
+  "currency": "EUR",
   "checkoutProcess": {
     // see checkout documentation
   },
