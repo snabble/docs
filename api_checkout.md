@@ -192,7 +192,7 @@ Example:
             "scannedCode": "0000000000003"
          }
       ],
-      "currency": "",
+      "currency": "EUR",
       "project" : "demo",
       "session" : "d06474fa-1584-11e8-b642-0ed5f89f718b",
       "clientID": "app-id-12345",
@@ -226,10 +226,11 @@ Process attributes:
 | aborted            | bool         | false   | Flag, if the process was aborted by the user                                                       |
 | closed             | bool         | false   | Flag, if the process was closed by the user. This flag is optional.                                |
 | checkoutInfo       | checkoutInfo |         | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
-| pricing            | princing     |         | The [Pricing information](#pricing) of the checkout                                                |
+| pricing            | pricing      |         | The [Pricing information](#pricing) of the checkout                                                |
 | paymentMethod      | string       |         | A valid payment method                                                                             |
 | paymentState       | string       | pending | The [Status of the associated payment process](#payment-state)                                     |
 | paymentInformation | object       | nil     | Payment dependent additional information, i.e. a code to present to the user                       |
+| paymentResult      | object       | nil     | Information from payment gateway, i.e. transaction id, state                                       |
 | modified           | bool         | false   | Flag, if the process was modified by the checkout supervisor                                       |
 | createdAt          | date         |         | Creation date of the process (RFC3339 Datetime formated )                                          |
 
@@ -306,7 +307,7 @@ Example:
 
 ### Pricing
 
-Price informations.
+Price information.
 
 ```
 {
@@ -342,8 +343,7 @@ Price informations.
          "sku" : "2",
          "scannedCode": "0000000000002"
       }
-   ],
-   "currency": "EUR"
+   ]
 }
 ```
 
