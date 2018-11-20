@@ -5,6 +5,11 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2018-11-20
+
+* ADDED `currency` to Checkout Info and Order
+* ADDED `paymentResult` to Checkout Process
+
 ## 2018-10-12
 
 * ADDED new [Pricing API](api_pricing.md)
