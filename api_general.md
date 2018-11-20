@@ -1,4 +1,3 @@
-
 # General API access
 
 This documentation describes the general access topics for the snabble REST API.
@@ -22,8 +21,8 @@ It can be used as a sandbox for integration tests.
 This environment is used internally by the snabble team for software testing, but it can also be used together
 with retailers for testing of features in a very early stage.
 
-
 ## API Endpoint Overview
+
 All environments share the same API structure and provide the following endpoints as subdomains. For simplicity we use the production environment in all examples.
 
 | Subdomain                      | Usage                                       |
@@ -33,6 +32,18 @@ All environments share the same API structure and provide the following endpoint
 | retailer.snabble.io            | The retailer portal                         |
 | docs.snabble.io                | The documentation                           |
 
+## IP Address
+
+The api.* and sftp.* endpoints have fixed IP addresses. These are guaranteed to stay the same.
+
+| Subdomain               | Address        |
+|-------------------------|----------------|
+| api.snabble-testing.io  | 146.148.30.201 |
+| sftp.snabble-testing.io | 146.148.30.201 |
+| api.snabble-staging.io  | 35.195.192.232 |
+| sftp.snabble-staging.io | 35.195.192.232 |
+| api.snabble.io          | 35.189.214.135 |
+| sftp.snabble.io         | 35.189.214.135 |
 
 ## Access and Security
 
@@ -117,7 +128,7 @@ The request contains bad syntax or cannot be fulfilled
 
 **400 Bad Request**:
 
-   The 400 (Bad Request) status code indicates that the server cannot or 
+   The 400 (Bad Request) status code indicates that the server cannot or
    will not process the request due to something that is perceived to be
    a client error, e.g. an invalid Content-Type or missing parameters.
 

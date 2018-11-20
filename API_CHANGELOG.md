@@ -7,6 +7,7 @@ This file will be updated weekly, if there are notable changes.
 
 ## 2018-11-20
 
+* ADDED new [PoS Integration API](api_pos_integration.md)
 * ADDED `currency` to Checkout Info and Order
 * ADDED `paymentResult` to Checkout Process
 
