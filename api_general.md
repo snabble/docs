@@ -34,7 +34,7 @@ All environments share the same API structure and provide the following endpoint
 
 ## IP Address
 
-The api.* and sftp.* endpoints have fixed IP Addresses. These are guaranteed to stay the same.
+The api.* and sftp.* endpoints have fixed IP addresses. These are guaranteed to stay the same.
 
 | Subdomain               | Address        |
 |-------------------------|----------------|

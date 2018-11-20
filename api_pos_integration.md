@@ -17,14 +17,14 @@ information about api access.
 
 ## Workflow
 
-The integration of snabble into an Point of Sale software system (PoS)
-is implemented through a handover of an identifier from the snabble app
-to the PoS through a standard QR-Code. After the handover the PoS can
-fetch and process the checkout. Finally, it updates it with the
-outcome of the process.
+The integration of snabble into a Point of Sale software system (PoS)
+is implemented through a handover of an identifier from the snabble
+app to the PoS using a standard QR-Code. After the handover the PoS
+can fetch and process the checkout. Finally, it updates it to reflect
+the outcome of the process.
 
-The QR-Code presented to the PoS by the user contains a string of the form
-
+The QR-Code presented by the user contains the identifier of the
+checkout process. It looks like this:
 ```
 snabble:752dd716-ec0c-11e8-8528-68f7286a148f
 ```
@@ -33,20 +33,23 @@ The string after the colon is the identifier of the checkout process.
 
 To build the URL of the process the base URL of the used snabble
 environment (see [General API access:
-Environments](api_general.md#environments)), the identifier of the project
-and the identifier of the checkout is needed. With this the URL has the form
+Environments](api_general.md#environments)), the identifier of the
+project and the identifier of the checkout are required. This is the URL
+template:
 
 ```
 <base URL>/<project id>/pos/checkout/id/<checkout id>
 ```
 ie. `https://api.snabble.io/test-project-12345/pos/checkout/id/752dd716-ec0c-11e8-8528-68f7286a148f`.
 
-After the PoS has accessed the identifier of the checkout process, it
-should update the state of the checkout process to communicate that it
-started to process it. Additionally it might identify itself by
-sending a unique identifier. The service responds with the complete
-updated checkout process. This allows the PoS to process the
-checkout. The call to the service might look like:
+After the PoS has accessed the identifier of the checkout process form
+the QR-Code and has build the URL as above, it should perform a
+request to update the state of the checkout process to
+`processing`. This communicates that it started to handle the checkout
+process. Additionally it might identify itself by sending an unique
+identifier. The service responds with the complete updated checkout
+process, which should be used by PoS to process the checkout. The call
+to the service might look like:
 
 ```
 PATCH /project/pos/checkout/id/752dd716-ec0c-11e8-8528-68f7286a148f HTTP/1.1
@@ -97,9 +100,9 @@ Content-Type: application/json
 ```
 
 After successfully processing the checkout the PoS should update the
-checkout process. First, it should set the state to
-`successful`. Second, it should update the line items and the price to
-reflect the performed checkout.
+checkout process. It should update the line items and the price to
+reflect the performed checkout. Further, it should set the state to
+`successful`.
 
 ```
 PATCH /project/pos/checkout/id/752dd716-ec0c-11e8-8528-68f7286a148f HTTP/1.1
@@ -139,7 +142,7 @@ Client-Token: ...
 ```
 
 If the checkout could not be performed, the PoS should update the
-checkout process and set the state to `failed`. Optionally the PoS can
+checkout process and set its state to `failed`. Optionally the PoS can
 provide an informal `failedReason` message, which describes the
 conditions of the failure.
 
@@ -162,25 +165,26 @@ Client-Token: ...
 | Parameter      | Type           | Default | Description                                                                                                                                    |
 |----------------|----------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | `lineItems`    | `LineItem[]`   |         | List of the line items. See [Line Item](#line-item)                                                                                            |
-| `tax`          | `Object`       |         | Map of tax rates (as string encoded decimals) to portion of the price that was taxed with this rate                                            |
-| `taxNet`       | `Object`       |         | Map of tax rates (as string encoded decimals) to portion of the net price that was taxed with this rate                                        |
-| `netPrice`     | `int`          |         | The net price                                                                                                                                  |
+| `tax`          | `Object`       |         | Map of tax rates (as string encoded decimals) to the portion of the price that was taxed with this rate                                        |
+| `taxNet`       | `Object`       |         | Map of tax rates (as string encoded decimals) to the portion of the net price that was taxed with this rate                                    |
+| `netPrice`     | `int`          |         | Net price                                                                                                                                  |
 | `price`        | `int`          |         | Total price                                                                                                                                    |
 | `state`        | `PaymentState` |         | The [Status of the payment process](api_checkout.md#payment-state). Only `pending`, `processing`, `successful`, `failed` are used in this case |
 | `loyaltyCard`  | `String`       |         | The loyalty card identifier provided by the user                                                                                               |
 | `processedBy`  | `String`       |         | String identifying the PoS which processes the checkout process                                                                                |
-| `failedReason` | `String`       |         | Message describing the conditions under which the checkout process was marked as failed                                                         |
+| `failedReason` | `String`       |         | Message describing the conditions under which the checkout process was marked as failed                                                        |
 
 #### Line Item
 
-| Parameter     | Type     | Default | Description                                                          |
-|---------------|----------|---------|----------------------------------------------------------------------|
-| `scannedCode` | `string` |         | Scanned code                                                         |
-| `amount`      | `int`    |         | Number of products / packages                                        |
-| `weight`      | `int`    | 0       | Weight of product in case of of a weighable (a not packaged) product |
-| `units`       | `int`    | 0       | Number of units in a package in case of bundle or piece product      |
-| `price`       | `int`    |         | Price of the product in case of an encoded price                     |
-| `taxRate`     | `string` |         | Tax rate as string encoded decimal                                   |
+| Parameter     | Type     | Default | Description                                                       |
+|---------------|----------|---------|-------------------------------------------------------------------|
+| `scannedCode` | `string` |         | Scanned code                                                      |
+| `amount`      | `int`    |         | Number of products / packages                                     |
+| `weight`      | `int`    | 0       | Weight of product in case of a weighable (a not packaged) product |
+| `units`       | `int`    | 0       | Number of units in a package in case of bundle or piece product   |
+| `price`       | `int`    |         | The base price of one product / unit                              |
+| `totalPrice`  | `int`    |         | The total price                                                   |
+| `taxRate`     | `string` |         | Tax rate as string encoded decimal                                |
 
 #### Example
 ```
