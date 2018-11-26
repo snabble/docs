@@ -77,6 +77,24 @@ $ curl -H "Client-Token: $CLIENT_TOKEN" https://api.snabble.io/$PROJECT/foo
 
 The REST API uses the standard HTTP verbs and HTTP status codes as defined by [RFC 7231](https://tools.ietf.org/html/rfc7231#section-6).
 
+### Structured errors
+
+The api has a structured errors object to response with further details to known request errors. The structured error object looks like this:
+
+| Property  | Type       | Description                              |
+|-----------|------------|------------------------------------------|
+| type      | `string`   | error type                               |
+| message   | `string`   | error message                            |
+| details   | `Error[]`  | error details                            |
+
+Example:
+```
+{
+   "type": "shop_not_found",
+   "message": "shop with id 'some-shop' not found"
+}
+```
+
 ### Successful 2xx
 The request was successfully received, understood, and accepted
 
@@ -148,6 +166,7 @@ The request contains bad syntax or cannot be fulfilled
    The 405 (Method Not Allowed) status code indicates that the method
    received in the request-line is known by the origin server but not
    supported by the target resource.
+
 
 ### Server Error 5xx
 
