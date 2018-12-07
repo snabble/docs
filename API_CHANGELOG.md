@@ -5,6 +5,13 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2018-12-07
+
+* DEPRECATED `eans` field in
+  [products](api_products.md#product-object). It will be removed on
+  February 1st 2019.
+* REMOVED `boost` field in [products](api_products.md#product-object)
+
 ## 2018-11-20
 
 * ADDED new [PoS Integration API](api_pos_integration.md)

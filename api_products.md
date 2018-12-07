@@ -38,7 +38,6 @@ Example:
    "name" : "Premium-Holzöl",
    "description": "farblos, 750ml",
    "subtitle" : "Aplina",
-   "boost": 1,
    "taxCategory" : "normal",
    "depositProduct": null,
    "outOfStock" : false,
@@ -72,7 +71,6 @@ Product attributes:
 | name              | string   |           | The display name of the product                                                                          |
 | description       | string   | null      | A short description of the product                                                                       |
 | subtitle          | string   | null      | An additional title line for individual use (e.g. brand information)                                     |
-| boost             | int      | null      | *Deprecated* Order value for importance in views (higher is more)                                        |
 | taxCategory       | string   | null      |                                                                                                          |
 | depositProduct    | string   | null      | The SKU of a corresponding product containing the associated deposit article                             |
 | bundledProduct    | string   | null      | The SKU of the product contained in the bundle represented by this product                               |
@@ -84,7 +82,7 @@ Product attributes:
 | forceControl      | bool     | false     | Flag to indicate if a control is necessary                                                               |
 | saleRestriction   | string   | null      | [Restriction rules](#sale-restrictions)                                                                  |
 | saleStop          | bool     | false     | Flag to indicate if there is a sale stop for this product                                                |
-| eans              | []string | []        | List of scannable codes / barcodes which point to this product                                           |
+| eans              | []string | []        | *Deprecated: Please use codes instead.* List of scannable codes / barcodes which point to this product.  |
 | codes             | []object | []        | [Array of code objects](#code-object)                                                                    |
 | price             | int      | null      | The current standard price                                                                               |
 | discountedPrice   | int      | null      | The current price if the product is discounted.                                                          |
