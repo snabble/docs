@@ -65,38 +65,36 @@ Example:
 
 Product attributes:
 
-| Parameter         | Type     | Default   | Description                                                                                              |
-|-------------------|----------|-----------|----------------------------------------------------------------------------------------------------------|
-| sku               | string   |           | The unique id for identification of the product                                                          |
-| name              | string   |           | The display name of the product                                                                          |
-| description       | string   | null      | A short description of the product                                                                       |
-| subtitle          | string   | null      | An additional title line for individual use (e.g. brand information)                                     |
-| taxCategory       | string   | null      |                                                                                                          |
-| depositProduct    | string   | null      | The SKU of a corresponding product containing the associated deposit article                             |
-| bundledProduct    | string   | null      | The SKU of the product contained in the bundle represented by this product                               |
-| outOfStock        | bool     | false     | Flag to indicate if the product is currently available in markets                                        |
-| deleted           | bool     | false     | Flag to indicate that a product does not exist any longer                                                |
-| imageUrl          | string   | null      | The full URL for a product image                                                                         |
-| productType       | string   | "default" | Type of the product: "default", "weighable", "deposit"                                                   |
-| controlIndication | number   | 0         | Indication: -1 no control needed, 1 high control indication                                              |
-| forceControl      | bool     | false     | Flag to indicate if a control is necessary                                                               |
-| saleRestriction   | string   | null      | [Restriction rules](#sale-restrictions)                                                                  |
-| saleStop          | bool     | false     | Flag to indicate if there is a sale stop for this product                                                |
-| eans              | []string | []        | *Deprecated: Please use codes instead.* List of scannable codes / barcodes which point to this product.  |
-| codes             | []object | []        | [Array of code objects](#code-object)                                                                    |
-| price             | int      | null      | The current standard price                                                                               |
-| discountedPrice   | int      | null      | The current price if the product is discounted.                                                          |
-| basePrice         | string   | ""        | Base price (e.g. price per liter) as label.                                                              |
-| weighing          | object   | null      | Additional information for weighable products                                                            |
-| matchingCode      | string   |           | In case of searching products by scannable code, it contains the code which was used to find the product |
-
+| Parameter           | Type       | Default   | Description                                                                                             |
+|---------------------|------------|-----------|---------------------------------------------------------------------------------------------------------|
+| `sku`               | `string`   |           | The unique id for identification of the product                                                         |
+| `name`              | `string`   | ""        | The display name of the product                                                                         |
+| `description`       | `string`   | null      | A short description of the product                                                                      |
+| `subtitle`          | `string`   | null      | An additional title line for individual use (e.g. brand information)                                    |
+| `taxCategory`       | `string`   | null      |                                                                                                         |
+| `depositProduct`    | `string`   | null      | The SKU of a corresponding product containing the associated deposit article                            |
+| `bundledProduct`    | `string`   | null      | The SKU of the product contained in the bundle represented by this product                              |
+| `outOfStock`        | `bool`     | false     | Flag to indicate if the product is currently available in markets                                       |
+| `deleted`           | `bool`     | false     | Flag to indicate that a product does not exist any longer                                               |
+| `imageUrl`          | `string`   | null      | The full URL for a product image                                                                        |
+| `productType`       | `string`   | "default" | Type of the product: "default", "weighable", "deposit"                                                  |
+| `controlIndication` | `number`   | 0         | Indication: -1 no control needed, 1 high control indication                                             |
+| `forceControl`      | `bool`     | false     | Flag to indicate if a control is necessary                                                              |
+| `saleRestriction`   | `string`   | null      | [Restriction rules](#sale-restrictions)                                                                 |
+| `saleStop`          | `bool`     | false     | Flag to indicate if there is a sale stop for this product                                               |
+| `eans`              | `[]string` | []        | *Deprecated: Please use codes instead.* List of scannable codes / barcodes which point to this product. |
+| `codes`             | `[]object` | []        | [Array of code objects](#code-object)                                                                   |
+| `price`             | `int`      | null      | The current standard price                                                                              |
+| `discountedPrice`   | `int`      | null      | The current price if the product is discounted.                                                         |
+| `basePrice`         | `string`   | ""        | Base price (e.g. price per liter) as label.                                                             |
+| `weighing`          | `object`   | null      | Additional information for weighable products                                                           |
 
 ### Code Object
 
 | Name                 | Type    | Default    | Description                                                                                      |
 |----------------------|---------|------------|--------------------------------------------------------------------------------------------------|
-| `code`               | string  | ""         | Scannable code / barcode                                                                         |
-| `transmissionCode`   | string  | null       | In case the POS cannot handle the scannable code / barcode, it contains a POS friendly code      |
+| `code`               | `string`  | ""         | Scannable code / barcode                                                                         |
+| `transmissionCode`   | `string`  | null       | In case the POS cannot handle the scannable code / barcode, it contains a POS friendly code      |
 
 #### Sale restrictions
 
@@ -124,13 +122,13 @@ represent templates for scannable codes recognized by the clients.
 
 Weighing attributes:
 
-| Parameter       | Type     | Default | Description                                                                           |
-|-----------------|----------|---------|---------------------------------------------------------------------------------------|
-| weighedItemIds  | []string | null    | Templates for the scannable codes which encode price or weight information            |
-| pluSet          | []string | null    | PLU, the short code to identify a weighable product                                   |
-| weighByCustomer | bool     | false   | Flag, if the product is prepackaged, ot the customer has to do weighting by himself   |
-| referenceUnit   | string   | null    | The unit in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
-| encodingUnit    | string   | null    | Unit which is used as encoding within the EAN (e.g. "g" when the EAN contains grams)  |
+| Parameter         | Type       | Default | Description                                                                           |
+|-------------------|------------|---------|---------------------------------------------------------------------------------------|
+| `weighedItemIds`  | `[]string` | null    | Templates for the scannable codes which encode price or weight information            |
+| `pluSet`          | `[]string`  | null    | PLU, the short code to identify a weighable product                                   |
+| `weighByCustomer` | `bool`     | false   | Flag, if the product is prepackaged, ot the customer has to do weighting by himself   |
+| `referenceUnit`   | `string`   | null    | The unit in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
+| `encodingUnit`    | `string`   | null    | Unit which is used as encoding within the EAN (e.g. "g" when the EAN contains grams)  |
 
 The supported units are:
 
@@ -162,23 +160,23 @@ Weighing Example:
 
 Result messages are simple status objects which are returned for batch operations.
 
-| Parameter | Type        | Description                                                                           |
-|-----------|-------------|---------------------------------------------------------------------------------------|
-| sku       | string      | The product referenced by the result message                                          |
-| status    | string      | The processing status: "ok" or "error"                                                |
-| message   | string      | A human-readable message describing the processing status                             |
+| Parameter | Type     | Description                                               |
+|-----------|----------|-----------------------------------------------------------|
+| `sku`     | `string` | The product referenced by the result message              |
+| `status`  | `string` | The processing status: "ok" or "error"                    |
+| `message` | `string` | A human-readable message describing the processing status |
 
 ### Statistics Object
 
 Statistics objects are a simple representation of the product statistics.
 
-| Parameter | Type     | Description                                                                           |
-|-----------|----------|---------------------------------------------------------------------------------------|
-| count     | int      | The total product count                                                               |
-| created   | int      | The amount of newly created products                                                  |
-| updated   | int      | The amount of updated products                                                        |
-| deleted   | int      | The amount of deleted products                                                        |
-| inStock   | int      | The amount of products that are in stock                                              |
+| Parameter | Type  | Description                              |
+|-----------|-------|------------------------------------------|
+| `count`   | `int` | The total product count                  |
+| `created` | `int` | The amount of newly created products     |
+| `updated` | `int` | The amount of updated products           |
+| `deleted` | `int` | The amount of deleted products           |
+| `inStock` | `int` | The amount of products that are in stock |
 
 
 ### Content Types
@@ -285,7 +283,9 @@ Returns one product by scannable code, including the matching code
 
 **Content-Type** : application/json
 
-**Data** : [product object](#product-object).
+**Data** : [product object](#product-object), it contains the code
+    which was used to locate the product in the additional field
+    `matchingCode`.
 
 -----------
 
