@@ -5,6 +5,11 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2018-12-13
+
+* ADDED german translation to [Retailer Portal](https://retailer.snabble.io) and [Supervisor](https://retailer.snabble.io/supervisor)
+* ADDED browser language detection and possibility to change language ([Retailer Portal](https://retailer.snabble.io) and [Supervisor](https://retailer.snabble.io/supervisor))
+
 ## 2018-12-07
 
 * DEPRECATED `eans` field in
