@@ -4,12 +4,12 @@
 Snabble supports online payments as well as a transmission of a shopping cart to the retailers cash desk.
 For the transmission, the following QR code formats are supported out of the box.
 
-## QrCodePOS
+## 1. QrCodePOS
 
 With this format, the QR code just contains the ID of the checkout process.
 The cash register is then able to fetch the shopping cart from the snabble POS service, using this id.
 
-## Scanned codes with quantities
+## 2. Scanned codes with quantities
 
 All scanned codes are written into one QR code in a CSV-style (semicolon-separated) format. Each line consists of a quantity and the scanned code of the product, and a header line allows easy detection of this format. For example, one *Duplo (40084015)* and two glasses of *Nutella (4008400401621)* would be encoded as:
 
@@ -29,7 +29,7 @@ For each project on the snabble platform, a different set of delimiters and othe
 |-----------|-----------------|-------------------------------------------------------|
 | maxCodes  | 100             | Maximun number of lines to fit into a single QR code. |
 
-## Repetitions of scanned codes
+## 3. Repetitions of scanned codes
 
 With this encoding, all scanned codes are written into one QR code as if they were scanned one-by-one. By default, the scanned codes are separated by a newline character, so the code contains the codes line by line.
 
