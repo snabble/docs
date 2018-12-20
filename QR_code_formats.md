@@ -7,7 +7,10 @@ For the transmission, the following QR code formats are supported out of the box
 ## 1. QrCodePOS
 
 With this format, the QR code just contains the ID of the checkout process.
-The cash register is then able to fetch the shopping cart from the snabble POS service, using this id.
+The cash register is then able to fetch the shopping cart from the snabble POS service, using this id. The API for communication with the POS service is documented here:
+
+[POS Integration API](api_pos_integration.md)
+
 
 ## 2. Scanned codes with quantities
 

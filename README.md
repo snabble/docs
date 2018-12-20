@@ -16,6 +16,8 @@ HTTP API
 
 [Orders API](api_orders.md)
 
+[POS Integration API](api_pos_integration.md)
+
 [API Changelog](API_CHANGELOG.md)
 
 Other Documentation
