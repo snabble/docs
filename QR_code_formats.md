@@ -1,8 +1,7 @@
-
 # QR code formats
 
-Snabble supports online payments as well as a transmission of a shopping cart to the retailers cash desk.
-For the transmission, the following QR code formats are supported out of the box.
+Snabble supports online payments as well as transmission of a shopping cart to the retailer's cash desk.
+For this transmission, the following QR code formats are supported out of the box.
 
 ## 1. QrCodePOS
 
@@ -24,13 +23,13 @@ snabble;
 
 Lines are separated by a single newline character `\n`. The first line always contains the character sequence `snabble;`.
 
-![QR code encoded codes with XEXEXZ](img/qr-code-encoded-codes-quantity.png)
+![QR code encoded codes with quantities](img/qr-code-encoded-codes-quantity.png)
 
 For each project on the snabble platform, a different set of delimiters and other parameters for the QR code can be configured. The available formatting parameters for this encoding are:
 
 | Name      | Default         | Description                                           |
 |-----------|-----------------|-------------------------------------------------------|
-| maxCodes  | 100             | Maximun number of lines to fit into a single QR code. |
+| maxCodes  | 100             | Maximum number of lines to fit into a single QR code. |
 
 ## 3. Repetitions of scanned codes
 
@@ -55,7 +54,7 @@ For each project on the snabble platform, a different set of delimiters and othe
 | prefix    | ""              | The string at the beginning of the QR code.           |
 | separator | "\n"            | The separator string between two scanned codes.       |
 | suffix    | ""              | A string at the end of the QR code.                   |
-| maxCodes  | 100             | Maximun number of codes to fit into a single QR code. |
+| maxCodes  | 100             | Maximum number of codes to fit into a single QR code. |
 
 The above example with prefix and delimiter: "XE" and suffix: "XZ" will result in the following code:
 
