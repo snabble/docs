@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2019-01-10
+
+* ADDED support for additional [units](api_products.md#supported-units)
+
 ## 2018-12-07
 
 * DEPRECATED `eans` field in

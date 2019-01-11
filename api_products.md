@@ -108,10 +108,19 @@ The supported sale restrictions are:
 
 #### Weighable Products
 
-The price of weighable product depents on information encoded into a
+The term weighable product is not precise. Weighable products should
+be used to map all kinds of not prepackaged products. These might be
+products like fruits that are priced by weight, but also ropes that
+are priced by their length or milk that is priced by volume. The
+mechanism can also be used to model bundles like a bag of bread rolls
+or instore EANs simply naming the price of the product.
+
+The price of a weighable product depends on information encoded into a
 scannable code. There are three cases:
 
-- The code contains the weight in grams
+- The code contains the measurement in the encoding unit. This
+  measurement gets converted into the reference unit which allows the
+  calculation of the price
 
 - The code contains the units in a prepackaged container or bag
 
@@ -125,19 +134,32 @@ Weighing attributes:
 | Parameter         | Type       | Default | Description                                                                           |
 |-------------------|------------|---------|---------------------------------------------------------------------------------------|
 | `weighedItemIds`  | `[]string` | null    | Templates for the scannable codes which encode price or weight information            |
-| `pluSet`          | `[]string`  | null    | PLU, the short code to identify a weighable product                                   |
+| `pluSet`          | `[]string` | null    | PLU, the short code to identify a weighable product                                   |
 | `weighByCustomer` | `bool`     | false   | Flag, if the product is prepackaged, ot the customer has to do weighting by himself   |
 | `referenceUnit`   | `string`   | null    | The unit in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
 | `encodingUnit`    | `string`   | null    | Unit which is used as encoding within the EAN (e.g. "g" when the EAN contains grams)  |
+
+
+##### Supported Units
 
 The supported units are:
 
 | Abbreviation | Description                                                                                                    |
 |--------------|----------------------------------------------------------------------------------------------------------------|
+| ml           | Mililiter                                                                                                      |
+| dl           | Deciliter                                                                                                      |
+| m3           | Cubic meter                                                                                                    |
+| cm3          | Cubic centimeter                                                                                               |
+| m2           | Square meter                                                                                                   |
+| cm2          | Square centimeter                                                                                              |
+| mm           | Millimeter                                                                                                     |
+| cm           | Centimeter                                                                                                     |
+| m            | Meter                                                                                                          |
 | kg           | Kilogram                                                                                                       |
 | g            | Gram                                                                                                           |
+| t            | Tonne                                                                                                          |
 | piece        | The encoded number should be interpreted as number of contained units, i.e. number of bread rolls in a package |
-| price        | The encoded number should be interpreted as total price, i.e. price of a package of different sausages          |
+| price        | The encoded number should be interpreted as total price, i.e. price of a package of different sausages         |
 
 Weighing Example:
 
