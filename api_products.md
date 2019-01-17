@@ -91,10 +91,10 @@ Product attributes:
 
 ### Code Object
 
-| Name                 | Type    | Default    | Description                                                                                      |
-|----------------------|---------|------------|--------------------------------------------------------------------------------------------------|
-| `code`               | `string`  | ""         | Scannable code / barcode                                                                         |
-| `transmissionCode`   | `string`  | null       | In case the POS cannot handle the scannable code / barcode, it contains a POS friendly code      |
+| Name               | Type     | Default | Description                                                                                 |
+|--------------------|----------|---------|---------------------------------------------------------------------------------------------|
+| `code`             | `string` | ""      | Scannable code / barcode                                                                    |
+| `transmissionCode` | `string` | null    | In case the POS cannot handle the scannable code / barcode, it contains a POS friendly code |
 
 #### Sale restrictions
 
@@ -148,6 +148,7 @@ The supported units are:
 |--------------|----------------------------------------------------------------------------------------------------------------|
 | ml           | Mililiter                                                                                                      |
 | dl           | Deciliter                                                                                                      |
+| l            | Liter                                                                                                          |
 | m3           | Cubic meter                                                                                                    |
 | cm3          | Cubic centimeter                                                                                               |
 | m2           | Square meter                                                                                                   |
