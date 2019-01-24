@@ -179,8 +179,8 @@ Example:
 {
     "sku": "a-product",
     "category": "normal",
-    "price": 199,
-    "discountedPrice": "149",
+    "listPrice": 199,
+    "discountedPrice": 149,
     "basePrice": "14.90 €/kg"
 }
 ```
