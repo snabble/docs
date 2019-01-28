@@ -188,7 +188,6 @@ Product attributes:
 | `bundledProduct`    | `string`   | null      | The SKU of the product contained in the bundle                                                            |
 | `outOfStock`        | `bool`     | false     | Flag to indicate if the product is currently available in markets                                         |
 | `deleted`           | `bool`     | false     | Flag to indicate that a product does not exist any longer                                                 |
-| `weighedItemIds`    | `[]string` | null      | Templates for the scannable codes which encode price or weight information                                |
 | `taxCategory`       | `string`   | null      | Identifier of the tax category                                                                            |
 | `weighByCustomer`   | `bool`     | false     | Flag, if the product is prepackaged, or the customer has to do weighting by himself                       |
 | `referenceUnit`     | `string`   | null      | The [unit](#supported-units) in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
@@ -207,7 +206,7 @@ Product attributes:
 | Name               | Type     | Default   | Description                                                                                                        |
 |--------------------|----------|-----------|--------------------------------------------------------------------------------------------------------------------|
 | `code`             | `string` | ""        | Scannable code / barcode                                                                                           |
-| `template`         | `string` | "default" | Identifier of the [code template](#code-templates) used                                                            |
+| `template`         | `string` | "default" | Identifier of the [code template](#code-template) used                                                            |
 | `transmissionCode` | `string` | null      | In case the POS cannot handle the scannable code / barcode, it contains a POS friendly code                        |
 | `encodingUnit`     | `string` | null      | [Unit](#supported-units) which is used as encoding within the scanned code. Overwrites the property of the product |
 
