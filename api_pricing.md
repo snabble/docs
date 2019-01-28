@@ -157,7 +157,7 @@ The actual price.
   "category": "normal",
   "listPrice": 199,
   "discountedPrice": 149,
-  "basePrice": "14.90 €/kg",
+  "basePrice": "14.90 €/kg"
 }
 ```
 
