@@ -5,6 +5,16 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+
+## 2019-01-28
+
+* ADDED [Product Object v2](api_products.md#product-object-v2) representation
+* DEPRECATED [Product Object v1](api_products.md#product-object-v1) representation
+* DEPRECATED `GET /{project}/products/code/{code}`
+* DEPRECATED `GET /{project}/products/weighItemId/{code}`
+* DEPRECATED `GET /{project}/products/search/bySkus`
+* DEPRECATED `GET /{project}/products/bundlesForSku/{bundledSku}`
+
 ## 2019-01-10
 
 * ADDED support for additional [units](api_products.md#supported-units)
