@@ -69,17 +69,24 @@ The supported units are:
 | Abbreviation | Description                                                                                                    |
 |--------------|----------------------------------------------------------------------------------------------------------------|
 | ml           | Milliliter                                                                                                     |
+| cl           | Centiliter                                                                                                     |
 | dl           | Deciliter                                                                                                      |
 | l            | Liter                                                                                                          |
 | m3           | Cubic meter                                                                                                    |
 | cm3          | Cubic centimeter                                                                                               |
 | m2           | Square meter                                                                                                   |
+| m2e-1        | Square meter × 10e-1                                                                                           |
+| dm2          | Square decimeter                                                                                               |
+| m2e-3        | Square meter × 10e-3                                                                                           |
 | cm2          | Square centimeter                                                                                              |
 | mm           | Millimeter                                                                                                     |
 | cm           | Centimeter                                                                                                     |
+| dm           | Decimeter                                                                                                      |
 | m            | Meter                                                                                                          |
-| kg           | Kilogram                                                                                                       |
 | g            | Gram                                                                                                           |
+| dag          | Decagram                                                                                                       |
+| hg           | Hectogram                                                                                                      |
+| kg           | Kilogram                                                                                                       |
 | t            | Tonne                                                                                                          |
 | piece        | The encoded number should be interpreted as number of contained units, i.e. number of bread rolls in a package |
 | price        | The encoded number should be interpreted as total price, i.e. price of a package of different sausages         |
