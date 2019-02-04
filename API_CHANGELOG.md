@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2019-02-04
+
+* ADDED Support for [units](api_products.md#supported-units) `cl`,
+  `m2e-1`, `dm2`, `m2e-3`, `dm`, `dag` and `hg` in product API
 
 ## 2019-01-28
 
