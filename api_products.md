@@ -174,7 +174,7 @@ Example:
    "codes": [
        {
            "code": "0654203316514",
-           "transmissionCode": "1234203316514"
+           "transmissionCode": "1234203316514",
            "template": "default"
        }
    ]
