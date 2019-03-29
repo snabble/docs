@@ -124,19 +124,19 @@ The Shop Information captures the details of the essential for the checkout.
 
 #### Line Item
 
-A Line Item normaly represents a certain amount of a product. But it
+A line item normaly represents a certain amount of a product. But it
 can also used for additional items that are indivisble from the bought
 product like a deposit. Further, it can be used to represent
-promotions like a general discount. The Line Items are hence typed to
+promotions like a general discount. The line items are hence typed to
 distinguish these cases. Also it can refer to another one through the
 `refersTo` property.
 
 
 | Parameter         | Type     | Default | Description                                                                                                                |
 |-------------------|----------|---------|----------------------------------------------------------------------------------------------------------------------------|
-| `id`              | `string` |         | Identifier of the Line Item                                                                                                |
-| `type`            | `string` | default | Type of the Line Item (`default`, `deposit`, `promotion`)                                                                  |
-| `refersTo`        | `string` | null    | Line Item that is related to this one (ie. if the Line Item represents a deposit the id of the line item wich requires it) |
+| `id`              | `string` |         | Identifier of the line item                                                                                                |
+| `type`            | `string` | default | Type of the line item (`default`, `deposit`, `promotion`)                                                                  |
+| `refersTo`        | `string` | null    | Line item that is related to this one (ie. if the line item represents a deposit the id of the line item wich requires it) |
 | `sku`             | `string` |         | SKU of the product                                                                                                         |
 | `amount`          | `int`    |         | Number of products / packages                                                                                              |
 | `weight`          | `int`    | 0       | Weight purchased                                                                                                           |
