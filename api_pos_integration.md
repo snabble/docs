@@ -85,14 +85,11 @@ Content-Type: application/json
       "taxRate" : 19
     }
   ],
-  "tax" : {
-    "19" : 7673
-  },
-  "taxNet" : {
-    "19" : 40382
-  },
+  "taxShares" : [
+    { "rate": "19", "net": "40382", "share": "7673", "total": "48055" }
+  ],
   "netPrice" : 40382,
-  "price" : 48055,
+  "totalPrice" : 48055,
   "state": "processing",
   "processedBy": "pos-1",
   "loyaltyCard": "12345678"
@@ -128,14 +125,11 @@ Client-Token: ...
       "taxRate" : 19
     }
   ],
-  "tax" : {
-    "19" : 7673
-  },
-  "taxNet" : {
-    "19" : 40382
-  },
+  "taxShares" : [
+    { "rate": "19", "net": "40382", "share": "7673", "total": "48055" }
+  ],
   "netPrice" : 40382,
-  "price" : 48055,
+  "totalPrice" : 48055,
   "state": "successful",
   "loyaltyCard": "12345678"
 }
@@ -165,14 +159,22 @@ Client-Token: ...
 | Parameter      | Type           | Default | Description                                                                                                                                    |
 |----------------|----------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | `lineItems`    | `LineItem[]`   |         | List of the line items. See [Line Item](#line-item)                                                                                            |
-| `tax`          | `Object`       |         | Map of tax rates (as string encoded decimals) to the portion of the price that was taxed with this rate                                        |
-| `taxNet`       | `Object`       |         | Map of tax rates (as string encoded decimals) to the portion of the net price that was taxed with this rate                                    |
-| `netPrice`     | `int`          |         | Net price                                                                                                                                  |
-| `price`        | `int`          |         | Total price                                                                                                                                    |
+| `taxShares`    | `TaxShare[]`   | `null`  | List of [tax shares](#tax-shares)                                                                                                              |
+| `netPrice`     | `int`          |         | Net price                                                                                                                                      |
+| `totalPrice`   | `int`          |         | Total price                                                                                                                                    |
 | `state`        | `PaymentState` |         | The [Status of the payment process](api_checkout.md#payment-state). Only `pending`, `processing`, `successful`, `failed` are used in this case |
 | `loyaltyCard`  | `String`       |         | The loyalty card identifier provided by the user                                                                                               |
 | `processedBy`  | `String`       |         | String identifying the PoS which processes the checkout process                                                                                |
 | `failedReason` | `String`       |         | Message describing the conditions under which the checkout process was marked as failed                                                        |
+
+#### Tax Shares
+
+| Parameter | Type     | Default | Description                        |
+|-----------|----------|---------|------------------------------------|
+| `rate`    | `string` |         | Tax rate as string encoded decimal |
+| `net`     | `int`    |         | Net portion                        |
+| `share`   | `int`    |         | Tax share for this rate            |
+| `total`   | `int`    |         | The total                          |
 
 #### Line Item
 
