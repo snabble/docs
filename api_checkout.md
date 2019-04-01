@@ -49,14 +49,16 @@ The payload is a JSON document of the specified type.
 
 A cart item contains following information:
 
-| Parameter     | Type     | Default | Description                                                          |
-|---------------|----------|---------|----------------------------------------------------------------------|
-| `sku`         | `string` |         | SKU of the product                                                   |
-| `amount`      | `int`    |         | Number of products                                                   |
-| `weight`      | `int`    | 0       | Weight of product in case of a weighable (a not packaged) product    |
-| `units`       | `int`    | 0       | Number of units in a package in case of bundle or piece product      |
-| `price`       | `int`    | 0       | Price of the product in case of an encoded price                     |
-| `scannedCode` | `string` |         | Scanned code                                                         |
+| Parameter     | Type     | Default | Description                                                       |
+|---------------|----------|---------|-------------------------------------------------------------------|
+| `id`          | `string` | null    | ID of the item                                                    |
+| `sku`         | `string` |         | SKU of the product                                                |
+| `amount`      | `int`    |         | Number of products                                                |
+| `weight`      | `int`    | null    | Weight of product in case of a weighable (a not packaged) product |
+| `weightUnit`  | `string` | null    | Unit of the weight                                                |
+| `units`       | `int`    | null    | Number of units in a package in case of bundle or piece product   |
+| `price`       | `int`    | null    | Price of the product in case of an encoded price                  |
+| `scannedCode` | `string` |         | Scanned code                                                      |
 
 Example:
 
@@ -66,8 +68,8 @@ Example:
   "shopID": "shop-01",
   "items": [
     {"sku": "1", "amount": 2, "scannedCode": "0000000000001" },
-    {"sku": "2", "amount": 1, "weight": 102, "scannedCode": "0000000000002"},
-    {"sku": "3", "amount": 42, "scannedCode": "0000000000003"}
+    {"sku": "2", "amount": 1, "weight": 102, "weightUnit": "g", "scannedCode": "0000000000002"},
+    {"sku": "3", "amount": 42, "scannedCode": "0000000000003"},
     {"sku": "4", "amount": 1, "units": 6, "scannedCode": "000000000004"},
     {"sku": "5", "amount": 1, "price": 129, "scannedCode": "0000000000005"},
   ],
@@ -122,21 +124,32 @@ The Shop Information captures the details of the essential for the checkout.
 
 #### Line Item
 
-| Parameter         | Type     | Default | Description                                                                                                        |
-|-------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------|
-| `sku`             | `string` |         | SKU of the product                                                                                                |
-| `amount`          | `int`    |         | Number of products / packages                                                                                     |
-| `weight`          | `int`    | 0       | Weight purchased                                                                                                  |
-| `weightUnit`      | `string` |         | Unit of the weight                                                                                                |
-| `referenceUnit`   | `string` |         | Reference unit for weighable item, Details: [Product API: weighable products](api_products.md#weighable-products) | 
-| `units`           | `int`    | 0       | Number of units in a package in case of bundle or piece product                                                   |
-| `price`           | `int`    |         | Price of the product for single unit, piece, weightUnit, etc                                                      |
-| `priceOrigin`     | `string` |         | Origin of the price (`master` price from the products list, `client` the price was provided by the client)        |
-| `totalPrice`      | `int`    |         | Total price of the line item                                                                                      |
-| `name`            | `string` |         | Name of the product                                                                                               |
-| `taxRate`         | `string` |         | Tax rate as string encoded decimal                                                                                |
-| `scannedCode`     | `string` |         | Scanned code                                                                                                      |
-| `saleRestriction` | `string` |         | Restriction for product e.g. min age                                                                              |
+A line item normaly represents a certain amount of a product. But it
+can also used for additional items that are indivisble from the bought
+product like a deposit. Further, it can be used to represent
+promotions like a general discount. The line items are hence typed to
+distinguish these cases. Also it can refer to another one through the
+`refersTo` property.
+
+
+| Parameter         | Type     | Default | Description                                                                                                                |
+|-------------------|----------|---------|----------------------------------------------------------------------------------------------------------------------------|
+| `id`              | `string` |         | Identifier of the line item                                                                                                |
+| `type`            | `string` | default | Type of the line item (`default`, `deposit`, `promotion`)                                                                  |
+| `refersTo`        | `string` | null    | Line item that is related to this one (ie. if the line item represents a deposit the id of the line item wich requires it) |
+| `sku`             | `string` |         | SKU of the product                                                                                                         |
+| `amount`          | `int`    |         | Number of products / packages                                                                                              |
+| `weight`          | `int`    | 0       | Weight purchased                                                                                                           |
+| `weightUnit`      | `string` |         | Unit of the weight                                                                                                         |
+| `referenceUnit`   | `string` |         | Reference unit for weighable item, Details: [Product API: weighable products](api_products.md#weighable-products)          |
+| `units`           | `int`    | 0       | Number of units in a package in case of bundle or piece product                                                            |
+| `price`           | `int`    |         | Price of the product for single unit, piece, weightUnit, etc                                                               |
+| `priceOrigin`     | `string` |         | Origin of the price (`master` price from the products list, `client` the price was provided by the client)                 |
+| `totalPrice`      | `int`    |         | Total price of the line item                                                                                               |
+| `name`            | `string` |         | Name of the product                                                                                                        |
+| `taxRate`         | `string` |         | Tax rate as string encoded decimal                                                                                         |
+| `scannedCode`     | `string` |         | Scanned code                                                                                                               |
+| `saleRestriction` | `string` |         | Restriction for product e.g. min age                                                                                       |
 
 Example:
 
@@ -182,16 +195,20 @@ Example:
       },
       "lineItems" : [
          {
+            "id": "e25bc1ee-5233-11e9-9e12-68f7286a148f",
+            "type": "default",
             "totalPrice" : 798,
             "amount" : 2,
             "name" : "Kugelschreiber tarent rot",
             "price" : 399,
             "taxRate" : "19",
-            "sku" : "1",
+             "sku" : "1",
             "scannedCode": "0000000000001",
             "saleRestriction": "min_age_18"
          },
          {
+            "id": "ecac5c4e-5233-11e9-b17e-68f7286a148f",
+            "type": "default",
             "price" : 1099,
             "name" : "tarent logo-Cap grau",
             "totalPrice" : 1099,
@@ -202,6 +219,8 @@ Example:
             "saleRestriction": ""
          },
          {
+            "id": "f660bac8-5233-11e9-a689-68f7286a148f",
+            "type": "default",
             "amount" : 42,
             "totalPrice" : 46158,
             "name" : "tarent logo-Cap rot",
