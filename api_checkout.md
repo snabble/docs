@@ -307,7 +307,7 @@ Possible values are:
 
 ### Payment Result
 
-Example: 
+Example:
 ```
 {
    "transactionID": "transaction-id-1234",
@@ -494,13 +494,15 @@ as input of [Create Checkout Process](#create-checkout-process).
 
 ### Possible structured errors
 
-More information to structured errors in [General API](api_general.md#structured-errors)
+More information on structured errors in [General API](api_general.md#structured-errors)
 
-| Type                | Description                                                                             |
-|---------------------|-----------------------------------------------------------------------------------------|
-| `shop_not_found`    | [shop for provided shopID](api_shops.md) does not exists                                |
-| `bad_shop_id`       | The provided `shopID` is either not present or invalid                                  |
-| `invalid_cart_item` | cart item errors: api returns an array of [lineItemErrors](#LineItemError) in `details` |  
+| Type                  | Description                                                                                                       |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------|
+| `shop_not_found`      | [shop for provided shopID](api_shops.md) does not exists                                                          |
+| `bad_shop_id`         | The provided `shopID` is either not present or invalid                                                            |
+| `no_available_method` | No payment method is available                                                                                    |
+| `invalid_cart_item`   | One or multiple cart items are invalid. The api returns an array of [lineItemErrors](#LineItemError) in `details` |
+
 
 #### LineItemError
 
