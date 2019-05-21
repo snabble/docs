@@ -16,12 +16,12 @@ The cash register is then able to fetch the shopping cart from the snabble POS s
 All scanned codes are written into one QR code in a CSV-style (semicolon-separated) format. Each line consists of a quantity and the scanned code of the product, and a header line allows easy detection of this format. For example, one *Duplo (40084015)* and two glasses of *Nutella (4008400401621)* would be encoded as:
 
 ````
-snabble;X
+snabble;1;1
 1;40084015
 2;4008400401621
 ````
 
-Lines are separated by a single newline character `\n`. The first line always starts with the character sequence `snabble;`. The value `X` in this line specifies the total number of QR codes that need to be scanned by the cash register to read the complete purchase, in case it does not fit into a single code. 
+Lines are separated by a single newline character `\n`. The first line always starts with the character sequence `snabble;`, followed by two integer values, `N` and `M`. The value `M` specifies the total number of QR codes that need to be scanned by the cash register to read the complete purchase, in case it does not fit into a single code. The value `N` specifies the number of this QR code within the series of codes. For example, a single QR code will start with the header line `snabble;1;1`, and two codes would have the headers `snabble;1;2` and `snabble;2;2`, respectively. 
 
 ![QR code encoded codes with quantities](img/qr-code-encoded-codes-quantity.png)
 
