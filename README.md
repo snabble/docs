@@ -18,6 +18,8 @@ HTTP API
 
 [POS Integration API](api_pos_integration.md)
 
+[Virtual POS Integration](api_vpos.md)
+
 [API Changelog](API_CHANGELOG.md)
 
 Other Documentation
