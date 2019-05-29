@@ -5,6 +5,9 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2019-05-29
+* ADDED `customerCardPrice` to [`price`](#price-object) and `scanMessage` to [product v2 object](api_products.md#product-object-v2)
+
 ## 2019-02-04
 
 * ADDED Support for [units](api_products.md#supported-units) `cl`,
