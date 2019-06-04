@@ -157,16 +157,18 @@ The actual price.
   "category": "normal",
   "listPrice": 199,
   "discountedPrice": 149,
+  "customerCardPrice": 129,
   "basePrice": "14.90 €/kg"
 }
 ```
 
-| Parameter       | Type   | Description                                       |
-|-----------------|--------|---------------------------------------------------|
-| category        | string | id of the `PricingCategory`                       |
-| listPrice       | int64  | list price of the product in this category        |
-| discountedPrice | int64  | discounted price for the product in this category |
-| basePrice       | string | base price for the product in this category       |
+| Parameter         | Type   | Description                                                   |
+|-------------------|--------|---------------------------------------------------------------|
+| category          | string | id of the `PricingCategory`                                   |
+| listPrice         | int64  | list price of the product in this category                    |
+| discountedPrice   | int64  | discounted price for the product in this category             |
+| customerCardPrice | int64  | reduced price for customers owning a loyalty or customer card |
+| basePrice         | string | base price for the product in this category                   |
 
 
 ### `PricingBatchUpdate` Object
@@ -181,17 +183,19 @@ Example:
     "category": "normal",
     "listPrice": 199,
     "discountedPrice": 149,
+    "customerCardPrice": 129,
     "basePrice": "14.90 €/kg"
 }
 ```
 
-| Parameter       | Type   | Description                                       |
-|-----------------|--------|---------------------------------------------------|
-| sku             | string | sku of the product                                |
-| category        | string | id of the `PricingCategory`                       |
-| listPrice       | int64  | list price of the product in this category        |
-| discountedPrice | int64  | discounted price for the product in this category |
-| basePrice       | string | base price for the product in this category       |
+| Parameter         | Type   | Description                                                   |
+|-------------------|--------|---------------------------------------------------------------|
+| sku               | string | sku of the product                                            |
+| category          | string | id of the `PricingCategory`                                   |
+| listPrice         | int64  | list price of the product in this category                    |
+| discountedPrice   | int64  | discounted price for the product in this category             |
+| customerCardPrice | int64  | reduced price for customers owning a loyalty or customer card |
+| basePrice         | string | base price for the product in this category                   |
 
 ### `PricingBatchUpdateResultMessage` Object
 
