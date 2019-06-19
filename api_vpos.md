@@ -40,7 +40,7 @@ Checkouts are represented through the following data structure:
       "name": "Deposit",
       "amount": "2",
       "price": 8,
-      "taxRate": 0,
+      "taxRate": "0",
       "totalPrice": 16
     },
     {
@@ -50,7 +50,7 @@ Checkouts are represented through the following data structure:
       "name": "Wine promotion",
       "amount": "1",
       "price": -38,
-      "taxRate": 0,
+      "taxRate": "0",
       "totalPrice": 16
     },
     {
@@ -64,7 +64,7 @@ Checkouts are represented through the following data structure:
       "amount": "1",
       "price": 199,
       "referenceUnit": "kg",
-      "taxRate": 7,
+      "taxRate": "7",
       "totalPrice": 8,
       "scannedCode": "0000000000420"
     },
