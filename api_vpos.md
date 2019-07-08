@@ -45,7 +45,7 @@ Checkouts are represented through the following data structure:
     },
     {
       "id": "aded2a10-521f-11e9-96a0-68f7286a148f",
-      "type": "promotion",
+      "type": "discount",
       "refersTo": "54ddafde-5207-11e9-b1c7-68f7286a148f",
       "name": "Wine promotion",
       "amount": "1",
@@ -140,8 +140,8 @@ Checkouts are represented through the following data structure:
 
 | Parameter         | Type      | Default   | Description                                                                                                                  |
 |-------------------|-----------|-----------|------------------------------------------------------------------------------------------------------------------------------|
-| `id`              | `string`  |           | Identifier of the line item                                                                                                  |
-| `type`            | `string`  | `default` | Type of the line item (`default`, `deposit`, `promotion`)                                                                    |
+| `id`              | `string`  |           | Identifier of the line item                                                                                                   |
+| `type`            | `string`  | `default` | Type of the line item (`default`, `deposit`, `giveaway`, `discount`)                                                         |
 | `refersTo`        | `string`  | `null`    | line item that is related to this one (i.e. if the line item represents a deposit the id of the line item which requires it) |
 | `sku`             | `string`  | `null`    | SKU of the product                                                                                                           |
 | `amount`          | `int`     |           | Number of products / packages                                                                                                |
@@ -227,7 +227,7 @@ the prices, the tax rates, the names and the sale restrictions.
 
 The service responds with a completed checkout containing the missing
 information. Further it might add additional line items that represent
-promotions or deposits.
+promotions (like discounts or additional items) or deposits.
 
 #### Request
 
