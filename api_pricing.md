@@ -20,6 +20,7 @@ access](api_general.md) for general information about api access.
 ### Single pricing operations
 
 * [Get pricing](#get-pricing): `GET /{project}/pricing/products/sku/{sku}`
+* [Delete pricing](#delete-pricing): `DELETE /{project}/pricing/products/sku/{sku}`
 * [Update pricing](#update-pricing): `PUT /{project}/pricing/products/sku/{sku}`
 * [Batch update pricing](#batch-update-pricing): `POST /{project}/pricing/_batch`
 
@@ -301,6 +302,18 @@ Returns a pricing.
 **Content-Type** : application/json
 
 **Data** : [Pricing](#pricing-object)
+
+-----------
+
+### Delete `Pricing`
+
+`DELETE /{project}/pricing/products/sku/{sku}`
+
+Deletes a pricing.
+
+**Required permissions** : pricingWrite
+
+#### Success Response 200 OK
 
 -----------
 
