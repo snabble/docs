@@ -19,6 +19,7 @@ information about api access.
 
 * [Batch import](#batch-import): `POST /{project}/products/_batch`
 * [Request products](#request-products): `GET /{project}/products`
+* [Delete products](#delete-products): `DELETE /{project}/products`
 * [Find products by SKUs](#find-products-by-skus) `GET /{project}/products/search/bySkus` (**Deprecated**)
 * [Find products by bundled SKU](#find-products-by-bundled-sku): `GET /{project}/products/bundlesForSku/{bundledSku}` (**Deprecated**)
 
@@ -582,6 +583,21 @@ All parameters are optional.
 * [application/vnd.snabble.product.stream.v2+x-ndjson](#product-json-stream-v2)
 * [application/x-ndjson](#product-json-stream-v1) (**Deprecated**)
 * [application/vnd.snabble.product.stream.v1+x-ndjson](#product-json-stream-v1) (**Deprecated**)
+
+-----------
+
+## Delete products
+`DELETE /{project}/products`
+
+Deletes all products of a project.
+
+**Required permissions** : productsWrite
+
+### Request
+**Example**:
+`DELETE /example-project/products`
+
+### Success Response `200 OK`
 
 -----------
 
