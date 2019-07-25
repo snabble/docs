@@ -2,7 +2,7 @@
 
 snabble is able to use a virtual Point of Sale (vPOS) to integrate
 into the systems of a retailer. The vPOS acts like a usual Point of
-Sale system (POS), but hands the processing of the checkout over to
+Sale system (PoS), but hands the processing of the checkout over to
 snabble.
 
 The vPOS is used in the checkout flow on two points: First it is used
@@ -158,7 +158,6 @@ Checkouts are represented through the following data structure:
 | `errors`          | `[]Error` | `null`    | List of errors                                                                                                               |
 
 
-
 ### Error
 
 In case of an error the checkout or the line item might contain a list
@@ -258,6 +257,7 @@ Content-Type: application/json
 
 {
   "shopId": "1",
+  "loyaltyCard": "...",
   "items": [
     {
       "id": "54ddafde-5207-11e9-b1c7-68f7286a148f",
@@ -273,7 +273,7 @@ Content-Type: application/json
     }
   ],
   "taxShares" : [
-    { "rate": "19", "net": "200", "share": "38", "total": "238" }
+    { "rate": "19", "net": 200, "share": 38, "total": 238 }
   ],
   "netPrice" : 200,
   "totalPrice" : 238
@@ -319,7 +319,7 @@ Accept: application/json
     }
   ],
   "taxShares" : [
-    { "rate": "19", "net": "200", "share": "38", "total": "238" }
+    { "rate": "19", "net": 200, "share": 38, "total": 238 }
   ],
   "netPrice" : 200,
   "totalPrice" : 238,
