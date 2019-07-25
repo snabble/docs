@@ -8,9 +8,14 @@ This file will be updated weekly, if there are notable changes.
 ## 2019-07-25
 * ADDED [endpoint to delete all products of a project](api_products.md#delete-produts)
 * ADDED [endpoint to delete a pricing](api_pricing.md#delete-pricing)
+* ADDED [batch endpoint for batch update
+  pricings](api_pricing.md#batch-update-pricing) and clearified
+  documentation
 
 ## 2019-05-29
-* ADDED `customerCardPrice` to [`price`](#price-object) and `scanMessage` to [product v2 object](api_products.md#product-object-v2)
+* ADDED `customerCardPrice` to [`price`](#price-object) and
+  `scanMessage` to [product v2
+  object](api_products.md#product-object-v2)
 
 ## 2019-02-04
 

@@ -22,7 +22,9 @@ access](api_general.md) for general information about api access.
 * [Get pricing](#get-pricing): `GET /{project}/pricing/products/sku/{sku}`
 * [Delete pricing](#delete-pricing): `DELETE /{project}/pricing/products/sku/{sku}`
 * [Update pricing](#update-pricing): `PUT /{project}/pricing/products/sku/{sku}`
-* [Batch update pricing](#batch-update-pricing): `POST /{project}/pricing/_batch`
+* [Batch update pricing](#batch-update-pricing): `POST /{project}/pricing/products/_batch`
+* [Batch update prices](#batch-update-prices): `POST /{project}/pricing/_batch`
+
 
 ## Data Model
 
@@ -171,10 +173,40 @@ The actual price.
 | customerCardPrice | int64  | reduced price for customers owning a loyalty or customer card |
 | basePrice         | string | base price for the product in this category                   |
 
-
 ### `PricingBatchUpdate` Object
 
-Batch update for pricing.
+Batch update for pricings.
+
+Example:
+
+```
+{
+    "op": "put',
+    "item": {
+        "sku": "a-product",
+        "prices": [ … ]
+    }
+}
+```
+| Parameter | Type    | Description                                                   |
+|-----------|---------|---------------------------------------------------------------|
+| op        | string  | `put` to create or update a pricing, or `delete` to delete it |
+| item      | Pricing | [A `Pricing` Object](#pricing-object)                         |
+
+### `PricingBatchUpdateResultMessage` Object
+
+Result messages are simple status objects which are returned for batch operations.
+
+| Parameter | Type   | Description                                               |
+|-----------|--------|-----------------------------------------------------------|
+| sku       | string | The product referenced by the result message              |
+| status    | string | The processing status: "ok" or "error"                    |
+| message   | string | A human-readable message describing the processing status |
+
+
+### `PriceBatchUpdate` Object
+
+Batch update for prices.
 
 Example:
 
@@ -198,7 +230,7 @@ Example:
 | customerCardPrice | int64  | reduced price for customers owning a loyalty or customer card |
 | basePrice         | string | base price for the product in this category                   |
 
-### `PricingBatchUpdateResultMessage` Object
+### `PriceBatchUpdateResultMessage` Object
 
 Result messages are simple status objects which are returned for batch operations.
 
@@ -343,7 +375,7 @@ Update a pricing.
 
 ### Batch Update `Pricing`
 
-`POST /{project}/pricing/_batch`
+`POST /{project}/pricing/products/_batch`
 
 Update a batch of pricings.
 
@@ -360,3 +392,25 @@ Update a batch of pricings.
 **Content-Type** : application/json
 
 **Data** : JSON stream of [PricingBatchUpdateResultMessage](#pricingbatchupdateresultmessage-object)
+
+-----------
+
+### Batch Update `Prices`
+
+`POST /{project}/pricing/_batch`
+
+Update a batch of prices.
+
+**Required permissions**: pricingWrite
+
+#### Request
+
+**Content-Type** : application/x-ndjson
+
+**Data** : JSON stream of [PriceBatchUpdate objects](#pricebatchupdate-object)
+
+#### Success Response 200 OK
+
+**Content-Type** : application/json
+
+**Data** : JSON stream of [PriceBatchUpdateResultMessage](#pricebatchupdateresultmessage-object)
