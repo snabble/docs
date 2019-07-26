@@ -502,6 +502,7 @@ More information on structured errors in [General API](api_general.md#structured
 | `bad_shop_id`         | The provided `shopID` is either not present or invalid                                                            |
 | `no_available_method` | No payment method is available                                                                                    |
 | `invalid_cart_item`   | One or multiple cart items are invalid. The api returns an array of [lineItemErrors](#LineItemError) in `details` |
+| `multiple_errors`     | Multiple of the above errors occurred. The api returns them as an array of [structured errors](api_general.md#structured-errors) in `details` |
 
 
 #### LineItemError
