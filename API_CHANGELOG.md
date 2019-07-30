@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2019-07-30
+* ADDED customer.loyaltyCard field to [order](api_orders.md#order)
+* ADDED sesssion field to [order](api_orders.md#order)
+
 ## 2019-07-25
 * ADDED [endpoint to delete all products of a project](api_products.md#delete-produts)
 * ADDED [endpoint to delete a pricing](api_pricing.md#delete-pricing)
