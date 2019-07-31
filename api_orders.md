@@ -22,7 +22,7 @@ This documentation describes the snabble API endpoints related to the
 | `date`                | `date`           | The date on which the order was contracted                                                    |
 | `createdAt`           | `date`           | The date on which the order was processed                                                     |
 | `clientID`            | `string`         | The app ID                                                                                    |
-| `customer.loyaltyCard`| `string`         | The customer loyalty Card ID
+| `customer.loyaltyCard`| `string`         | The loyalty card number used
 | `shopID`              | `string`         | ID of the in which the order was contracted                                                   |
 | `shop.name`           | `string`         | Name of the Shop (see [Shops API](api_shops.md#shop))                                         |
 | `shop.externalID`     | `string`         | An identifier for the provided by external sources (see [Shops API](api_shops.md#shop))       |
