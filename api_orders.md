@@ -9,7 +9,7 @@ This documentation describes the snabble API endpoints related to the
 
 * [Get orders](#get-orders): `GET /{project}/orders`
 * [Get order](#get-order): `GET /{project}/orders/{id}`
-* [Get order statistics](#get-order-statistics): `GET /{project}/orders/statistics}`
+* [Get order statistics](#get-order-statistics): `GET /{project}/orders/statistics`
 
 ## Model
 
