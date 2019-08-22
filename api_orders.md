@@ -9,7 +9,7 @@ This documentation describes the snabble API endpoints related to the
 
 * [Get orders](#get-orders): `GET /{project}/orders`
 * [Get order](#get-order): `GET /{project}/orders/{id}`
-* [Get order statistics](#get-order-statistics): `GET /{project}/orders/statistics`
+* [Get order statistics](#get-order-statistics): `GET /{project}/orders/statistics` (**Deprecated**)
 
 ## Model
 
@@ -111,6 +111,8 @@ Example:
 
 ### Order Statistic
 
+(**Deprecated**)
+
 | Path            | Type   | Description                        |
 |-----------------|--------|------------------------------------|
 | `count`         | `int`  | Number of orders                   |
@@ -185,6 +187,8 @@ Get a order.
 
 ## Get order statistics
 `GET /{project}/orders/statistics?from={fromDate}&to={toDate}`
+
+(**Deprecated**)
 
 Get aggregates on orders for the given time range. Provides the total
 number of orders and the transaction volume for each day in the time
