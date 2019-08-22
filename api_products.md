@@ -11,8 +11,6 @@ information about api access.
 * [Update product](#update-product): `PUT /{project}/products/sku/{sku}`
 * [Delete product](#delete-product): `DELETE /{project}/products/sku/{sku}`
 * [Find product by PLU](#find-product-by-plu): `GET /{project}/products/plu/{plu}`
-* [Find product by scannable code](#find-product-by-scannable-code): `GET /{project}/products/code/{code}` (**Deprecated**)
-* [Find product by weigh item id](#find-product-by-weigh-item-id): `GET /{project}/products/weighItemId/{code}` (**Deprecated**)
 
 
 ### Multiple products
@@ -20,8 +18,6 @@ information about api access.
 * [Batch import](#batch-import): `POST /{project}/products/_batch`
 * [Request products](#request-products): `GET /{project}/products`
 * [Delete products](#delete-products): `DELETE /{project}/products`
-* [Find products by SKUs](#find-products-by-skus) `GET /{project}/products/search/bySkus` (**Deprecated**)
-* [Find products by bundled SKU](#find-products-by-bundled-sku): `GET /{project}/products/bundlesForSku/{bundledSku}` (**Deprecated**)
 
 ### Other operations
 
@@ -208,7 +204,7 @@ Product attributes:
 | `saleRestriction`   | `string`   | null      | [Restriction rules](#sale-restrictions)                                                                       |
 | `saleStop`          | `bool`     | false     | Flag to indicate if there is a sale stop for this product                                                     |
 | `pluSet`            | `[]string` | null      | PLU, the short code to identify a weighable product                                                           |
-| `scanMessage`       | `string`   | null      | Identifier of a message shown to the user after scanning a product (e.g. a product has more than one package ) |  
+| `scanMessage`       | `string`   | null      | Identifier of a message shown to the user after scanning a product (e.g. a product has more than one package ) |
 
 
 #### Code Object v2
@@ -498,44 +494,6 @@ Returns one product by PLU
 
 -----------
 
-## Find product by scannable code
-
-**Deprecated**
-
-`GET /{project}/products/code/{code}`
-
-Returns one product by scannable code, including the matching code
-
-**Required permissions** : productsRead
-
-### Success Response `200 OK`
-
-**Consumes** : application/json
-
-**Data** : [product object](#product-object-v1), it contains the code
-    which was used to locate the product in the additional field
-    `matchingCode`.
-
------------
-
-## Find product by weigh item id
-
-**Deprecated**
-
-`GET /{project}/products/weighItemId/{code}`
-
-Returns one product by weigh item id
-
-**Required permissions** : productsRead
-
-### Success Response `200 OK`
-
-**Content-Type** : application/json
-
-**Data** : [product object](#product-object).
-
------------
-
 ## Batch import
 
 `POST /{project}/products/_batch`
@@ -598,55 +556,6 @@ Deletes all products of a project.
 `DELETE /example-project/products`
 
 ### Success Response `200 OK`
-
------------
-
-## Find products by SKUs
-`GET /{project}/products/search/bySkus`
-
-Returns the unique set of products for the requested SKUs.
-If none of the SKUs could be found or if none are given this returns an emtpy array.
-
-**Required permissions** : productsRead
-
-### Request
-**Parameters** :
-
-| Name  | Description |
-| ------------- | ------------- |
-| skus | List of the skus of the products that should be returned. |
-
-**Example**:
-`GET /example-project/products/search/bySkus?skus=42&skus=43&sku=77`
-
-### Success Response `200 OK`
-
-**Produces** :
-
-* [application/vnd.snabble.product.list.v2+json](#product-list-v2)
-* [application/json](#product-list-v1) (**Deprecated**)
-* [application/vnd.snabble.product.list.v1+json](#product-list-v1) (**Deprecated**)
-
-
------------
-
-## Find products by bundled sku
-
-**Deprecated**
-
-`GET /{project}/products/bundlesForSku/{sku}`
-
-Returns all bundles for requested SKU
-
-**Required permissions** : productsRead
-
-### Success Response `200 OK`
-
-**Produces** :
-
-* [application/vnd.snabble.product.list.v2+json](#product-list-v2)
-* [application/json](#product-list-v1) (**Deprecated**)
-* [application/vnd.snabble.product.list.v1+json](#product-list-v1) (**Deprecated**)
 
 -----------
 
