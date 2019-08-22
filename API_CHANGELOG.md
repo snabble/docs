@@ -10,6 +10,7 @@ This file will be updated weekly, if there are notable changes.
 * REMOVED `GET /{project}/products/weighItemId/{code}`
 * REMOVED `GET /{project}/products/search/bySkus`
 * REMOVED `GET /{project}/products/bundlesForSku/{bundledSku}`
+* DEPRECATED [Get order statistics](#get-order-statistics): `GET /{project}/orders/statistics`
 
 ## 2019-07-30
 * ADDED customer.loyaltyCard field to [order](api_orders.md#order)
