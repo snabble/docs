@@ -342,29 +342,6 @@ Example:
 |------------|------------|-------------------------------------------------|
 | `products` | `[]object` | List of [Product Object v2](#product-object-v2) |
 
-### Product List v1
-
-**Deprecated**: Please, use the model v2.
-
-*MIME type*: `application/vnd.snabble.product.list.v1+json`
-
-Example:
-```
-{
-   "products": [
-      {
-         "sku" : "1120325205",
-         "name" : "Premium-Holzöl",
-         // …
-      }
-   ]
-}
-```
-
-| Parameter  | Type       | Description                                     |
-|------------|------------|-------------------------------------------------|
-| `products` | `[]object` | List of [Product Object v1](#product-object-v1) |
-
 ### Product JSON Stream v2
 
 *MIME type*: `application/vnd.snabble.product.v2+x-ndjson`
