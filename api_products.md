@@ -212,7 +212,7 @@ Product attributes:
 | Name               | Type     | Default   | Description                                                                                                        |
 |--------------------|----------|-----------|--------------------------------------------------------------------------------------------------------------------|
 | `code`             | `string` | ""        | Scannable code / barcode                                                                                           |
-| `template`         | `string` | "default" | Identifier of the [code template](#code-template) used                                                              |
+| `template`         | `string` | "default" | Identifier of the [code template](#code-template) used                                                             |
 | `transmissionCode` | `string` | null      | In case the POS cannot handle the scannable code / barcode, it contains a POS friendly code                        |
 | `encodingUnit`     | `string` | null      | [Unit](#supported-units) which is used as encoding within the scanned code. Overwrites the property of the product |
 
@@ -576,9 +576,3 @@ Return simple statistics about the products in a time period ranging from a sele
 
 
 ### Success Response `200 OK`
-
-**Produces** :
-
-* [application/vnd.snabble.product.list.v2+json](#product-list-v2)
-* [application/json](#product-list-v1) (**Deprecated**)
-* [application/vnd.snabble.product.list.v1+json](#product-list-v1) (**Deprecated**)
