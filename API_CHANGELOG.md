@@ -5,6 +5,12 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2019-08-22
+* REMOVED `GET /{project}/products/code/{code}`
+* REMOVED `GET /{project}/products/weighItemId/{code}`
+* REMOVED `GET /{project}/products/search/bySkus`
+* REMOVED `GET /{project}/products/bundlesForSku/{bundledSku}`
+
 ## 2019-07-30
 * ADDED customer.loyaltyCard field to [order](api_orders.md#order)
 * ADDED sesssion field to [order](api_orders.md#order)
