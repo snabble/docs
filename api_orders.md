@@ -21,6 +21,7 @@ This documentation describes the snabble API endpoints related to the
 | `project`             | `string`         | The id of the Project                                                                         |
 | `date`                | `date`           | The date on which the order was contracted                                                    |
 | `createdAt`           | `date`           | The date on which the order was processed                                                     |
+| `finalizedAt`          | `date`           | The date on which the order was finalized (i.e. the time the order was paid)                   |
 | `clientID`            | `string`         | The app ID                                                                                    |
 | `customer.loyaltyCard`| `string`         | The loyalty card number used
 | `shopID`              | `string`         | ID of the in which the order was contracted                                                   |

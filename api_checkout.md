@@ -272,6 +272,8 @@ Process attributes:
 | paymentResult      | `object`       | nil     | [Information from payment system](#payment-result), i.e. transaction id, state                     |
 | modified           | `bool`         | false   | Flag, if the process was modified by the checkout supervisor                                       |
 | createdAt          | `date`         |         | Creation date of the process (RFC3339 Datetime formated )                                          |
+| finalizedAt         | `date`         |         | The time the process was finalized, i.e. the time it was paid                                       |
+| processedOffline    | `bool`         | false   | Flag, if the customer was offline while creating the process                                        |
 
 Example:
 ```
@@ -287,7 +289,8 @@ Example:
    "checkoutInfo" : { .. checkoutInfo .. },
    "paymentMethod" : "cash",
    "pricing": { .. pricing .. },
-   "modified" : false
+   "modified" : false,
+   "processedOffline": false
 }
 ```
 
