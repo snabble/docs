@@ -5,6 +5,9 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2019-09-09
+* REMOVED `GET /{project}/orders/statistics`
+
 ## 2019-08-22
 * REMOVED `GET /{project}/products/code/{code}`
 * REMOVED `GET /{project}/products/weighItemId/{code}`
