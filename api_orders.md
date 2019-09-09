@@ -9,7 +9,6 @@ This documentation describes the snabble API endpoints related to the
 
 * [Get orders](#get-orders): `GET /{project}/orders`
 * [Get order](#get-order): `GET /{project}/orders/{id}`
-* [Get order statistics](#get-order-statistics): `GET /{project}/orders/statistics` (**Deprecated**)
 
 ## Model
 
@@ -110,47 +109,6 @@ Example:
 }
 ```
 
-### Order Statistic
-
-(**Deprecated**)
-
-| Path            | Type   | Description                        |
-|-----------------|--------|------------------------------------|
-| `count`         | `int`  | Number of orders                   |
-| `total`         | `int`  | Total price of orders              |
-| `items[].date`  | `date` | Date of the item                   |
-| `items[].count` | `int`  | Number of orders on that date      |
-| `items[].total` | `int`  | Total price of orders on that date |
-
-```
-{
-    "count": 44,
-    "total": 2139104,
-    "items": [
-        {
-            "count": 0,
-            "date": "2018-06-03T00:00:00Z",
-            "total": 0
-        },
-        {
-            "count": 44,
-            "date": "2018-06-04T00:00:00Z",
-            "total": 2139104
-        },
-        {
-            "count": 0,
-            "date": "2018-06-05T00:00:00Z",
-            "total": 0
-        }
-    ],
-    "links": {
-        "self": {
-            "href": "/test-project-faa116/orders/statistics"
-        }
-    }
-}
-```
-
 ## Get orders
 `GET /{project}/orders`
 
@@ -185,29 +143,3 @@ Get a order.
 **Content-Type** : application/json
 
 **Data** : [Order](#order)
-
-## Get order statistics
-`GET /{project}/orders/statistics?from={fromDate}&to={toDate}`
-
-(**Deprecated**)
-
-Get aggregates on orders for the given time range. Provides the total
-number of orders and the transaction volume for each day in the time
-range as well as for the whole periode.
-
-The timezone is determined by the ones given by the `from` and `to`
-date.
-
-### Request
-**Parameters** :
-
-| Name   | Description                                                                                              |
-|--------|----------------------------------------------------------------------------------------------------------|
-| `from` | Start of the time periode (inclusive). Formated in the RFC3339 format (ie. `2018-05-02T00:00:00-02:00`) |
-| `to`   | End of the time periode (exclusive). Formated in the RFC3339 format (ie. `2018-05-02T00:00:00-02:00`)   |
-
-### Success Response `200 OK`
-
-**Content-Type** : application/json
-
-**Data** : [Order Statistic](#order-statistic)
