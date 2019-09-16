@@ -481,9 +481,9 @@ Import a list of products in one HTTP request.
 
 ### Request
 
-* [application/vnd.snabble.product.stream.v2+x-ndjson](#product-json-stream-v2)
+* [application/vnd.snabble.product.v2+x-ndjson](#product-json-stream-v2)
 * [application/x-ndjson](#product-json-stream-v1) (**Deprecated**)
-* [application/vnd.snabble.product.stream.v1+x-ndjson](#product-json-stream-v1) (**Deprecated**)
+* [application/vnd.snabble.product.v1+x-ndjson](#product-json-stream-v1) (**Deprecated**)
 
 ### Success Response `200 OK`
 
@@ -515,9 +515,9 @@ All parameters are optional.
 
 **Produces** :
 
-* [application/vnd.snabble.product.stream.v2+x-ndjson](#product-json-stream-v2)
+* [application/vnd.snabble.product.v2+x-ndjson](#product-json-stream-v2)
 * [application/x-ndjson](#product-json-stream-v1) (**Deprecated**)
-* [application/vnd.snabble.product.stream.v1+x-ndjson](#product-json-stream-v1) (**Deprecated**)
+* [application/vnd.snabble.product.v1+x-ndjson](#product-json-stream-v1) (**Deprecated**)
 
 -----------
 
