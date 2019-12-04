@@ -378,6 +378,7 @@ Orders can be queried either by date or by shop.
 
 ### Request
 **Parameters** :
+
 | Name      | Default | Description                      |
 |-----------|---------|----------------------------------|
 | `page`    | `0`     | Number of the page to be fetched |
