@@ -5,6 +5,9 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2019-12-04
+* ADDED [Closing ]](api_orders.md#get-closings) and [Create Closing Schedule](api_orders.md#create-schedule) endpoints
+
 ## 2019-09-09
 * REMOVED `GET /{project}/orders/statistics`
 
