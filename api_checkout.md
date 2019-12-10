@@ -263,7 +263,6 @@ Process attributes:
 | supervisorApproval | `bool/nil`     | nil     | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)                    |
 | paymentApproval    | `bool/nil`     | nil     | Approval by the payment process (nil=pending, true=granted, false=rejected)                        |
 | aborted            | `bool`         | false   | Flag, if the process was aborted by the user                                                       |
-| closed             | `bool`         | false   | Flag, if the process was closed by the user. This flag is optional.                                |
 | checkoutInfo       | `CheckoutInfo` |         | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
 | pricing            | `pricing`      |         | The [Pricing information](#pricing) of the checkout                                                |
 | paymentMethod      | `string`       |         | A valid payment method                                                                             |
@@ -424,12 +423,6 @@ Example:
 Example:
 ```
 {"aborted": true}
-```
-
-### Close Request
-Example:
-```
-{"closed": true}
 ```
 
 ### Update Pricing Request
@@ -618,23 +611,6 @@ Mark a checkout process as aborted.
 **Content-Type** : application/json
 
 **Data** : [Abort Request](#abort-request).
-
-#### Success Response `200 OK`
-
-**Content-Type** : application/json
-
-**Data** : [Checkout Process](#checkout-process)
-
-### Closing the Checkout Process
-
-**Required permissions** : productsRead and the id of a Checkout Process
-
-#### Close Request
-Mark a checkout process as closed.
-
-**Content-Type** : application/json
-
-**Data** : [Close Request](#close-request).
 
 #### Success Response `200 OK`
 
