@@ -121,7 +121,7 @@ Checkouts are represented through the following data structure:
 | `orderId`            | `string`     | `null`  | Identifier of the snabble order                                                           |
 | `externalCheckoutId` | `string`     | `null`  | Identifier used by the vPOS to identify the checkout                                      |
 | `paymentInformation` | `object`     | `null`  | Additional information provided by the payment system (i.e. transaction id, SEPA mandate) |
-| `state`              | `boolean`    | `null`  | The state of the checkout (`open`, `completed`)                                           |
+| `state`              | `string`     | `null`  | The state of the checkout (`open`, `completed`)                                           |
 | `receiptBuffer`      | `string`     | `null`  | Base64 encdoded receipt file (either PDF or Windows Print Buffer)                         |
 | `errors`             | `[]Error`    | `null`  | List of errors                                                                            |
 
