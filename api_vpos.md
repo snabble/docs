@@ -18,6 +18,7 @@ Checkouts are represented through the following data structure:
 ```json
 {
   "shopId": "1",
+  "externalShopId": "12",
   "loyaltyCard": "...",
   "items": [
     {
@@ -112,6 +113,7 @@ Checkouts are represented through the following data structure:
 | Parameter            | Type         | Default | Description                                                                               |
 |----------------------|--------------|---------|-------------------------------------------------------------------------------------------|
 | `shopId`             | `string`     |         | Identifier of the shop                                                                    |
+| `externalShopId`     | `string`     | `null`  | External identifier of the shop as provided through the [Shops API](api_shops.md#shop)    |
 | `loyaltyCard`        | `string`     | `null`  | Loyalty card number of the customer                                                       |
 | `customer`           | `Customer`   |         | Customer details                                                                          |
 | `items`              | `LineItem[]` |         | List of the line items                                                                    |

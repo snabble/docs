@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-01-09
+
+* ADDED `externalShopId` to [vPoS data model](api_vpos.md#data-model)
+
 ## 2019-12-10
 
 * REMOVED closed field from [CheckoutProcess](api_checkout.md#checkout-process) and Close Request from [Modify Checkout Process](api_checkout.md#modify-checkout-process) Endpoint
