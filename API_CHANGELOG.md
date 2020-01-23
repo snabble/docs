@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-01-23
+
+* ADDED BASIC authentication scheme to the list of supported schemes for vPoS calls
+
 ## 2020-01-09
 
 * ADDED `externalShopId` to [vPoS data model](api_vpos.md#data-model)
