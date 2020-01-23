@@ -216,8 +216,10 @@ informational `message`.
 
 The Service sends an `Authorization` header as described in [RFC 7235
 Section 4.2](https://tools.ietf.org/html/rfc7235#section-4.2). The
-used authentication scheme is `Bearer`. Additionally authorization
-through TLS 1.2 / 1.3 certificates is supported.
+supported authentication schemes are `Bearer` (see [RFC
+6750](https://tools.ietf.org/html/rfc6750)) and `Basic` (see [RFC
+7617](https://tools.ietf.org/html/rfc7617)). Additionally
+authorization through TLS 1.2 / 1.3 certificates is supported.
 
 ### Obtain Checkout Information
 
