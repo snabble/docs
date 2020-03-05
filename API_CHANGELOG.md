@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-03-05
+
+* ADDED `mode` to [createClosingSchedule](api_orders.md#create-closing-schedule)
+
 ## 2020-01-23
 
 * ADDED BASIC authentication scheme to the list of supported schemes for vPoS calls
@@ -31,8 +35,8 @@ This file will be updated weekly, if there are notable changes.
 * DEPRECATED [Get order statistics](#get-order-statistics): `GET /{project}/orders/statistics`
 
 ## 2019-07-30
-* ADDED customer.loyaltyCard field to [order](api_orders.md#order)
-* ADDED sesssion field to [order](api_orders.md#order)
+* ADDED `customer.loyaltyCard` field to [order](api_orders.md#order)
+* ADDED `session` field to [order](api_orders.md#order)
 
 ## 2019-07-25
 * ADDED [endpoint to delete all products of a project](api_products.md#delete-produts)
