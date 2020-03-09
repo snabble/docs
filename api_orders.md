@@ -372,9 +372,7 @@ Get a order.
 
 `GET /{project}/closings`
 
-Get the list of orders of the project.
-
-Orders can be queried either by date or by shop.
+Get the list of closings of the project.
 
 **Required permissions** : ordersRead for the project
 
@@ -412,9 +410,7 @@ Get a single closing.
 
 `GET /{project}/closings/logs/{id}`
 
-Get the list of orders of the project.
-
-Orders can be queried either by date or by shop.
+Get a single log file for a closing.
 
 **Required permissions** : closingRead for the project
 
