@@ -286,6 +286,7 @@ The `file` link of the object points to actual log content.
 | `id`       | `int`      | Identifier                                                                                           |
 | `project`  | `string`   | Project                                                                                              |
 | `shop`     | `string`   | Identifier of the shop for which the closing should be created                                       |
+| `mode`     | `string`   | Mode of the created Closing Schedule. Supported are: `includeUntilExecution`, `includeUntilScheduled`|
 | `hour`     | `int`      | Hour (`0-24`) at which the closing should be created                                                 |
 | `minute`   | `int`      | Minute (`0-60`) at which the closing should be created                                               |
 | `days`     | `string[]` | Name of the days used (`Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`) |
@@ -296,6 +297,7 @@ The `file` link of the object points to actual log content.
     "id": 12,
     "project": "project",
     "shop": "1",
+    "mode": "includeUntilExecution",
     "hour": 10,
     "minute": 30,
     "days": [
