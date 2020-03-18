@@ -42,6 +42,8 @@ The payload is a JSON document of the specified type.
 
 | Parameter     | Type         | Description                                                          |
 |---------------|--------------|----------------------------------------------------------------------|
+| `clientID`    | `string`     | The ID of the client/device                                          |
+| `appUserID`   | `string`     | The ID of the appUser                                                |
 | `session`     | `string`     | Current session ID                                                   |
 | `shopID`      | `string`     | ID of the shop                                                       |
 | `items`       | `CartItem[]` | Array of cart items                                                  |
@@ -65,6 +67,8 @@ Example:
 ```
 {
   "session": "d06474fa-1584-11e8-b642-0ed5f89f718b",
+  "clientID":  "772fdd23-0161-4e3e-85d0-af2a52fbe3f7",
+  "appUserID": "d7b5a85a-4186-466e-99ee-414fe93951f3",
   "shopID": "shop-01",
   "items": [
     {"sku": "1", "amount": 2, "scannedCode": "0000000000001" },
@@ -95,7 +99,8 @@ A signed document with mandatory price calculation and available payment methods
 | Parameter          | Type              | Default | Description                                                    |
 |--------------------|-------------------|---------|----------------------------------------------------------------|
 | `session`          | `string`          |         | Identifier of the session                                      |
-| `clientID`         | `string`          |         | The app id                                                     |
+| `clientID`         | `string`          |         | The ID of the client/device                                    |
+| `appUserID`        | `string`                    | The ID of the appUser                                          |
 | `shopID`           | `string`          |         | Identifier of the shop                                         |
 | `shop`             | `ShopInformation` |         | Shop details                                                   |
 | `customer`         | `Customer`        |         | Customer details                                               |
@@ -181,6 +186,8 @@ Example:
          "visa",
          "mastercard"
       ],
+      "clientID":  "772fdd23-0161-4e3e-85d0-af2a52fbe3f7",
+      "appUserID": "d7b5a85a-4186-466e-99ee-414fe93951f3",
       "shopID" : "shop-01",
       "shop": {
          "externalID": "shop-1234",
@@ -258,21 +265,23 @@ Example:
 
 Process attributes:
 
-| Parameter          | Type           | Default | Description                                                                                        |
-|--------------------|----------------|---------|----------------------------------------------------------------------------------------------------|
-| supervisorApproval | `bool/nil`     | nil     | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)                    |
-| paymentApproval    | `bool/nil`     | nil     | Approval by the payment process (nil=pending, true=granted, false=rejected)                        |
-| aborted            | `bool`         | false   | Flag, if the process was aborted by the user                                                       |
-| checkoutInfo       | `CheckoutInfo` |         | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
-| pricing            | `pricing`      |         | The [Pricing information](#pricing) of the checkout                                                |
-| paymentMethod      | `string`       |         | A valid payment method                                                                             |
-| paymentState       | `string`       | pending | The [Status of the associated payment process](#payment-state)                                     |
-| paymentInformation | `object`       | nil     | Payment dependent additional information, i.e. a code to present to the user                       |
-| paymentResult      | `object`       | nil     | [Information from payment system](#payment-result), i.e. transaction id, state                     |
-| modified           | `bool`         | false   | Flag, if the process was modified by the checkout supervisor                                       |
-| createdAt          | `date`         |         | Creation date of the process (RFC3339 Datetime formated )                                          |
-| finalizedAt         | `date`         |         | The time the process was finalized, i.e. the time it was paid                                       |
-| processedOffline    | `bool`         | false   | Flag, if the customer was offline while creating the process                                        |
+| Parameter            | Type           | Default | Description                                                                                        |
+|----------------------|----------------|---------|----------------------------------------------------------------------------------------------------|
+| `supervisorApproval` | `bool/nil`     | nil     | Approval by the checkout supervisor (nil=pending, true=granted, false=rejected)                    |
+| `paymentApproval`    | `bool/nil`     | nil     | Approval by the payment process (nil=pending, true=granted, false=rejected)                        |
+| `aborted`            | `bool`         | false   | Flag, if the process was aborted by the user                                                       |
+| `checkoutInfo`       | `CheckoutInfo` |         | The full [Checkout Info](#checkout-info) object (that was provided in the creation of the process) |
+| `pricing`            | `pricing`      |         | The [Pricing information](#pricing) of the checkout                                                |
+| `paymentMethod`      | `string`       |         | A valid payment method                                                                             |
+| `paymentState`       | `string`       | pending | The [Status of the associated payment process](#payment-state)                                     |
+| `paymentInformation` | `object`       | nil     | Payment dependent additional information, i.e. a code to present to the user                       |
+| `paymentResult`      | `object`       | nil     | [Information from payment system](#payment-result), i.e. transaction id, state                     |
+| `modified`           | `bool`         | false   | Flag, if the process was modified by the checkout supervisor                                       |
+| `createdAt`          | `date`         |         | Creation date of the process (RFC3339 Datetime formated )                                          |
+| `finalizedAt`        | `date`         |         | The time the process was finalized, i.e. the time it was paid                                      |
+| `processedOffline`   | `bool`         | false   | Flag, if the customer was offline while creating the process                                       |
+| `clientID`           | `string`       |         | The ID of the client/device                                                                        |
+| `appUserID`          | `string`       |         | The ID of the appUser                                                                              |
 
 Example:
 ```
@@ -289,7 +298,9 @@ Example:
    "paymentMethod" : "cash",
    "pricing": { .. pricing .. },
    "modified" : false,
-   "processedOffline": false
+   "processedOffline": false,
+   "clientID":  "772fdd23-0161-4e3e-85d0-af2a52fbe3f7",
+   "appUserID": "d7b5a85a-4186-466e-99ee-414fe93951f3"
 }
 ```
 
