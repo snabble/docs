@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-06-15
+
+* REMOVED `checkoutProcess` property from `order` example
+
 ## 2020-03-18
 
 * ADDED `clientID` and `appUserID` to [cart](api_checkout.md#cart), [checkoutInfo](api_checkout.md#checkout-info) and [checkoutProcess](api_checkout.md#checkout-process)

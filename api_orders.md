@@ -108,9 +108,6 @@ Example:
   },
   "session": "asdaf24u-0124-77a4-77a8-ada100011112",
   "currency": "EUR",
-  "checkoutProcess": {
-    // see checkout documentation
-  },
   "links": {
     "self": {
       "href": "/test-project-faa116/orders/99e13f9f-0412-4686-907a-331003b2a703"
