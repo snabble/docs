@@ -6,7 +6,7 @@ the transfer by sFTP, using custom and project specific import formats, which ar
 
 ## SAP Retail: Assortment List
 
-SAP Retail can export the Assortment List IDoc in XML format (WBBDLD). Snabble can handle this format, however, in contrast to the REST API and the CSV format,
+SAP Retail can export the Assortment List as IDoc XML (WBBDLD). Snabble can handle these exports, however, in contrast to the REST API and the CSV format,
 it has the disadvantage that article data and prices are duplicated per store. This is very inefficient if the retailer actually has the same price in most stores.
 
 ## CSV Format
@@ -99,5 +99,4 @@ Exmaple:
   ..
 </feed>
 ```
-
 
