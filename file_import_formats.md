@@ -4,6 +4,11 @@ The native way to get products into the snabble platform is by using the REST/JS
 It works out of the box and is the most powerful and flexible way. But of course, snabble also supports
 the transfer by sFTP, using custom and project specific import formats, which are close to the following:
 
+## SAP Retail: Assortment List
+
+SAP Retail can export the Assortment List as IDoc XML (WBBDLD). Snabble can handle these exports, however, in contrast to the REST API and the CSV format,
+it has the disadvantage that article data and prices are duplicated per store. This is very inefficient if the retailer actually has the same price in most stores.
+
 ## CSV Format
 
 Using CSV, the following files have to be provided. It is possible to upload them in one tar.gz file:
@@ -94,5 +99,4 @@ Exmaple:
   ..
 </feed>
 ```
-
 
