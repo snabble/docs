@@ -5,9 +5,16 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-07-13
+
+* ADDED `state` to [closing_log](api_orders.md#closing)
+* ADDED `date` to [order](api_orders.md#closing-log)
+* ADDED `appendBatchEvery` and `batchFormats` to [create closing schedule](api_orders.md#create-closing-schedule)
+
 ## 2020-06-15
 
 * REMOVED `checkoutProcess` property from `order` example
+
 
 ## 2020-03-18
 

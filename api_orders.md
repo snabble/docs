@@ -118,41 +118,45 @@ Example:
 
 ### Closing
 
-| Path                      | Type                     | Description                                                                             |
-|---------------------------|--------------------------|-----------------------------------------------------------------------------------------|
-| `project`                 | `string`                 | Project identifier                                                                      |
-| `shopID`                  | `string`                 | Identifier of the shop                                                                  |
-| `sequenceNumber`          | `int`                    | Sequence number of the closing                                                          |
-| `createdAt`               | `date`                   | Date of creation. Formated in the RFC3339 format (ie. `2018-05-02T00:00:00-02:00`)      |
-| `currency`                | `string`                 | Currency code of the closings currency                                                  |
-| `lastOrderSequenceNumber` | `int`                    | Sequence number of the last order included in the closing                               |
-| `shop.name`               | `string`                 | Name of the Shop (see [Shops API](api_shops.md#shop))                                   |
-| `shop.externalID`         | `string`                 | An identifier for the provided by external sources (see [Shops API](api_shops.md#shop)) |
-| `shop.street`             | `string`                 | Street and number of the Shop (see [Shops API](api_shops.md#shop))                      |
-| `shop.zip`                | `string`                 | Zip of the Shop (see [Shops API](api_shops.md#shop))                                    |
-| `shop.state`              | `string`                 | State in which the Shop is situated (see [Shops API](api_shops.md#shop))                |
-| `shop.country`            | `string`                 | Country in which the Shop is situated (see [Shops API](api_shops.md#shop))              |
-| `shop.city`               | `string`                 | City in which the Shop is situated (see [Shops API](api_shops.md#shop))                 |
-| `shop.phone`              | `string`                 | Phone number of the Shop (see [Shops API](api_shops.md#shop))                           |
-| `shop.email`              | `string`                 | Email address of the Shop (see [Shops API](api_shops.md#shop))                          |
-| `taxShares`               | `TaxShare[]`             | List of [Tax Share](#tax-share)                                                         |
-| `shareByPaymentMethod`    | `ShareByPaymentMethod[]` | List of [Share by Payment Method](#share-by-ayment-ethod)                               |
-| `total`                   | `int`                    | The total sum of the closing                                                            |
-| `taxNumber`               | `string`                 | Tax number                                                                              |
-| `vatID`                   | `string`                 | Value added tax identifier                                                              |
-| `companyName`             | `string`                 | Name of the company                                                                     |
-| `companyAddress.city`     | `string`                 | Company official address city                                                           |
-| `companyAddress.country`  | `string`                 | Company official address country                                                        |
-| `companyAddress.street`   | `string`                 | Company official address street                                                         |
-| `companyAddress.zip`      | `string`                 | Company official address zipcode                                                        |
-| `orders`                  | `Order[]`                | List of [Order](#order) included in this closing                                        |
-| `logs`                    | `ClosingLog[]`           | List of [Closing Log](#closing-log) written for this closing                            |
+| Path                      | Type                     | Description                                                                                                                                |
+|---------------------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| `project`                 | `string`                 | Project identifier                                                                                                                         |
+| `shopID`                  | `string`                 | Identifier of the shop                                                                                                                     |
+| `sequenceNumber`          | `int`                    | Sequence number of the closing                                                                                                             |
+| `createdAt`               | `date`                   | Date of creation. Formated in the RFC3339 format (ie. `2018-05-02T00:00:00-02:00`)                                                         |
+| `date`                    | `date`                   | Date until Orders are considered. Formated in the RFC3339 format (ie. `2018-05-02T00:00:00-02:00`)                                         |
+| `state`                   | `string`                 | State of the closing (Values: `open` = The closing was not finalized and new orders will be added, `finalize` = The closing was finalized) |
+| `currency`                | `string`                 | Currency code of the closings currency                                                                                                     |
+| `lastOrderSequenceNumber` | `int`                    | Sequence number of the last order included in the closing                                                                                  |
+| `shop.name`               | `string`                 | Name of the Shop (see [Shops API](api_shops.md#shop))                                                                                      |
+| `shop.externalID`         | `string`                 | An identifier for the provided by external sources (see [Shops API](api_shops.md#shop))                                                    |
+| `shop.street`             | `string`                 | Street and number of the Shop (see [Shops API](api_shops.md#shop))                                                                         |
+| `shop.zip`                | `string`                 | Zip of the Shop (see [Shops API](api_shops.md#shop))                                                                                       |
+| `shop.state`              | `string`                 | State in which the Shop is situated (see [Shops API](api_shops.md#shop))                                                                   |
+| `shop.country`            | `string`                 | Country in which the Shop is situated (see [Shops API](api_shops.md#shop))                                                                 |
+| `shop.city`               | `string`                 | City in which the Shop is situated (see [Shops API](api_shops.md#shop))                                                                    |
+| `shop.phone`              | `string`                 | Phone number of the Shop (see [Shops API](api_shops.md#shop))                                                                              |
+| `shop.email`              | `string`                 | Email address of the Shop (see [Shops API](api_shops.md#shop))                                                                             |
+| `taxShares`               | `TaxShare[]`             | List of [Tax Share](#tax-share)                                                                                                            |
+| `shareByPaymentMethod`    | `ShareByPaymentMethod[]` | List of [Share by Payment Method](#share-by-ayment-ethod)                                                                                  |
+| `total`                   | `int`                    | The total sum of the closing                                                                                                               |
+| `taxNumber`               | `string`                 | Tax number                                                                                                                                 |
+| `vatID`                   | `string`                 | Value added tax identifier                                                                                                                 |
+| `companyName`             | `string`                 | Name of the company                                                                                                                        |
+| `companyAddress.city`     | `string`                 | Company official address city                                                                                                              |
+| `companyAddress.country`  | `string`                 | Company official address country                                                                                                           |
+| `companyAddress.street`   | `string`                 | Company official address street                                                                                                            |
+| `companyAddress.zip`      | `string`                 | Company official address zipcode                                                                                                           |
+| `orders`                  | `Order[]`                | List of [Order](#order) included in this closing                                                                                           |
+| `logs`                    | `ClosingLog[]`           | List of [Closing Log](#closing-log) written for this closing                                                                               |
 
 ```
 {
     "project" : "project",
     "shopID" : "aShop",
     "sequenceNumber" : 1234,
+
+    "state": "finalized",
 
     "createdAt" : "2019-11-12T12:13:15Z",
     "currency" : "EUR",
@@ -237,11 +241,13 @@ Represents a share of the total which was paid with the named method.
 
 #### Closing Logs
 
-| Path     | Type     | Description            |
-|----------|----------|------------------------|
-| `id`     | `int`    | Identifier of the log  |
-| `format` | `string` | Fromat of the log file |
-| `state` | `string` | State of the log (Values: `not_present` = The log is currently not created, `ongoing` = The log gets currently created, `present` = The log was sucessfully created, `failed` = The creation of the log is failed.) |
+| Path     | Type     | Description                                                                                                                                                                                                          |
+|----------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`     | `int`    | Identifier of the log                                                                                                                                                                                                |
+| `format` | `string` | Fromat of the log file                                                                                                                                                                                               |
+| `state`  | `string` | State of the log (Values: `not_present` = The log is currently not created, `ongoing` = The log gets currently created, `present` = The log was sucessfully created, `failed` = The creation of the log has failed.) |
+| `date`   | `date`   | Date until Orders are considered. Formated in the RFC3339 format (ie. `2018-05-02T00:00:00-02:00`)                                                                                                                   |
+
 
 The `file` link of the object points to actual log content.
 
@@ -278,16 +284,20 @@ The `file` link of the object points to actual log content.
 
 ### Create Closing Schedule
 
-| Path       | Type       | Description                                                                                          |
-|------------|------------|------------------------------------------------------------------------------------------------------|
-| `id`       | `int`      | Identifier                                                                                           |
-| `project`  | `string`   | Project                                                                                              |
-| `shop`     | `string`   | Identifier of the shop for which the closing should be created                                       |
-| `mode`     | `string`   | Mode of the created Closing Schedule. Supported are: `includeUntilExecution`, `includeUntilScheduled`|
-| `hour`     | `int`      | Hour (`0-24`) at which the closing should be created                                                 |
-| `minute`   | `int`      | Minute (`0-60`) at which the closing should be created                                               |
-| `days`     | `string[]` | Name of the days used (`Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`) |
-| `location` | `string`   | [IANA Timezone Database](https://www.iana.org/time-zones) name of the location used                  |
+| Path               | Type       | Description                                                                                                                                    |
+|--------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`               | `int`      | Identifier                                                                                                                                     |
+| `project`          | `string`   | Project                                                                                                                                        |
+| `shop`             | `string`   | Identifier of the shop for which the closing should be created                                                                                 |
+| `mode`             | `string`   | Mode of the created Closing Schedule. Supported are: `includeUntilExecution`, `includeUntilScheduled`                                          |
+| `hour`             | `int`      | Hour (`0-24`) at which the closing should be created                                                                                           |
+| `minute`           | `int`      | Minute (`0-60`) at which the closing should be created                                                                                         |
+| `days`             | `string[]` | Name of the days used (`Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`)                                           |
+| `location`         | `string`   | [IANA Timezone Database](https://www.iana.org/time-zones) name of the location used                                                            |
+| `formats`          | `string[]` | List of Log formats                                                                                                                            |
+| `appendBatchEvery` | `string`   | Interval how often to append orders to the open closing and generate a log for the batch. The string represents a duration, ie. `1m30s`, `30m` |
+| `batchFormats`     | `string[]` | List of Log formats. The logs are created after new Orders were appended                                                                       |
+
 
 ```
 {
@@ -302,6 +312,7 @@ The `file` link of the object points to actual log content.
         "Tuesday"
     ],
     "location": "Europe/Berlin",
+    "formats": ["dfka_taxonomie_2_0"],
     "links": {
         "self": {
             "href": "/project/closings/schedules/id/12"
@@ -341,11 +352,11 @@ Orders can be queried either by date or by shop.
 ### Request
 **Parameters** :
 
-| Name              | Description                                                                                                     |
-|-------------------|-----------------------------------------------------------------------------------------------------------------|
+| Name              | Description                                                                                                    |
+|-------------------|----------------------------------------------------------------------------------------------------------------|
 | `date`            | Date for which the orders should be returned. Formated in the RFC3339 format (ie. `2018-05-02T00:00:00-02:00`) |
-| `shopID`          | ID of the shop                                                                                                  |
-| `shop.externalID` | External ID of the shop as provided through the [Shops API](api_shops.md#shop)                                  |
+| `shopID`          | ID of the shop                                                                                                 |
+| `shop.externalID` | External ID of the shop as provided through the [Shops API](api_shops.md#shop)                                 |
 
 ### Success Response `200 OK`
 
