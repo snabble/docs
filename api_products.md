@@ -219,107 +219,7 @@ Product attributes:
 
 #### Product Object v1
 
-**Deprecated**: Please, use the model v2 and the [Pricing API](api_pricing.md).
-
-*MIME type*: `application/vnd.snabble.product.v1+json`
-
-Example:
-```
-{
-   "sku" : "1120325205",
-   "name" : "Premium-Holzöl",
-   "description": "farblos, 750ml",
-   "subtitle" : "Aplina",
-   "taxCategory" : "normal",
-   "depositProduct": null,
-   "outOfStock" : false,
-   "deleted" : false,
-   "imageUrl" : "https://www.example.com/some/image.jpg",
-   "productType" : "default",
-   "controlIndication": 0.4,
-   "forceControl": false,
-   "saleRestriction": "min_age_18",
-   "saleStop": true,
-   "eans" : [
-      "0654203316514"
-   ],
-   "codes": [
-       {
-           "code": "0654203316514",
-           "transmissionCode": "1234203316514"
-       }
-   ]
-   "price" : 1699,
-   "discountedPrice" : 1499,
-   "basePrice": "19,99 EUR / 1 Liter",
-}
-```
-
-Product attributes:
-
-| Parameter           | Type       | Default   | Description                                                                                             |
-|---------------------|------------|-----------|---------------------------------------------------------------------------------------------------------|
-| `sku`               | `string`   |           | The unique id for identification of the product                                                         |
-| `name`              | `string`   | ""        | The display name of the product                                                                         |
-| `description`       | `string`   | null      | A short description of the product                                                                      |
-| `subtitle`          | `string`   | null      | An additional title line for individual use (e.g. brand information)                                    |
-| `taxCategory`       | `string`   | null      | Identifier of the tax category                                                                          |
-| `depositProduct`    | `string`   | null      | The SKU of  the associated deposit product                                                              |
-| `bundledProduct`    | `string`   | null      | The SKU of the product contained in the bundle                                                          |
-| `outOfStock`        | `bool`     | false     | Flag to indicate if the product is currently available in markets                                       |
-| `deleted`           | `bool`     | false     | Flag to indicate that a product does not exist any longer                                               |
-| `imageUrl`          | `string`   | null      | The full URL for a product image                                                                        |
-| `productType`       | `string`   | "default" | Type of the product: "default", "weighable", "deposit"                                                  |
-| `controlIndication` | `number`   | 0         | Indication: -1 no control needed, 1 high control indication                                             |
-| `forceControl`      | `bool`     | false     | Flag to indicate if a control is necessary                                                              |
-| `saleRestriction`   | `string`   | null      | [Restriction rules](#sale-restrictions)                                                                 |
-| `saleStop`          | `bool`     | false     | Flag to indicate if there is a sale stop for this product                                               |
-| `eans`              | `[]string` | []        | *Deprecated: Please use codes instead.* List of scannable codes / barcodes which point to this product. |
-| `codes`             | `[]object` | []        | [Array of code objects](#code-object)                                                                   |
-| `price`             | `int`      | null      | The current standard price                                                                              |
-| `discountedPrice`   | `int`      | null      | The current price if the product is discounted.                                                         |
-| `basePrice`         | `string`   | ""        | Base price (e.g. price per liter) as label.                                                             |
-| `weighing`          | `object`   | null      | Additional information for weighable products                                                           |
-
-#### Code Object v1
-
-**Deprecated**
-
-| Name               | Type     | Default | Description                                                                                 |
-|--------------------|----------|---------|---------------------------------------------------------------------------------------------|
-| `code`             | `string` | ""      | Scannable code / barcode                                                                    |
-| `transmissionCode` | `string` | null    | In case the POS cannot handle the scannable code / barcode, it contains a POS friendly code |
-
-#### Weighing
-
-**Deprecated**
-
-Weighing attributes:
-
-| Parameter         | Type       | Default | Description                                                                                               |
-|-------------------|------------|---------|-----------------------------------------------------------------------------------------------------------|
-| `weighedItemIds`  | `[]string` | null    | Templates for the scannable codes which encode price or weight information                                |
-| `pluSet`          | `[]string` | null    | PLU, the short code to identify a weighable product                                                       |
-| `weighByCustomer` | `bool`     | false   | Flag, if the product is prepackaged, or the customer has to do weighting by himself                       |
-| `referenceUnit`   | `string`   | null    | The [unit](#supported-units) in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg) |
-| `encodingUnit`    | `string`   | null    | [Unit](#supported-units) which is used as encoding within the EAN (e.g. "g" when the EAN contains grams)  |
-
-Weighing Example:
-
-* **Product:** A bag with apples "Cripps Pink"
-* **Base Price:** 3.90 / kg
-* **Package Weight:** 720g
-* **EAN-13:** 2323230007204 (Actual code on the bag after weighing)
-
-```
-{
-    "weighedItemIds": ["2323230000000", "2727270000000"],
-    "pluSet": ["4128"],
-    "weighByCustomer": true,
-    "referenceUnit": "kg",
-    "encodingUnit": "g"
-}
-```
+**Deprecated**: Please, use the model v2 and the [Pricing API](api_pricing.md). If there is any reason you need to use this representation please contact us.
 
 ### Product List v2
 
@@ -347,14 +247,6 @@ Example:
 *MIME type*: `application/vnd.snabble.product.v2+x-ndjson`
 
 [A newline delimited JSON stream](http://ndjson.org/) of [Product Object v2](#product-object-v2).
-
-### Product JSON Stream v1
-
-**Deprecated**: Please, use the model v2.
-
-*MIME type*: `application/vnd.snabble.product.v1+x-ndjson`
-
-[A newline delimited JSON stream](http://ndjson.org/) of [Product Object v1](#product-object-v1).
 
 ### Result Message
 
@@ -393,8 +285,6 @@ Return one product by sku.
 **Produces** :
 
 * [application/vnd.snabble.product.v2+json](#product-object-v2)
-* [application/json](#product-object-v1) (**Deprecated**)
-* [application/vnd.snabble.product.v1+json](#product-object-v1) (**Deprecated**)
 
 -----------
 
@@ -410,8 +300,6 @@ Create or update a product. If the product already exists, it will be updated.
 **Consumes** :
 
 * [application/vnd.snabble.product.v2+json](#product-object-v2)
-* [application/json](#product-object-v1) (**Deprecated**)
-* [application/vnd.snabble.product.v1+json](#product-object-v1) (**Deprecated**)
 
 ### Success Response `201 Created`
 
@@ -432,8 +320,6 @@ The sku in the url parameter and the JSON payload have to match.
 **Consumes** :
 
 * [application/vnd.snabble.product.v2+json](#product-object-v2)
-* [application/json](#product-object-v1) (**Deprecated**)
-* [application/vnd.snabble.product.v1+json](#product-object-v1) (**Deprecated**)
 
 ### Success Response `200 OK`
 
@@ -466,8 +352,6 @@ Returns one product by PLU
 **Produces** :
 
 * [application/vnd.snabble.product.v2+json](#product-object-v2)
-* [application/json](#product-object-v1) (**Deprecated**)
-* [application/vnd.snabble.product.v1+json](#product-object-v1) (**Deprecated**)
 
 -----------
 
@@ -482,8 +366,7 @@ Import a list of products in one HTTP request.
 ### Request
 
 * [application/vnd.snabble.product.v2+x-ndjson](#product-json-stream-v2)
-* [application/x-ndjson](#product-json-stream-v1) (**Deprecated**)
-* [application/vnd.snabble.product.v1+x-ndjson](#product-json-stream-v1) (**Deprecated**)
+
 
 ### Success Response `200 OK`
 
@@ -516,8 +399,7 @@ All parameters are optional.
 **Produces** :
 
 * [application/vnd.snabble.product.v2+x-ndjson](#product-json-stream-v2)
-* [application/x-ndjson](#product-json-stream-v1) (**Deprecated**)
-* [application/vnd.snabble.product.v1+x-ndjson](#product-json-stream-v1) (**Deprecated**)
+
 
 -----------
 

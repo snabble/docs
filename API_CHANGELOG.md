@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 20202-07-17
+
+* REMOVED documentation of [Product Object v1](api_products.md#product-object-v1) representation
+
 ## 2020-06-15
 
 * REMOVED `checkoutProcess` property from `order` example
