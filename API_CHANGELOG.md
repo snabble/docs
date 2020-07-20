@@ -5,7 +5,11 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
-## 20202-07-17
+## 2020-07-20
+
+* Added `notForSale` to [Product Object v2](api_products.md#product-object-v2)
+
+## 2020-07-17
 
 * REMOVED documentation of [Product Object v1](api_products.md#product-object-v1) representation
 

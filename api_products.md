@@ -168,6 +168,7 @@ Example:
    "controlIndication": 0.4,
    "saleRestriction": "min_age_18",
    "saleStop": true,
+   "notForSale": false,
    "scanMessage": "multipack-2",
    "codes": [
        {
@@ -205,7 +206,7 @@ Product attributes:
 | `saleStop`          | `bool`     | false     | Flag to indicate if there is a sale stop for this product                                                     |
 | `pluSet`            | `[]string` | null      | PLU, the short code to identify a weighable product                                                           |
 | `scanMessage`       | `string`   | null      | Identifier of a message shown to the user after scanning a product (e.g. a product has more than one package ) |
-
+| `notForSale`        | `bool`     | false     | Flag to indicate if the product is not for sale. When scanning the product only the scan message will be shown |
 
 #### Code Object v2
 
