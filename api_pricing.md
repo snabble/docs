@@ -27,6 +27,10 @@ access](api_general.md) for general information about api access.
 
 * [Batch update pricing](#batch-update-pricing): `POST /{project}/pricing/products/_batch`
 * [Delete all pricings](#delete-all-pricings): `DELETE /{project}/pricing/products`
+
+### Price operations
+
+* [Delete price](#delete-price): `DELETE /{project}/pricing/products/sku/category/{categoryID)`
 * [Batch update prices](#batch-update-prices): `POST /{project}/pricing/_batch`
 
 ## Data Model
@@ -404,6 +408,18 @@ Update a batch of pricings.
 Delete all pricings.
 
 **Required permissions**: pricingWrite
+
+#### Success Response 200 OK
+
+----------
+
+### Delete Price
+
+`DELETE /{project}/pricing/products/sku/{sku}/category/{categoryID}`
+
+Deletes a single price for a single product in a single pricingCategory.
+
+**Required permissions** : pricingWrite
 
 #### Success Response 200 OK
 
