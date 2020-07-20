@@ -8,6 +8,7 @@ This file will be updated weekly, if there are notable changes.
 ## 2020-07-20
 
 * Added `notForSale` to [Product Object v2](api_products.md#product-object-v2)
+* Added `DELETE /{project}/pricing/products`
 
 ## 2020-07-17
 

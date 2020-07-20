@@ -22,9 +22,12 @@ access](api_general.md) for general information about api access.
 * [Get pricing](#get-pricing): `GET /{project}/pricing/products/sku/{sku}`
 * [Delete pricing](#delete-pricing): `DELETE /{project}/pricing/products/sku/{sku}`
 * [Update pricing](#update-pricing): `PUT /{project}/pricing/products/sku/{sku}`
-* [Batch update pricing](#batch-update-pricing): `POST /{project}/pricing/products/_batch`
-* [Batch update prices](#batch-update-prices): `POST /{project}/pricing/_batch`
 
+### Multiple pricing operations
+
+* [Batch update pricing](#batch-update-pricing): `POST /{project}/pricing/products/_batch`
+* [Delete all pricings](#delete-all-pricings): `DELETE /{project}/pricing/products`
+* [Batch update prices](#batch-update-prices): `POST /{project}/pricing/_batch`
 
 ## Data Model
 
@@ -392,6 +395,17 @@ Update a batch of pricings.
 **Content-Type** : application/json
 
 **Data** : JSON stream of [PricingBatchUpdateResultMessage](#pricingbatchupdateresultmessage-object)
+
+-----------
+
+### Delete all Pricings
+`DELETE /{project}/pricing/products`
+
+Delete all pricings.
+
+**Required permissions**: pricingWrite
+
+#### Success Response 200 OK
 
 -----------
 
