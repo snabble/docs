@@ -168,7 +168,7 @@ Example:
    "controlIndication": 0.4,
    "saleRestriction": "min_age_18",
    "saleStop": true,
-   "notForSale": false,
+   "notForSale": true,
    "scanMessage": "multipack-2",
    "codes": [
        {
