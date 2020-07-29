@@ -91,9 +91,9 @@ The supported units are:
 
 ### Code Template
 
-Code templates are a way to extract information that is embeded into a
+Code templates are a way to extract information that is embedded into a
 scanned code. For example a instore EAN-13 has the format
-`2xxxxxCeeeeeC` where the five `x` encode an identfier for the
+`2xxxxxCeeeeeC` where the five `x` encode an identifier for the
 product, the five `e` encode the the information and the `C` are the
 checksums defined by the standard. With this and the additional
 information contained in the product, it is possible to calculate the

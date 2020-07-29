@@ -57,7 +57,7 @@ The contents of all products and stores is scoped in a project. The project id i
 
 ### API Tokens
 
-Most API endpoints are not available for public usage, but only for a limitied audience.
+Most API endpoints are not available for public usage, but only for a limited audience.
 They are protected by a JSON Web Token (JWT), which has to be sent as the HTTP header `Client-Token`.
 
 ```

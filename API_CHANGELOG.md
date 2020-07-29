@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-07-29
+
+* Added `priority`to [Pricing Category Object](api_pricing.md#pricing-category-object)
+
 ## 2020-07-20
 
 * Added `notForSale` to [Product Object v2](api_products.md#product-object-v2)

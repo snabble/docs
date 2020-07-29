@@ -47,6 +47,7 @@ Example:
   "id": "normal",
   "project": "project",
   "name": "normal prices",
+  "priority": 2,
   "shops": [
     {"id": "shop-id-1"},
     {"id": "shop-id-2"}
@@ -61,13 +62,14 @@ Example:
 
 `PricingCategory` attributes:
 
-| Parameter | Type   | Default | Description                                             |
-|-----------|--------|---------|---------------------------------------------------------|
-| id        | string |         | Unique id of the `PricingCategory`                      |
-| project   | string |         | project id                                              |
-| name      | string | null    | pricingCategory display name                            |
-| shops     | array  |         | array of [`Shop`](#shop-object) which use this category |
-| links     | object | null    | The links                                               |
+| Parameter | Type   | Default | Description                                                                             |
+|-----------|--------|---------|-----------------------------------------------------------------------------------------|
+| id        | string |         | Unique id of the `PricingCategory`                                                      |
+| project   | string |         | project id                                                                              |
+| name      | string | null    | pricingCategory display name                                                            |
+| priority  | int    |         | When resolving prices the categories are considered in descending order of priority     |
+| shops     | array  |         | array of [`Shop`](#shop-object) which use this category                                 |
+| links     | object | null    | The links                                                                               |
 
 #### The `default` category
 
