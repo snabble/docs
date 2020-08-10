@@ -13,7 +13,7 @@ snabble;1;1;2c4d2f9e-06c6-11ea-a9eb-4fcb432c057b
 2;4008400401621
 ````
 
-Lines are separated by a single newline character `\n`.
+By default, lines are separated by a single newline character `\n`.
 
 The first line is a special header line, containing metadata. It always starts with the character sequence `snabble;`, followed by two integer values, `N` and `M`. The value `M` specifies the total number of QR codes that need to be scanned by the cash register to read the complete purchase, in case it does not fit into a single code. The value `N` specifies the number of this QR code within the series of codes. For example, a single QR code will start with the header line `snabble;1;1`, and two codes would have the headers `snabble;1;2` and `snabble;2;2`, respectively.
 
@@ -28,6 +28,7 @@ For each project on the snabble platform, a different set of delimiters and othe
 | Name      | Default         | Description                                           |
 |-----------|-----------------|-------------------------------------------------------|
 | maxCodes  | 100             | Maximum number of lines to fit into a single QR code. |
+| separator | "\n"            | The line separator.                                   |
 
 ## 2. QrCodePOS
 
