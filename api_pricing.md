@@ -392,6 +392,8 @@ Update a batch of pricings.
 
 #### Request
 
+**Maximal batch size** : 20000 items
+
 **Content-Type** : application/x-ndjson
 
 **Data** : JSON stream of [PricingBatchUpdate objects](#pricingbatchupdate-object)
@@ -436,6 +438,8 @@ Update a batch of prices.
 **Required permissions**: pricingWrite
 
 #### Request
+
+**Maximal batch size** : 20000 items
 
 **Content-Type** : application/x-ndjson
 

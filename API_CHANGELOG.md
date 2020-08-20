@@ -5,15 +5,21 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-08-20
+
+* ADDED maximal batch size of 20000 to [Products Batch Import](api_products.md#batch-import)
+* ADDED maximal batch size of 20000 to [Batch Update Pricing](api_pricing.md#batch-update-pricing)
+* ADDED maximal batch size of 20000 to [Batch Update Prices](api_pricing.md#batch-update-prices)
+
 ## 2020-07-29
 
-* Added `priority`to [Pricing Category Object](api_pricing.md#pricing-category-object)
+* ADDED `priority`to [Pricing Category Object](api_pricing.md#pricing-category-object)
 
 ## 2020-07-20
 
-* Added `notForSale` to [Product Object v2](api_products.md#product-object-v2)
-* Added `DELETE /{project}/pricing/products`
-* Added `DELETE /{project}/pricing/products/sku/{sku}/category/{categoryID}`
+* ADDED `notForSale` to [Product Object v2](api_products.md#product-object-v2)
+* ADDED `DELETE /{project}/pricing/products`
+* ADDED `DELETE /{project}/pricing/products/sku/{sku}/category/{categoryID}`
 
 ## 2020-07-17
 
