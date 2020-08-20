@@ -366,6 +366,8 @@ Import a list of products in one HTTP request.
 
 ### Request
 
+**Maximal batch size** : 20000 items
+
 * [application/vnd.snabble.product.v2+x-ndjson](#product-json-stream-v2)
 
 
