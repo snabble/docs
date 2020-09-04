@@ -217,7 +217,7 @@ Product attributes:
 | `isPrimary`        | `bool`   | null      | If a product has a code marked as primary this code is always presented to a POS instead of the scanned one. A product is not allowed to have more than one primary code. Optional. |
 | `transmissionCode` | `string` | null      | In case the POS cannot handle the scannable code / barcode, it contains a POS friendly code. Should not be used in ombination with primary codes.                        |
 | `encodingUnit`     | `string` | null      | [Unit](#supported-units) which is used as encoding within the scanned code. Overwrites the property of the product |
-| `specifiedQuantity`| `number` | null      | If set the code identifies the specified Quantity of Products instead of a single one. Optional.                   |
+| `specifiedQuantity`| `number` | null      | If set the code identifies the specified quantity of products instead of a single one. Optional.                   |
 
 
 #### Product Object v1
