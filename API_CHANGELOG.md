@@ -5,6 +5,12 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-08-28
+
+* ADDED `isPrimary` to [Code Object v2](api_products.md#code-object-v2)
+* ADDED `specifiedQuantity` to [Code Object v2](api_products.md#code-object-v2)
+
+
 ## 2020-08-20
 
 * ADDED maximal batch size of 20000 to [Products Batch Import](api_products.md#batch-import)
