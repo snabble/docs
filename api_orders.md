@@ -24,38 +24,44 @@ This documentation describes the snabble API endpoints related to the
 
 ### Order
 
-| Path                   | Type             | Description                                                                                   |
-|------------------------|------------------|-----------------------------------------------------------------------------------------------|
-| `id`                   | `string`         | The id of the Order                                                                           |
-| `project`              | `string`         | The id of the Project                                                                         |
-| `date`                 | `date`           | The date on which the order was contracted                                                    |
-| `createdAt`            | `date`           | The date on which the order was processed                                                     |
-| `finalizedAt`          | `date`           | The date on which the order was finalized (i.e. the time the order was paid)                  |
-| `clientID`             | `string`         | The app ID                                                                                    |
-| `customer.loyaltyCard` | `string`         | The loyalty card number used                                                                  |
-| `shopID`               | `string`         | ID of the in which the order was contracted                                                   |
-| `shop.name`            | `string`         | Name of the Shop (see [Shops API](api_shops.md#shop))                                         |
-| `shop.externalID`      | `string`         | An identifier for the provided by external sources (see [Shops API](api_shops.md#shop))       |
-| `shop.street`          | `string`         | Street and number of the Shop (see [Shops API](api_shops.md#shop))                            |
-| `shop.zip`             | `string`         | Zip of the Shop (see [Shops API](api_shops.md#shop))                                          |
-| `shop.state`           | `string`         | State in which the Shop is situated (see [Shops API](api_shops.md#shop))                      |
-| `shop.country`         | `string`         | Country in which the Shop is situated (see [Shops API](api_shops.md#shop))                    |
-| `shop.city`            | `string`         | City in which the Shop is situated (see [Shops API](api_shops.md#shop))                       |
-| `shop.phone`           | `string`         | Phone number of the Shop (see [Shops API](api_shops.md#shop))                                 |
-| `shop.email`           | `string`         | Email address of the Shop (see [Shops API](api_shops.md#shop))                                |
-| `paymentMethod`        | `string`         | The payment method used                                                                       |
-| `paymentInformation`   | `Object`         | Payment dependent additional information                                                      |
-| `paymentResult     `   | `Object`         | Payment gateway result object                                                                 |
-| `paymentStatus`        | `string`         | The final Status of the associated payment process                                            |
-| `lineItems`            | `LineItem[]`     | Line items of the order. For details see [Checkout API: Line Item](api_checkout.md#line-item) |
-| `currency`             | `string`         | Currency of the project                                                                       |
-| `price.price`          | `int`            | The total brutto price of the order                                                           |
-| `price.netPrice`       | `int`            | The total netto price of the order                                                            |
-| `price.tax`            | `map[string]int` | Mapping of tax rates on the portion of the price                                              |
-| `price.taxNet`         | `map[string]int` | Mapping of tax rates sums all net prices of products with this rate up                        |
-| `price.taxPre`         | `map[string]int` | Mapping of tax rates sums all pre tax prices of products with this rate up                    |
-| `session`              | `string`         | The session ID                                                                                |
+| Path                   | Type              | Description                                                                                   |
+|------------------------|-------------------|-----------------------------------------------------------------------------------------------|
+| `id`                   | `string`          | The id of the Order                                                                           |
+| `project`              | `string`          | The id of the Project                                                                         |
+| `date`                 | `date`            | The date on which the order was contracted                                                    |
+| `createdAt`            | `date`            | The date on which the order was processed                                                     |
+| `finalizedAt`          | `date`            | The date on which the order was finalized (i.e. the time the order was paid)                  |
+| `clientID`             | `string`          | The app ID                                                                                    |
+| `customer.loyaltyCard` | `string`          | The loyalty card number used                                                                  |
+| `shopID`               | `string`          | ID of the in which the order was contracted                                                   |
+| `shop.name`            | `string`          | Name of the Shop (see [Shops API](api_shops.md#shop))                                         |
+| `shop.externalID`      | `string`          | An identifier for the provided by external sources (see [Shops API](api_shops.md#shop))       |
+| `shop.street`          | `string`          | Street and number of the Shop (see [Shops API](api_shops.md#shop))                            |
+| `shop.zip`             | `string`          | Zip of the Shop (see [Shops API](api_shops.md#shop))                                          |
+| `shop.state`           | `string`          | State in which the Shop is situated (see [Shops API](api_shops.md#shop))                      |
+| `shop.country`         | `string`          | Country in which the Shop is situated (see [Shops API](api_shops.md#shop))                    |
+| `shop.city`            | `string`          | City in which the Shop is situated (see [Shops API](api_shops.md#shop))                       |
+| `shop.phone`           | `string`          | Phone number of the Shop (see [Shops API](api_shops.md#shop))                                 |
+| `shop.email`           | `string`          | Email address of the Shop (see [Shops API](api_shops.md#shop))                                |
+| `paymentMethod`        | `string`          | The payment method used                                                                       |
+| `paymentInformation`   | `Object`          | Payment dependent additional information                                                      |
+| `paymentResult     `   | `Object`          | Payment gateway result object                                                                 |
+| `paymentStatus`        | `string`          | The final Status of the associated payment process                                            |
+| `lineItems`            | `LineItem[]`      | Line items of the order. For details see [Checkout API: Line Item](api_checkout.md#line-item) |
+| `currency`             | `string`          | Currency of the project                                                                       |
+| `price.price`          | `int`             | The total brutto price of the order                                                           |
+| `price.netPrice`       | `int`             | The total netto price of the order                                                            |
+| `price.tax`            | `map[string]int`  | Mapping of tax rates on the portion of the price                                              |
+| `price.taxNet`         | `map[string]int`  | Mapping of tax rates sums all net prices of products with this rate up                        |
+| `price.taxPre`         | `map[string]int`  | Mapping of tax rates sums all pre tax prices of products with this rate up                    |
+| `session`              | `string`          | The session ID                                                                                |
+| `fiscalReference`      | `FiscalReference` | Optional [Fiscal Reference](#fiscal-reference)                                                |
 
+#### Links
+
+| Relation  | Description                         |
+|-----------|-------------------------------------|
+| `receipt` | The Receipt generated for the order |
 
 Example:
 
@@ -111,6 +117,9 @@ Example:
   "links": {
     "self": {
       "href": "/test-project-faa116/orders/99e13f9f-0412-4686-907a-331003b2a703"
+    },
+    "receipt": {
+      "href": "/project/receipts/id"
     }
   }
 }
@@ -147,14 +156,7 @@ Example:
 | `companyAddress.zip`      | `string`                 | Company official address zipcode                                                        |
 | `orders`                  | `Order[]`                | List of [Order](#order) included in this closing                                        |
 | `logs`                    | `ClosingLog[]`           | List of [Closing Log](#closing-log) written for this closing                            |
-| `fiscalReference`         | `FiscalReference`        | Optional [Fiscal Reference](#fiscal-reference)                                          |
 
-
-#### Links
-
-| Relation  | Description                         |
-|-----------|-------------------------------------|
-| `receipt` | The Receipt generated for the order |
 
 
 ```
@@ -204,9 +206,6 @@ Example:
     "links": {
         "self": {
             "href": "/project/closings/shops/aShop/sequenceNumbers/1234"
-        },
-        "receipt": {
-            "href": "/project/receipts/id"
         }
     }
 }
