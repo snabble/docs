@@ -8,6 +8,7 @@ This file will be updated weekly, if there are notable changes.
 ## 2020-10-14
 
 * ADDED `links.receipt` Documentation to [Order](api_orders.md#order)
+* ADDED [`FiscalReference`](api_orders.md#fiscal-reference)  to [Order](api_orders.md#order)
 
 ## 2020-08-28
 
