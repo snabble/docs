@@ -320,16 +320,45 @@ Possible values are:
 
 ### Payment Result
 
-Example:
-```
-{
-   "transactionID": "transaction-id-1234",
-   "transactionTime": "1543328941",
-   "approvalCode": "approval-1234",
-   "mandateReference": "reference-id",
-   "transactionResult": "success"
-}
-```
+The structure of the payment result depends on the payment method and
+the provider used. In general three cases have to be considered:
+Online Payment Credit Card, Online SEPA Direct Debit and Payment
+Terminal. In this cases the system assures that at least the described
+fields are present.
+
+#### Payment Result: Payment Credit Card
+
+The payment was processed online using a Credit Card, ie. Visa, Mastercard.
+
+| Parameter                  | Type     | Description                                        |
+|----------------------------|----------|----------------------------------------------------|
+| `transactionTime`          | `string` | Transation time as unix timestamp in time zone UTC |
+| `pan`                      | `string` | Annonymized Primary Account                        |
+| `processorApprovalCode`    | `string` | Approval code of the transaction                   |
+| `processorReferenceNumber` | `string` | Reference number of the transaction                |
+
+#### Payment Result: SEPA Direct Debit
+
+The payment was processed online using a Direct Debit transaction
+
+| Parameter                  | Type     | Description                                        |
+|----------------------------|----------|----------------------------------------------------|
+| `transactionTime`          | `string` | Transation time as unix timestamp in time zone UTC |
+| `mandateReference`         | `string` | SEPA Mandate reference                             |
+| `processorApprovalCode`    | `string` | Approval code of the transaction                   |
+| `processorReferenceNumber` | `string` | Reference number of the transaction                |
+
+#### Payment Result: Payment Terminal
+
+The payment was processed using a payment terminal with the ZVT-Protocol.
+
+| Parameter     | Type     | Description                           |
+|---------------|----------|---------------------------------------|
+| `time`        | `string` | Transation time as encoded as RFC3339 |
+| `aid`         | `string` | Authorization Code                    |
+| `pan`         | `string` | Primary Account Number                |
+| `paymentType` | `string` | ZVT-Payment Type                      |
+
 
 ### Checkout Process List
 Example:
