@@ -148,6 +148,14 @@ Example:
 | `orders`                  | `Order[]`                | List of [Order](#order) included in this closing                                        |
 | `logs`                    | `ClosingLog[]`           | List of [Closing Log](#closing-log) written for this closing                            |
 
+
+#### Links
+
+| Relation  | Description                         |
+|-----------|-------------------------------------|
+| `receipt` | The Receipt generated for the order |
+
+
 ```
 {
     "project" : "project",
@@ -193,6 +201,9 @@ Example:
     "links": {
         "self": {
             "href": "/project/closings/shops/aShop/sequenceNumbers/1234"
+        },
+        "receipt": {
+            "href": "/project/receipts/id"
         }
     }
 }
