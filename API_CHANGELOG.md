@@ -5,6 +5,11 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-10-14
+
+* ADDED `links.receipt` Documentation to [Order](api_orders.md#order)
+* ADDED [`FiscalReference`](api_orders.md#fiscal-reference)  to [Order](api_orders.md#order)
+
 ## 2020-08-28
 
 * ADDED `isPrimary` to [Code Object v2](api_products.md#code-object-v2)

@@ -147,6 +147,15 @@ Example:
 | `companyAddress.zip`      | `string`                 | Company official address zipcode                                                        |
 | `orders`                  | `Order[]`                | List of [Order](#order) included in this closing                                        |
 | `logs`                    | `ClosingLog[]`           | List of [Closing Log](#closing-log) written for this closing                            |
+| `fiscalReference`         | `FiscalReference`        | Optional [Fiscal Reference](#fiscal-reference)                                          |
+
+
+#### Links
+
+| Relation  | Description                         |
+|-----------|-------------------------------------|
+| `receipt` | The Receipt generated for the order |
+
 
 ```
 {
@@ -190,9 +199,14 @@ Example:
 
     "logs": [ ... ],
 
+    "fiscalReference": { ... },
+
     "links": {
         "self": {
             "href": "/project/closings/shops/aShop/sequenceNumbers/1234"
+        },
+        "receipt": {
+            "href": "/project/receipts/id"
         }
     }
 }
@@ -327,6 +341,30 @@ The `file` link of the object points to actual log content.
     }
 }
 ```
+
+### Fiscal Reference
+
+The Fiscal Reference provides the metadata and logs that were obtained
+by required fiscal processes. The provided information and carried out
+steps heavily depend on the country where the transaction was executed
+an the modus of operation.
+
+In germany the process is regulated by the Kassensicherungsverordnung
+(KassenSichV) and hence the values are provided by a Technische
+Sicherheitseinrichtung (TSE).
+
+
+| Path                                      | Type     | Description                                                |
+|-------------------------------------------|----------|------------------------------------------------------------|
+| `securityDeviceModule.serialNumber`       | `string` | Serial number of the security device                       |
+| `securityDeviceModule.signatureAlgorithm` | `string` | Signature Algorithm used by the device                     |
+| `securityDeviceModule.logTimeFormat`      | `string` | Time Format of the security device                         |
+| `securityDeviceModule.certificate`        | `string` | Certificate presented by the security device               |
+| `logs[].timestamp`                        | `string` | RFC3339 encoded point in time on which the log was created |
+| `logs[].counter`                          | `int`    | Counter value of the signature                             |
+| `logs[].processType`                      | `string` | The process type send to the security device               |
+| `logs[].processData`                      | `string` | The data send to security device                           |
+| `logs[].error`                            | `string` | Message describing errors during the signature process     |
 
 
 ## Get orders
