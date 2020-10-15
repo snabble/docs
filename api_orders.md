@@ -45,7 +45,7 @@ This documentation describes the snabble API endpoints related to the
 | `shop.email`           | `string`          | Email address of the Shop (see [Shops API](api_shops.md#shop))                                |
 | `paymentMethod`        | `string`          | The payment method used                                                                       |
 | `paymentInformation`   | `Object`          | Payment dependent additional information                                                      |
-| `paymentResult     `   | `Object`          | Payment gateway result object                                                                 |
+| `paymentResult     `   | `Object`          | Payment gateway result object ([Payment Result](api_checkout.md#payment-result)               |
 | `paymentStatus`        | `string`          | The final Status of the associated payment process                                            |
 | `lineItems`            | `LineItem[]`      | Line items of the order. For details see [Checkout API: Line Item](api_checkout.md#line-item) |
 | `currency`             | `string`          | Currency of the project                                                                       |
