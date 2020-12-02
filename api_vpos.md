@@ -142,7 +142,7 @@ Checkouts are represented through the following data structure:
 
 | Parameter         | Type      | Default   | Description                                                                                                                  |
 |-------------------|-----------|-----------|------------------------------------------------------------------------------------------------------------------------------|
-| `id`              | `string`  |           | Identifier of the line item                                                                                                   |
+| `id`              | `string`  |           | Identifier of the line item                                                                                                  |
 | `type`            | `string`  | `default` | Type of the line item (`default`, `deposit`, `giveaway`, `discount`)                                                         |
 | `refersTo`        | `string`  | `null`    | line item that is related to this one (i.e. if the line item represents a deposit the id of the line item which requires it) |
 | `sku`             | `string`  | `null`    | SKU of the product                                                                                                           |
@@ -162,8 +162,9 @@ Checkouts are represented through the following data structure:
 
 ### Error
 
-In case of an error the checkout or the line item might contain a list
-of error objects. Such an object consists of `type` string and an
+In case of an error the checkout may contain a list of errors. Further
+the the line item may contain a list of error objects to indicate why
+they cause an error. Such an object consists of `type` string and an
 informational `message`.
 
 ```json
@@ -181,7 +182,7 @@ informational `message`.
   ],
   "errors": [
     {
-      "type": "invalid_cart",
+      "type": "invalid_cart_items",
       "message": "Invalid line item"
     }
   ]
