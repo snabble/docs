@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2020-12-02
+
+* Clearified the errors list in the [VPoS API](api_vpos.md#error)
+
 ## 2020-10-14
 
 * ADDED `links.receipt` Documentation to [Order](api_orders.md#order)
