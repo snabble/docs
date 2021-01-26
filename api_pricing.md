@@ -400,7 +400,7 @@ Update a batch of pricings.
 
 #### Success Response 200 OK
 
-**Content-Type** : application/json
+**Content-Type** : application/x-ndjson
 
 **Data** : JSON stream of [PricingBatchUpdateResultMessage](#pricingbatchupdateresultmessage-object)
 
@@ -447,6 +447,6 @@ Update a batch of prices.
 
 #### Success Response 200 OK
 
-**Content-Type** : application/json
+**Content-Type** : application/x-ndjson
 
 **Data** : JSON stream of [PriceBatchUpdateResultMessage](#pricebatchupdateresultmessage-object)
