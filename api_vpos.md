@@ -41,7 +41,7 @@ Checkouts are represented through the following data structure:
       "name": "Deposit",
       "amount": "2",
       "price": 8,
-      "taxRate": "0",
+      "taxRate": "19",
       "totalPrice": 16
     },
     {
@@ -51,8 +51,8 @@ Checkouts are represented through the following data structure:
       "name": "Wine promotion",
       "amount": "1",
       "price": -38,
-      "taxRate": "0",
-      "totalPrice": 16
+      "taxRate": "19",
+      "totalPrice": -38
     },
     {
       "id": "5c8c5168-5207-11e9-bf60-68f7286a148f",
@@ -86,27 +86,35 @@ Checkouts are represented through the following data structure:
       "sku": "4",
       "type": "default",
       "name": "Bread",
-      "amount": 1,
+      "amount": 2,
       "price": 129,
+      "modifiers": [
+        {
+          "name": "Discount 10%",
+          "amount": 2,
+          "price": -10,
+          "totalPrice": -20
+        }
+      ]
       "taxRate": "7",
-      "totalPrice": 129,
+      "totalPrice": 258,
       "scannedCode": "0000000001298"
     }
   ],
   "taxShares" : [
-    { "rate": "19", "net": 200, "share": 38, "total": 238 },
-    { "rate": "7", "net": 307, "share": 22, "total": 329 },
-    { "rate": "0", "net": -22, "share": 0, "total": -22 }
+    { "rate": "19", "net": 182, "share": 34, "total": 216 },
+    { "rate": "7", "net": 391, "share": 27, "total": 418 }
   ],
-  "netPrice" : 485,
-  "totalPrice" : 545,
+  "netPrice" : 573,
+  "totalPrice" : 634,
   "orderId": "f30b0aa4-5210-11e9-a411-68f7286a148f",
   "externalCheckoutId": "1",
   "paymentInformation": {
     "mandateReference": "..."
   },
   "state": "completed",
-  "receiptBuffer": "c25hYmJsZQo="
+  "receiptBuffer": "c25hYmJsZQo=",
+  "receiptFormat": "pdf"
 }
 ```
 
@@ -124,7 +132,8 @@ Checkouts are represented through the following data structure:
 | `externalCheckoutId` | `string`     | `null`  | Identifier used by the vPOS to identify the checkout                                      |
 | `paymentInformation` | `object`     | `null`  | Additional information provided by the payment system (i.e. transaction id, SEPA mandate) |
 | `state`              | `string`     | `null`  | The state of the checkout (`open`, `completed`)                                           |
-| `receiptBuffer`      | `string`     | `null`  | Base64 encdoded receipt file (either PDF or Windows Print Buffer)                         |
+| `receiptBuffer`      | `string`     | `null`  | Base64 encoded receipt                                                                    |
+| `receiptFormat`      | `string`     |         | Format of the `receiptBuffer` (`pdf` or `text`)                                             |
 | `errors`             | `[]Error`    | `null`  | List of errors                                                                            |
 
 
@@ -143,9 +152,10 @@ Checkouts are represented through the following data structure:
 | Parameter         | Type      | Default   | Description                                                                                                                  |
 |-------------------|-----------|-----------|------------------------------------------------------------------------------------------------------------------------------|
 | `id`              | `string`  |           | Identifier of the line item                                                                                                  |
-| `type`            | `string`  | `default` | Type of the line item (`default`, `deposit`, `giveaway`, `discount`)                                                         |
+| `type`            | `string`  | `default` | Type of the line item (`default`, `deposit`, `giveaway`, `discount`, `coupon`)                                               |
 | `refersTo`        | `string`  | `null`    | line item that is related to this one (i.e. if the line item represents a deposit the id of the line item which requires it) |
 | `sku`             | `string`  | `null`    | SKU of the product                                                                                                           |
+| `couponID`        | `string`  | `null`    | id of the coupon                                                                                                             |
 | `amount`          | `int`     |           | Number of products / packages                                                                                                |
 | `weight`          | `int`     | `0`       | Weight purchased                                                                                                             |
 | `weightUnit`      | `string`  |           | Unit of the weight                                                                                                           |
@@ -159,6 +169,75 @@ Checkouts are represented through the following data structure:
 | `saleRestriction` | `string`  |           | [Restrictions](api_products.md#sale-restrictions) that apply to the line item                                                |
 | `errors`          | `[]Error` | `null`    | List of errors                                                                                                               |
 
+#### Modifier
+
+| Parameter          | Type     | Default                       | Description          |
+|--------------------|----------|-------------------------------|----------------------|
+| `name`             | `string` |                               | Name of the modifier |
+| `amount`           | `int`    | Amount                        |                      |
+| `price`            | `int`    | The price modification        |                      |
+| `totalPrice` `int` | `int`    | The total price  modification |                      |
+
+### Discounts & Modifiers
+
+For a checkout different promotions might apply. There are three
+different possibilities to represent promotions: A promotion might
+change the `price` and `totalPrice` of a LineItem. In this case the
+system has no information and the prices are displayed as given
+
+A promotion might modify the line item. This modification should be
+represented by a `Modifier`. For example the result of a "buy three, get one free"
+promotion can be represent through
+```
+    {
+      "id": "6a347656-5207-11e9-9d96-68f7286a148f",
+      "sku": "4",
+      "type": "default",
+      "name": "Bread",
+      "amount": 3,
+      "price": 129,
+      "modifiers": [
+        {
+          "name": "Promotion",
+          "amount": 1,
+          "price": -129,
+          "totalPrice": -129
+        }
+      ]
+      "taxRate": "7",
+      "totalPrice": 287,
+      "scannedCode": "0000000001298"
+    }
+```
+
+General discounts (i.e. a cart discount) are represented through line
+items of type `discount`. These line items might reference another
+line item (i.e. the coupon that triggered the discount). For example:
+```
+    {
+      "id": "aded2a10-521f-11e9-96a0-68f7286a148f",
+      "type": "discount",
+      "refersTo": "54ddafde-5207-11e9-b1c7-68f7286a148f",
+      "name": "Cart Promotion 10%",
+      "amount": "1",
+      "taxRate": "7",
+      "price": -38,
+      "totalPrice": -38
+    },
+```
+
+### Coupons
+
+Coupons are represented as line items of type `coupon`.
+```
+    {
+      "id": "aded2a10-521f-11e9-96a0-68f7286a148f",
+      "type": "coupon",
+      "name": "Coupon",
+      "amount": "1",
+      "scannedCode": "1234"
+    },
+```
 
 ### Error
 
