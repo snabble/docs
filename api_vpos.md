@@ -88,16 +88,14 @@ Checkouts are represented through the following data structure:
       "name": "Bread",
       "amount": 2,
       "price": 129,
-      "modifiers": [
+      "priceModifiers": [
         {
           "name": "Discount 10%",
-          "amount": 2,
           "price": -10,
-          "totalPrice": -20
         }
       ]
       "taxRate": "7",
-      "totalPrice": 258,
+      "totalPrice": 238,
       "scannedCode": "0000000001298"
     }
   ],
@@ -149,34 +147,33 @@ Checkouts are represented through the following data structure:
 
 #### Line Item
 
-| Parameter         | Type      | Default   | Description                                                                                                                  |
-|-------------------|-----------|-----------|------------------------------------------------------------------------------------------------------------------------------|
-| `id`              | `string`  |           | Identifier of the line item                                                                                                  |
-| `type`            | `string`  | `default` | Type of the line item (`default`, `deposit`, `giveaway`, `discount`, `coupon`)                                               |
-| `refersTo`        | `string`  | `null`    | line item that is related to this one (i.e. if the line item represents a deposit the id of the line item which requires it) |
-| `sku`             | `string`  | `null`    | SKU of the product                                                                                                           |
-| `couponID`        | `string`  | `null`    | id of the coupon                                                                                                             |
-| `amount`          | `int`     |           | Number of products / packages                                                                                                |
-| `weight`          | `int`     | `0`       | Weight purchased                                                                                                             |
-| `weightUnit`      | `string`  |           | Unit of the weight                                                                                                           |
-| `referenceUnit`   | `string`  |           | Reference unit for weighable item, Details: [Product API: weighable products](api_products.md#weighable-products)            |
-| `units`           | `int`     | `0`       | Number of units in a package in case of bundle or piece product                                                              |
-| `price`           | `int`     |           | Price of the product for single unit, piece, weightUnit, etc                                                                 |
-| `totalPrice`      | `int`     |           | Total price of the line item                                                                                                 |
-| `name`            | `string`  |           | Name of the product                                                                                                          |
-| `taxRate`         | `string`  |           | Tax rate as string encoded decimal                                                                                           |
-| `scannedCode`     | `string`  |           | Scanned code                                                                                                                 |
-| `saleRestriction` | `string`  |           | [Restrictions](api_products.md#sale-restrictions) that apply to the line item                                                |
-| `errors`          | `[]Error` | `null`    | List of errors                                                                                                               |
+| Parameter         | Type            | Default   | Description                                                                                                                  |
+|-------------------|-----------------|-----------|------------------------------------------------------------------------------------------------------------------------------|
+| `id`              | `string`        |           | Identifier of the line item                                                                                                  |
+| `type`            | `string`        | `default` | Type of the line item (`default`, `deposit`, `giveaway`, `discount`, `coupon`)                                               |
+| `refersTo`        | `string`        | `null`    | line item that is related to this one (i.e. if the line item represents a deposit the id of the line item which requires it) |
+| `sku`             | `string`        | `null`    | SKU of the product                                                                                                           |
+| `couponID`        | `string`        | `null`    | id of the coupon                                                                                                             |
+| `amount`          | `int`           |           | Number of products / packages                                                                                                |
+| `weight`          | `int`           | `0`       | Weight purchased                                                                                                             |
+| `weightUnit`      | `string`        |           | Unit of the weight                                                                                                           |
+| `referenceUnit`   | `string`        |           | Reference unit for weighable item, Details: [Product API: weighable products](api_products.md#weighable-products)            |
+| `units`           | `int`           | `0`       | Number of units in a package in case of bundle or piece product                                                              |
+| `price`           | `int`           |           | Price of the product for single unit, piece, weightUnit, etc                                                                 |
+| `totalPrice`      | `int`           |           | Total price of the line item                                                                                                 |
+| `name`            | `string`        |           | Name of the product                                                                                                          |
+| `taxRate`         | `string`        |           | Tax rate as string encoded decimal                                                                                           |
+| `scannedCode`     | `string`        |           | Scanned code                                                                                                                 |
+| `saleRestriction` | `string`        |           | [Restrictions](api_products.md#sale-restrictions) that apply to the line item                                                |
+| `priceModifiers`  | `PriceModifier` |           | [Price Modifiers](api_products.md#price-modifier) that apply to the line item                                                |
+| `errors`          | `[]Error`       | `null`    | List of errors                                                                                                               |
 
-#### Modifier
+#### Price Modifier
 
-| Parameter          | Type     | Default                       | Description          |
-|--------------------|----------|-------------------------------|----------------------|
-| `name`             | `string` |                               | Name of the modifier |
-| `amount`           | `int`    | Amount                        |                      |
-| `price`            | `int`    | The price modification        |                      |
-| `totalPrice` `int` | `int`    | The total price  modification |                      |
+| Parameter | Type     | Default | Description            |
+|-----------|----------|---------|------------------------|
+| `name`    | `string` | `""`    | Name of the modifier   |
+| `price`   | `int`    |         | The price modification |
 
 ### Discounts & Modifiers
 
@@ -185,9 +182,8 @@ different possibilities to represent promotions: A promotion might
 change the `price` and `totalPrice` of a LineItem. In this case the
 system has no information and the prices are displayed as given
 
-A promotion might modify the line item. This modification should be
-represented by a `Modifier`. For example the result of a "buy three, get one free"
-promotion can be represent through
+A promotion might modify the price of the line item. This modification should be
+represented by a `Modifier`. For example a price reduction can be respresented by:
 ```
     {
       "id": "6a347656-5207-11e9-9d96-68f7286a148f",
@@ -199,13 +195,11 @@ promotion can be represent through
       "modifiers": [
         {
           "name": "Promotion",
-          "amount": 1,
-          "price": -129,
-          "totalPrice": -129
+          "price": -29,
         }
       ]
       "taxRate": "7",
-      "totalPrice": 287,
+      "totalPrice": 300,
       "scannedCode": "0000000001298"
     }
 ```
