@@ -169,6 +169,7 @@ Example:
    "saleRestriction": "min_age_18",
    "saleStop": true,
    "notForSale": true,
+   "isDiscountable": true,
    "scanMessage": "multipack-2",
    "codes": [
        {
@@ -182,31 +183,32 @@ Example:
 
 Product attributes:
 
-| Parameter           | Type       | Default   | Description                                                                                                   |
-|---------------------|------------|-----------|---------------------------------------------------------------------------------------------------------------|
+| Parameter           | Type       | Default   | Description                                                                                                    |
+|---------------------|------------|-----------|----------------------------------------------------------------------------------------------------------------|
 | `sku`               | `string`   |           | The unique id for identification of the product                                                                |
-| `project`           | `string`   |           | The project                                                                                                   |
-| `name`              | `string`   | ""        | The display name of the product                                                                               |
-| `description`       | `string`   | null      | A short description of the product                                                                            |
-| `subtitle`          | `string`   | null      | An additional title line for individual use (e.g. brand information)                                          |
-| `imageUrl`          | `string`   | null      | The full URL for a product image                                                                              |
-| `depositProduct`    | `string`   | null      | The SKU of  the associated deposit product                                                                    |
-| `bundledProduct`    | `string`   | null      | The SKU of the product contained in the bundle                                                                |
-| `outOfStock`        | `bool`     | false     | Flag to indicate if the product is currently available in markets                                             |
-| `deleted`           | `bool`     | false     | Flag to indicate that a product does not exist any longer                                                     |
+| `project`           | `string`   |           | The project                                                                                                    |
+| `name`              | `string`   | ""        | The display name of the product                                                                                |
+| `description`       | `string`   | null      | A short description of the product                                                                             |
+| `subtitle`          | `string`   | null      | An additional title line for individual use (e.g. brand information)                                           |
+| `imageUrl`          | `string`   | null      | The full URL for a product image                                                                               |
+| `depositProduct`    | `string`   | null      | The SKU of  the associated deposit product                                                                     |
+| `bundledProduct`    | `string`   | null      | The SKU of the product contained in the bundle                                                                 |
+| `outOfStock`        | `bool`     | false     | Flag to indicate if the product is currently available in markets                                              |
+| `deleted`           | `bool`     | false     | Flag to indicate that a product does not exist any longer                                                      |
 | `taxCategory`       | `string`   | null      | Identifier of the tax category                                                                                 |
-| `weighByCustomer`   | `bool`     | false     | Flag, if the product is prepackaged, or the customer has to do weighting by himself                           |
-| `referenceUnit`     | `string`   | null      | The [unit](#supported-units) in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg)     |
-| `encodingUnit`      | `string`   | null      | [Unit](#supported-units) which is used as encoding within the EAN (e.g. "g" when the EAN contains grams)      |
-| `codes`             | `[]object` | []        | [Array of code objects](#code-object-v2)                                                                      |
-| `productType`       | `string`   | "default" | Type of the product: "default", "weighable", "deposit"                                                        |
-| `controlIndication` | `number`   | 0         | Indication: -1 no control needed, 1 high control indication                                                   |
-| `forceControl`      | `bool`     | false     | Flag to indicate if a control is necessary                                                                    |
-| `saleRestriction`   | `string`   | null      | [Restriction rules](#sale-restrictions)                                                                       |
-| `saleStop`          | `bool`     | false     | Flag to indicate if there is a sale stop for this product                                                     |
-| `pluSet`            | `[]string` | null      | PLU, the short code to identify a weighable product                                                           |
+| `weighByCustomer`   | `bool`     | false     | Flag, if the product is prepackaged, or the customer has to do weighting by himself                            |
+| `referenceUnit`     | `string`   | null      | The [unit](#supported-units) in which the price attribute is calculated (e.g. "kg" where price is EUR/Kg)      |
+| `encodingUnit`      | `string`   | null      | [Unit](#supported-units) which is used as encoding within the EAN (e.g. "g" when the EAN contains grams)       |
+| `codes`             | `[]object` | []        | [Array of code objects](#code-object-v2)                                                                       |
+| `productType`       | `string`   | "default" | Type of the product: "default", "weighable", "deposit"                                                         |
+| `controlIndication` | `number`   | 0         | Indication: -1 no control needed, 1 high control indication                                                    |
+| `forceControl`      | `bool`     | false     | Flag to indicate if a control is necessary                                                                     |
+| `saleRestriction`   | `string`   | null      | [Restriction rules](#sale-restrictions)                                                                        |
+| `saleStop`          | `bool`     | false     | Flag to indicate if there is a sale stop for this product                                                      |
+| `pluSet`            | `[]string` | null      | PLU, the short code to identify a weighable product                                                            |
 | `scanMessage`       | `string`   | null      | Identifier of a message shown to the user after scanning a product (e.g. a product has more than one package ) |
 | `notForSale`        | `bool`     | false     | Flag to indicate if the product is not for sale. When scanning the product only the scan message will be shown |
+| `isDiscountable`    | `bool`     | false     | Flag to indicate if the product should be considered for discounts                                             |
 
 #### Code Object v2
 

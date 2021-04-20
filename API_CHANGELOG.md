@@ -5,10 +5,15 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2021-04-16
+
+* ADDED `isDiscountable` to [Product Object v2](api_products.md#product-object-v2)
+* Clearified the usage of Price Modifiers in [VPoS API](api_vpos.md#discounts--modifiers)
+
 ## 2021-03-29
 
-* ADDED Specification for Discounts and Modifiers in vPOS API [VPoS API](api_vpos.md#discounts--modifiers)
-* ADDED Specification for Coupons in vPOS API [VPoS API](api_vpos.md#coupons)
+* ADDED Specification for Discounts and Modifiers in [VPoS API](api_vpos.md#discounts--modifiers)
+* ADDED Specification for Coupons in [VPoS API](api_vpos.md#coupons)
 
 ## 2020-12-02
 
