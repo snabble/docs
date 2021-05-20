@@ -55,7 +55,7 @@ to the service might look like:
 PATCH /project/pos/checkout/id/752dd716-ec0c-11e8-8528-68f7286a148f HTTP/1.1
 Host: api.snabble.io
 Content-Type: application/merge-patch+json
-Client-Token: ...
+Authorization: Bearer ...
 
 {
   "state": "processing",
@@ -105,7 +105,7 @@ reflect the performed checkout. Further, it should set the state to
 PATCH /project/pos/checkout/id/752dd716-ec0c-11e8-8528-68f7286a148f HTTP/1.1
 Host: api.snabble.io
 Content-Type: application/merge-patch+json
-Client-Token: ...
+Authorization: Bearer ...
 
 {
   "lineItems" : [
@@ -144,7 +144,7 @@ conditions of the failure.
 PATCH /project/pos/checkout/id/752dd716-ec0c-11e8-8528-68f7286a148f HTTP/1.1
 Host: api.snabble.io
 Content-Type: application/merge-patch+json
-Client-Token: ...
+Authorization: Bearer ...
 
 {
   "state": "failed",
