@@ -58,7 +58,13 @@ The contents of all products and stores is scoped in a project. The project id i
 ### API Tokens
 
 Most API endpoints are not available for public usage, but only for a limited audience.
-They are protected by a JSON Web Token (JWT), which has to be sent as the HTTP header `Client-Token`.
+They are protected by a JSON Web Token (JWT), which has to be sent as Bearer Authorization in the `Authorization` header.
+
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
+```
+
+It is also possible but deprecated to send the JWT in the `Client-Token` header instead.
 
 ```
 Client-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
@@ -70,7 +76,7 @@ With `curl`, a command request to the resource /{project}/foo might look as foll
 ```
 $ export CLIENT_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 $ export PROJECT=demo-ab42xy
-$ curl -H "Client-Token: $CLIENT_TOKEN" https://api.snabble.io/$PROJECT/foo
+$ curl -H "Authorization: Bearer $CLIENT_TOKEN" https://api.snabble.io/$PROJECT/foo
 ```
 
 ## Common Responses

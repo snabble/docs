@@ -5,10 +5,14 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2021-05-20
+
+* Deprecated authorization by `Client-Token` header in favor of Bearer Authorization
+
 ## 2021-04-16
 
 * ADDED `isDiscountable` to [Product Object v2](api_products.md#product-object-v2)
-* Clearified the usage of Price Modifiers in [VPoS API](api_vpos.md#discounts--modifiers)
+* Clarified the usage of Price Modifiers in [VPoS API](api_vpos.md#discounts--modifiers)
 
 ## 2021-03-29
 
@@ -17,7 +21,7 @@ This file will be updated weekly, if there are notable changes.
 
 ## 2020-12-02
 
-* Clearified the errors list in the [VPoS API](api_vpos.md#error)
+* Clarified the errors list in the [VPoS API](api_vpos.md#error)
 
 ## 2020-10-14
 
