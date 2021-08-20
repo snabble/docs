@@ -30,7 +30,6 @@ All environments share the same API structure and provide the following endpoint
 | api.snabble.io                 | The general REST api                        |
 | sftp.snabble.io                | The sftp exchange host                      |
 | retailer.snabble.io            | The retailer portal                         |
-| docs.snabble.io                | The documentation                           |
 
 ## IP Address
 
