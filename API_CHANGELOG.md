@@ -5,6 +5,10 @@ file.
 
 This file will be updated weekly, if there are notable changes.
 
+## 2021-09-20
+
+* Add `state` to [Order](api_orders.md#Order)
+
 ## 2021-05-20
 
 * Deprecated authorization by `Client-Token` header in favor of Bearer Authorization
