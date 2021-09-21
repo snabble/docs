@@ -28,10 +28,13 @@ This documentation describes the snabble API endpoints related to the
 |------------------------|-------------------|-----------------------------------------------------------------------------------------------|
 | `id`                   | `string`          | The id of the Order                                                                           |
 | `project`              | `string`          | The id of the Project                                                                         |
+| `state`                | `string`          | The state of the order (see [Order State](#order-state))                                      |
 | `date`                 | `date`            | The date on which the order was contracted                                                    |
 | `createdAt`            | `date`            | The date on which the order was processed                                                     |
+| `startedAt`            | `date`            | The date on which the processing was started                                                  |
 | `finalizedAt`          | `date`            | The date on which the order was finalized (i.e. the time the order was paid)                  |
-| `clientID`             | `string`          | The app ID                                                                                    |
+| `clientID`             | `string`          | The ID of the device used                                                                     |
+| `appUserID`            | `string`          | Optional. ID of the assocated app user                                                             |
 | `customer.loyaltyCard` | `string`          | The loyalty card number used                                                                  |
 | `shopID`               | `string`          | ID of the in which the order was contracted                                                   |
 | `shop.name`            | `string`          | Name of the Shop (see [Shops API](api_shops.md#shop))                                         |
@@ -56,6 +59,21 @@ This documentation describes the snabble API endpoints related to the
 | `price.taxPre`         | `map[string]int`  | Mapping of tax rates sums all pre tax prices of products with this rate up                    |
 | `session`              | `string`          | The session ID                                                                                |
 | `fiscalReference`      | `FiscalReference` | Optional [Fiscal Reference](#fiscal-reference)                                                |
+| `cashRegisterID`       | `string`          | The ID of the virtual cash register used.                                                     |
+| `sequenceNumber`       | `int`             | Sequence number of the order                                                                  |
+| `externalCheckoutID`   | `string`          | Optional. The ID of the order in an external system in case the order was processed via an external system. (eg. vPoS) |
+
+
+#### Order State
+
+| State                 | Description                                                                                    |
+|-----------------------|------------------------------------------------------------------------------------------------|
+| `final`               | The order was successfully processed.                                                          |
+| `transferred`         | The order was transferred to a external PoS and not payed via snabble.              |
+| `userAborted`         | The order was aborted by the user.                                                             |
+| `systemAborted`       | The order was aborted by the system.                                                           |
+| `preconditionsNotMet` | Some conditions for completing the order were not met. (eg. failed age check)                  |
+| `paymentFailed`       | The payment of the order failed. See the paymentResult and paymentStatus for more information. |
 
 #### Links
 
