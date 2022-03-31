@@ -166,7 +166,7 @@ The actual price.
 
 ```
 {
-  "category": "normal",
+  "category": "default",
   "listPrice": 199,
   "discountedPrice": 149,
   "customerCardPrice": 129,
