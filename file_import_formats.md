@@ -1,3 +1,8 @@
+> :warning: **Outdated document**: The snabble documentation has beeen moved to [docs.snabble.io](https://docs.snabble.io).
+>
+> :point_right: The current version of this document can befound at [docs.snabble.io/docs/integration/file_import_formats](https://docs.snabble.io/docs/integration/file_import_formats).
+
+
 # File Import Formats
 
 The native way to get products into the snabble platform is by using the REST/JSON API.

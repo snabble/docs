@@ -1,3 +1,6 @@
+> :warning: **Outdated document**: The snabble documentation has beeen moved to [docs.snabble.io](https://docs.snabble.io).
+
+
 snabble documentation
 =======================
 

@@ -1,3 +1,8 @@
+> :warning: **Outdated document**: The snabble documentation has beeen moved to [docs.snabble.io](https://docs.snabble.io).
+>
+> :point_right: The current version of this document can befound at [docs.snabble.io/docs/api/api_vpos](https://docs.snabble.io/docs/api/api_vpos).
+
+
 # Integration with a virtual Point of Sale (vPOS)
 
 snabble is able to use a virtual Point of Sale (vPOS) to integrate

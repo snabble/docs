@@ -1,3 +1,8 @@
+> :warning: **Outdated document**: The snabble documentation has beeen moved to [docs.snabble.io](https://docs.snabble.io).
+>
+> :point_right: The current version of this document can befound at [docs.snabble.io/docs/api/api_orders](https://docs.snabble.io/docs/api/api_orders).
+
+
 # Orders API
 
 This documentation describes the snabble API endpoints related to the

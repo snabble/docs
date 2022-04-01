@@ -1,3 +1,8 @@
+> :warning: **Outdated document**: The snabble documentation has beeen moved to [docs.snabble.io](https://docs.snabble.io).
+>
+> :point_right: The current version of this document can befound at [docs.snabble.io/docs/api/API_CHANGELOG](https://docs.snabble.io/docs/api/API_CHANGELOG).
+
+
 # API Changelog
 
 All notable changes to the snabble API will be documented in this

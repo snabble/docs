@@ -1,3 +1,8 @@
+> :warning: **Outdated document**: The snabble documentation has beeen moved to [docs.snabble.io](https://docs.snabble.io).
+>
+> :point_right: The current version of this document can befound at [docs.snabble.io/docs/api/api_general](https://docs.snabble.io/docs/api/api_general).
+
+
 # General API access
 
 This documentation describes the general access topics for the snabble REST API.
