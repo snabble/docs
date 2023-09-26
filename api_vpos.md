@@ -44,7 +44,7 @@ Checkouts are represented through the following data structure:
       "type": "deposit",
       "refersTo": "54ddafde-5207-11e9-b1c7-68f7286a148f",
       "name": "Deposit",
-      "amount": "2",
+      "amount": 2,
       "price": 8,
       "taxRate": "19",
       "totalPrice": 16
@@ -54,7 +54,7 @@ Checkouts are represented through the following data structure:
       "type": "discount",
       "refersTo": "54ddafde-5207-11e9-b1c7-68f7286a148f",
       "name": "Wine promotion",
-      "amount": "1",
+      "amount": 1,
       "price": -38,
       "taxRate": "19",
       "totalPrice": -38
@@ -67,7 +67,6 @@ Checkouts are represented through the following data structure:
       "weight": 42,
       "weightUnit": "g",
       "name": "Apple",
-      "amount": "1",
       "price": 199,
       "referenceUnit": "kg",
       "taxRate": "7",
@@ -218,7 +217,7 @@ line item (i.e. the coupon that triggered the discount). For example:
       "type": "discount",
       "refersTo": "54ddafde-5207-11e9-b1c7-68f7286a148f",
       "name": "Cart Promotion 10%",
-      "amount": "1",
+      "amount": 1,
       "taxRate": "7",
       "price": -38,
       "totalPrice": -38
@@ -233,7 +232,7 @@ Coupons are represented as line items of type `coupon`.
       "id": "aded2a10-521f-11e9-96a0-68f7286a148f",
       "type": "coupon",
       "name": "Coupon",
-      "amount": "1",
+      "amount": 1,
       "scannedCode": "1234"
     },
 ```
